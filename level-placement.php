@@ -31,13 +31,18 @@
    * **********************************************************************
    */
 
+   error_reporting(-1);
+   ini_set('display_errors', 'On');
+
 
    define('LEVEL_PLACEMENT_DIR', trailingslashit(plugin_dir_path(__FILE__)));
    define('LEVEL_PLACEMENT_URI', trailingslashit(plugin_dir_url(__FILE__)));
    define('LEVEL_PLACEMENT_DOMAIN_TEXT', 'level-placement');
+   define('LEVEL_PLACEMENT_PREFIX_META_BOX', 'test-post-');
 
    require_once LEVEL_PLACEMENT_DIR . 'inc/level-placement-core-class.php';
 
+   new LevelPlacementCore();
 
 
  ?>
