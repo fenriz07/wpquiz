@@ -20,7 +20,15 @@ class levelPlacementShortcode
   	), $atts, $this->test );
 
     $idcat = $atts['idcat'];
-    echo $idcat;
+
+    $tests = TestModel::select()
+                        ->setCategory(23)
+                        ->base()
+                        ->addMeta()
+                        ->get();
+    echo '<pre>';
+      var_dump($tests);
+    echo '</pre>';
   }
 }
 

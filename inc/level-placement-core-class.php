@@ -10,6 +10,7 @@ class LevelPlacementCore
   {
 
     $this->initClass();
+    $this->model();
     $this->initLibs();
     $this->initPostType();
     $this->initCss();
@@ -40,6 +41,11 @@ class LevelPlacementCore
   private function initLibs()
   {
       require LEVEL_PLACEMENT_DIR . "inc/libs/meta-box/meta-box.php";
+  }
+
+  private function model()
+  {
+      require_once LEVEL_PLACEMENT_DIR . "inc/model/test.php";
   }
 
 
