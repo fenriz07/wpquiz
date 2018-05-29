@@ -26,7 +26,7 @@ class apiRestTest
     $tests = TestModel::select()
                           ->setCategory($data['id'])
                           ->base()
-                          ->addMeta()
+                          ->addMeta(1)
                           ->get();
 
     if ( empty( $tests ) ) {

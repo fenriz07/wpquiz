@@ -65,7 +65,7 @@
        return $this;
    }
 
-   public function addMeta()
+   public function addMeta($rand = 0)
    {
 
        $response = 'answers';
@@ -74,7 +74,9 @@
        foreach ($posts as $key => $post) {
            $answers = rwmb_meta(LEVEL_PLACEMENT_PREFIX_META_BOX . $response, '', $post['id']);
            //Set rand answers
-           shuffle($answers);
+           if($rand == 1){
+              shuffle($answers);
+           }
            $meta = compact('answers');
            $posts[$key]['meta'] = $meta;
        }
@@ -82,6 +84,21 @@
        self::$result = $posts;
 
        return $this;
+   }
+
+   public function addAnswer()
+   {
+     $response = 'answers';
+     $posts = self::$result;
+
+     foreach ($posts as $key => $post) {
+         $answers = rwmb_meta(LEVEL_PLACEMENT_PREFIX_META_BOX . $response, '', $post['id']);
+         $posts[$key]['answer'] = $answers[0];
+     }
+
+     self::$result = $posts;
+
+     return $this;
    }
 
    public function get()
