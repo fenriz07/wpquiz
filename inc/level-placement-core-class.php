@@ -15,6 +15,7 @@ class LevelPlacementCore
     $this->initPostType();
     $this->initCss();
     $this->initJs();
+    $this->initController();
 
   }
 
@@ -47,6 +48,11 @@ class LevelPlacementCore
   private function model()
   {
       require_once LEVEL_PLACEMENT_DIR . "inc/model/test.php";
+  }
+
+  private function initController()
+  {
+      require_once LEVEL_PLACEMENT_DIR . "controller/process-question.php";
   }
 
 

@@ -27,6 +27,7 @@ class apiRestTest
                           ->setCategory($data['id'])
                           ->base()
                           ->addMeta(1)
+                          //addAnswer()
                           ->get();
 
     if ( empty( $tests ) ) {

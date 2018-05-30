@@ -73,6 +73,11 @@
 
        foreach ($posts as $key => $post) {
            $answers = rwmb_meta(LEVEL_PLACEMENT_PREFIX_META_BOX . $response, '', $post['id']);
+
+           foreach ($answers as $key => $answer) {
+             $answers[$key] = ['text' => $answer , 'slug' => sanitize_title($answer)];
+           }
+
            //Set rand answers
            if($rand == 1){
               shuffle($answers);
@@ -93,7 +98,7 @@
 
      foreach ($posts as $key => $post) {
          $answers = rwmb_meta(LEVEL_PLACEMENT_PREFIX_META_BOX . $response, '', $post['id']);
-         $posts[$key]['answer'] = $answers[0];
+         $posts[$key]['answer'] = ['text' => $answers[0]  , 'slug' => sanitize_title($answers[0])] ;
      }
 
      self::$result = $posts;
