@@ -31,8 +31,13 @@
    * **********************************************************************
    */
 
-   // error_reporting(-1);
-   // ini_set('display_errors', 'On');
+   $debug = true;
+
+   if($debug){
+     error_reporting(-1);
+     ini_set('display_errors', 'On');
+   }
+
 
 
    define('LEVEL_PLACEMENT_DIR', trailingslashit(plugin_dir_path(__FILE__)));

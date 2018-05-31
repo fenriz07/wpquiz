@@ -15,24 +15,27 @@
   <p style="display: inline-block; width: 60%; color: #6d6d6d">{name-test}</p>
 </div>
 
+<div style="font-family: 'Dosis', sans-serif; margin: 0 25px; overflow: hidden">
+  <p style="display: inline-block; width: 30%; padding-left: 5%; color: #010c34"># Approved answers:</p>
+  <p style="display: inline-block; width: 60%; color: #6d6d6d">{n-approved-answers}</p>
+</div>
 
-<h1 style="font-family: 'Dosis', sans-serif; color: #010c34; text-align: center; font-weight: normal; margin: 40px 0">Test Result</h1>
+<div style="font-family: 'Dosis', sans-serif; background-color: #F5F5F7; margin: 0 25px; overflow: hidden">
+  <p style="display: inline-block; width: 30%; padding-left: 5%; color: #010c34">Approved</p>
+  <p style="display: inline-block; width: 60%; color: #6d6d6d">{approved}</p>
+</div>
+
+
+
+<h1 style="font-family: 'Dosis', sans-serif; color: #010c34; text-align: center; font-weight: normal; margin: 40px 0">Details Result</h1>
 
 
 <div style="font-family: 'Dosis', sans-serif; background-color: #F5F5F7; margin: 0 25px; overflow: hidden">
-  <p style="display: inline-block; width: 60%; padding-left: 5%; color: #010c34;font-weight:bold">Question</p>
-  <p style="display: inline-block; width: 20%; color: #6d6d6d;font-weight:bold">Answer</p>
-  <p style="display: inline-block; width: 10%; color: #6d6d6d;font-weight:bold">approved</p>
+  <p style="display: inline-block; width: 5%; padding-left: 5%; color: #010c34;font-weight:bold">ID</p>
+  <p style="display: inline-block; width: 60%; color: #010c34;font-weight:bold">Question</p>
+  <p style="display: inline-block; width: 15%; color: #6d6d6d;font-weight:bold">Answer</p>
+  <p style="display: inline-block; width: 10%; color: #6d6d6d;font-weight:bold">Approved</p>
 </div>
 
 <!-- Contenet  -->
-<div style="font-family: 'Dosis', sans-serif; background-color: #F5F5F7; margin: 0 25px; overflow: hidden;border-top: 1px dashed;">
-  <p style="display: inline-block; width: 60%; padding-left: 5%; ">Question</p>
-  <p style="display: inline-block; width: 20%; ">Answer</p>
-  <p style="display: inline-block; width: 10%; ">approved</p>
-</div>
-<div style="font-family: 'Dosis', sans-serif; background-color: #F5F5F7; margin: 0 25px; overflow: hidden;border-top: 1px dashed;">
-  <p style="display: inline-block; width: 60%; padding-left: 5%; ">Question</p>
-  <p style="display: inline-block; width: 20%; ">Answer</p>
-  <p style="display: inline-block; width: 10%; ">approved</p>
-</div>
+{result}
