@@ -9,24 +9,15 @@ class ProcessQuestion
 
   function __construct()
   {
-
-    add_action('admin_post_process_question', [$this, 'processingPost']);
+    // add_action('admin_post_nopriv_process_question', [$this, 'processingPost']);
+    // add_action('admin_post_process_question', [$this, 'processingPost']);
     // add_action('wp_ajax_get_team', [$this, 'processingPost']);
     // add_action('wp_ajax_nopriv_get_team', [$this, 'processingPost']);
   }
 
-  public function processingPost()
+  public function processingPost($data)
   {
-    //Get personal data...
-    $id_category        = $_POST['id_category'];
-
-    //$questions_answers  = $_GET['questions_answers'];
-    //$list = List {id:"respuesta"}
-
-    //Seteamos las variables para las estadisticas
-    $n_questions = count($questions_answers);
-
-
+    $id_category =  $data['id_category'];
 
     //Consultamos el modelo para traer las preguntas, respuesta y comparar el resultado
     $tests = TestModel::select()
@@ -38,14 +29,17 @@ class ProcessQuestion
     //Calculamos:
     $result = $this->caclTest($tests);
     $data_email = ['personal' => [
-                                    'fullname'  => 'Servio Zambrano',
-                                    'email'     => 'servio.za@gmail.com',
-                                    'name-test' => 'Nivel A1'
+                                    'fullname'  => $data['personal']['lastname'],
+                                    'email'     => $data['personal']['email'],
+                                    'phone'     => $data['personal']['phone'],
+                                    'name-test' => $data['name-test'],
                                  ],
                     'statistics'     => $result,
                   ];
     //Enviamos correo:
     $this->notifyTest($data_email);
+
+    //Redireccionamos o Retornamos un codigo de Ok a la restapi.
 
     //Retornar el porcentaje de la clasificacion de respuestas correctas
     // echo json_encode(['result' => 'Ok']);
@@ -71,7 +65,7 @@ class ProcessQuestion
   private function notifyTest($data)
   {
     $templates = (object) [
-      'search_email'  => ['{fullname}','{email}','{name-test}','{result}','{n-approved-answers}','{approved}'],
+      'search_email'  => ['{fullname}','{email}','{phone}','{name-test}','{result}','{n-approved-answers}','{approved}'],
       'email'         => file_get_contents(LEVEL_PLACEMENT_DIR .'partials/email.html'),
       'search_result' => ['{id}','{question}','{answer}','{approved}'],
       'single_result' => file_get_contents(LEVEL_PLACEMENT_DIR .'partials/single-result.html'),
@@ -101,5 +95,3 @@ class ProcessQuestion
 
 
 }
-
-new ProcessQuestion();
