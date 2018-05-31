@@ -17,6 +17,7 @@ class LevelPlacementCore
     $this->initJs();
     $this->initController();
 
+
   }
 
   private function initClass()
@@ -28,11 +29,11 @@ class LevelPlacementCore
 
   private function initCss()
   {
-    // wp_register_style( 'lightbox-jerseypedia', JERSEY_URI . 'assets/vendor/lightbox2/css/lightbox.min.css' );
+    wp_register_style( 'level-placement-css', LEVEL_PLACEMENT_URI . 'assets/css/level-placement.css' );
   }
   private function initJs()
   {
-    // wp_register_script('tiny_mce_jersey', JERSEY_URI .  'assets/vendor/tinymce/tinymce.min.js');
+    wp_register_script('level-placement-js',  LEVEL_PLACEMENT_URI .  'assets/js/level-placement.js');
   }
 
   private function initPostType()

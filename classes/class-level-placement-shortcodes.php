@@ -15,20 +15,16 @@ class levelPlacementShortcode
   //[test-category idcat="1"]
   public static function getTestCategory($atts)
   {
+    wp_enqueue_script('level-placement-js');
+    wp_enqueue_style('level-placement-css');
+
     $atts = shortcode_atts( array(
   		'idcat' => 1,
   	), $atts, $this->test );
 
     $idcat = $atts['idcat'];
-    //
-    // $tests = TestModel::select()
-    //                     ->setCategory(23)
-    //                     ->base()
-    //                     ->addMeta()
-    //                     ->get();
-    // echo '<pre>';
-    //   var_dump($tests);
-    // echo '</pre>';
+
+    echo file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
 
   ?>
 
