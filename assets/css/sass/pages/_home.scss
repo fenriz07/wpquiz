@@ -1,0 +1,51 @@
+.home-container {
+  display: flex;
+  height: 100%;
+  
+  &__left {
+    background-color: $black;
+    color: $white;
+
+    @extend %split-half;
+
+    > div {
+      height: 100%;
+
+      > div {
+        text-align: center;
+      }
+
+      > div:not(first-child) {
+        position: relative;
+
+        > h1 {
+          font-family: 'Roboto-Thin';
+          font-size: 4rem;
+          margin-top: 15.5rem;
+          text-align: center;
+          position: absolute;
+          left: 0.1rem;
+          top: 18rem;
+          padding: 0 1rem;
+
+          > span {
+            font-family: 'Roboto-Bold'
+          }
+
+        }
+      }
+    }
+  }
+
+
+  &__right {
+    background-color: $white;
+
+    @extend %split-half;
+
+    > div {
+
+    }
+
+  }
+}
