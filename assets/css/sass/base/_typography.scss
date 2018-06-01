@@ -1,0 +1,24 @@
+body {
+    font-family: 'Roboto-Regular', sans-serif;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $black;
+}
+
+$fonts: 
+  'Roboto-Black',
+  'Roboto-BlackItalic',
+  'Roboto-Bold',
+  'Roboto-BoldItalic',
+  'Roboto-Light',
+  'Roboto-LightItalic',
+  'Roboto-Medium',
+  'Roboto-MediumItalic',
+  'Roboto-Regular',
+  'Roboto-Thin',
+  'Roboto-ThinItalic'
+;
+
+@each $font in $fonts {
+  @include font-face($font, './fonts/#{$font}', null, null, ttf)
+}
