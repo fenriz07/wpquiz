@@ -3,54 +3,22 @@
     &:visited {
         text-transform: uppercase;
         text-decoration: none;
-        padding: 1.5rem 4rem;
+        padding: 0.5rem 3rem;
         display: inline-block;
-        border-radius: 100px;
+        background-color: $red;
+        color: $white;
+        border-radius: 3px;
         transition: all .1s;
         position: relative;
-        font-size: 1.6rem;
-    }
-
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem;
+        font-family: 'OpenSans-Bold';
+        font-size: 1.6vw;
         box-shadow: 0 1rem 2rem rgba($black,.2);
-
-        &::after{
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0; 
-        }
     }
 
     &:active {
-        transform: translateY(-1px);
+        transform: translateY(2px);
         box-shadow: 0 .5rem 1rem rgba($black,.2);
     }
 
-    &--white {
-        background-color: $white;
-        color: $gray;
-
-        &::after {
-            background-color: $white;
-        }
-    }
-
-    &::after {
-        content: "";
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 100px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all .4s;
-    }
-
-    &--animated{
-        animation: moveInBottom .5s ease-out .75s;
-        animation-fill-mode: backwards;
-    }
 }
+

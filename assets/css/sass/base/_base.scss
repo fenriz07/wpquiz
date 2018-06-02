@@ -9,9 +9,11 @@
 html {
     // This define what 1rem is
     font-size: 62.5%;
+    @extend %full-landing;
 }
 
 body {
     height: 100vh;
     box-sizing: border-box;
+    @extend %full-landing;
 }
