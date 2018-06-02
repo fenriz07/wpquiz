@@ -10,16 +10,17 @@
 
     > img {
       position: absolute;
-      width: 18vw;
+      width: 16vw;
       left: 50%;
-      top: 15%;
+      top: 11%;
       transform: translateX(-50%);
     }
 
     > h1 {
       font-size: 2.5vw;
-      font-family: 'Roboto-Thin';
+      font-family: 'OpenSans-Light';
       position: absolute;
+      font-weight: 500;
       left: 50%;
       top: 50%;
       width: 100%;
@@ -30,7 +31,7 @@
         display:block;
 
         > span {
-          font-family: 'Roboto-Bold';
+          font-family: 'OpenSans-Bold';
         }
       }
     }

@@ -43,44 +43,41 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 body {
-  font-family: 'Roboto-Regular', sans-serif;
+  font-family: 'OpenSans-Regular', sans-serif;
   /* font-size: 16px; */
   line-height: 1.7;
-  color: #333333; }
+  color: #000; }
 
 @font-face {
-  font-family: "Roboto-Black";
-  src: url("./fonts/Roboto-Black.ttf") format("truetype"); }
+  font-family: "OpenSans-Bold";
+  src: url("./fonts/OpenSans-Bold.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-BlackItalic";
-  src: url("./fonts/Roboto-BlackItalic.ttf") format("truetype"); }
+  font-family: "OpenSans-BoldItalic";
+  src: url("./fonts/OpenSans-BoldItalic.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-Bold";
-  src: url("./fonts/Roboto-Bold.ttf") format("truetype"); }
+  font-family: "OpenSans-ExtraBold";
+  src: url("./fonts/OpenSans-ExtraBold.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-BoldItalic";
-  src: url("./fonts/Roboto-BoldItalic.ttf") format("truetype"); }
+  font-family: "OpenSans-ExtraBoldItalic";
+  src: url("./fonts/OpenSans-ExtraBoldItalic.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-Light";
-  src: url("./fonts/Roboto-Light.ttf") format("truetype"); }
+  font-family: "OpenSans-Italic";
+  src: url("./fonts/OpenSans-Italic.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-LightItalic";
-  src: url("./fonts/Roboto-LightItalic.ttf") format("truetype"); }
+  font-family: "OpenSans-Light";
+  src: url("./fonts/OpenSans-Light.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-Medium";
-  src: url("./fonts/Roboto-Medium.ttf") format("truetype"); }
+  font-family: "OpenSans-LightItalic";
+  src: url("./fonts/OpenSans-LightItalic.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-MediumItalic";
-  src: url("./fonts/Roboto-MediumItalic.ttf") format("truetype"); }
+  font-family: "OpenSans-Regular";
+  src: url("./fonts/OpenSans-Regular.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-Regular";
-  src: url("./fonts/Roboto-Regular.ttf") format("truetype"); }
+  font-family: "OpenSans-SemiBold";
+  src: url("./fonts/OpenSans-SemiBold.ttf") format("truetype"); }
 @font-face {
-  font-family: "Roboto-Thin";
-  src: url("./fonts/Roboto-Thin.ttf") format("truetype"); }
-@font-face {
-  font-family: "Roboto-ThinItalic";
-  src: url("./fonts/Roboto-ThinItalic.ttf") format("truetype"); }
+  font-family: "OpenSans-SemiBoldItalic";
+  src: url("./fonts/OpenSans-SemiBoldItalic.ttf") format("truetype"); }
 .u-center-text {
   text-align: center; }
 
@@ -99,13 +96,13 @@ body {
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 1rem 2rem;
-  box-shadow: 0 1rem 2rem rgba(51, 51, 51, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0; }
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.2); }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 .btn--white {
   background-color: #FFFFFF;
   color: #B5B4BC; }
@@ -164,19 +161,20 @@ body {
   width: 100%;
   height: 100%; }
   .landing-container__left {
-    background-color: #333333;
+    background-color: #000;
     color: #FFFFFF;
     left: 0; }
     .landing-container__left > img {
       position: absolute;
-      width: 18vw;
+      width: 16vw;
       left: 50%;
-      top: 15%;
+      top: 11%;
       transform: translateX(-50%); }
     .landing-container__left > h1 {
       font-size: 2.5vw;
-      font-family: 'Roboto-Thin';
+      font-family: 'OpenSans-Light';
       position: absolute;
+      font-weight: 500;
       left: 50%;
       top: 50%;
       width: 100%;
@@ -185,7 +183,7 @@ body {
       .landing-container__left > h1 > span {
         display: block; }
         .landing-container__left > h1 > span > span {
-          font-family: 'Roboto-Bold'; }
+          font-family: 'OpenSans-Bold'; }
   .landing-container__right {
     color: #FFFFFF;
     right: 0;
