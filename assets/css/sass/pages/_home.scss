@@ -47,7 +47,9 @@
     > div {
       
       > img {
-        width: 65%;
+        width: 30vw;
+        margin-top: 2.5vh;
+
       }
 
       > p {
@@ -62,6 +64,34 @@
           font-weight: 100;
           padding: 2rem;
           border-bottom: 1px dashed #000;
+
+          @media screen and (min-width:790px) and (max-width: 870px) {
+            font-size: 1.1vw !important;
+          }
+
+          @media screen and (min-width:870px) and (max-width: 970px) {
+            font-size: 1.2vw !important;
+          }
+
+          @media screen and (min-width: 970px) and (max-width: 1105px) {
+            font-size: 1.3vw !important;
+          }
+
+          @media screen and (max-width: 1278px) {
+            font-size: 1.4vw;
+          }
+
+          @media screen and (min-width: 1518px) {
+            font-size: 1.6vw;
+          }
+
+          @media screen and (min-width: 1965px) {
+            font-size: 1.7vw;
+          }
+
+          @media screen and (min-width: 2700px) {
+            font-size: 1.8vw;
+          }
         }
 
         > h6 {
