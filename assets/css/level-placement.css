@@ -42,6 +42,12 @@ body {
   100% {
     opacity: 1;
     transform: translateY(0); } }
+@keyframes inputHighlighter {
+  from {
+    background: #5264AE; }
+  to {
+    width: 0;
+    background: transparent; } }
 body {
   font-family: 'OpenSans-Regular', sans-serif;
   /* font-size: 16px; */
@@ -81,47 +87,78 @@ body {
 .u-center-text {
   text-align: center; }
 
+.u-left-text {
+  text-align: left; }
+
 .u-margin-bottom-8 {
   margin-bottom: 8rem; }
+
+.u-margin-top-8 {
+  margin-top: 8rem; }
+
+.u-margin-top-3 {
+  margin-top: 3rem; }
+
+.u-margin-top-1 {
+  margin-top: 1rem; }
+
+.u-margin-bottom-1 {
+  margin-bottom: 1rem; }
 
 .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
+  padding: 0.5rem 3rem;
   display: inline-block;
-  border-radius: 100px;
+  background-color: #F00033;
+  color: #FFFFFF;
+  border-radius: 3px;
   transition: all .1s;
   position: relative;
-  font-size: 1.6rem; }
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem;
+  font-family: 'OpenSans-Bold';
+  font-size: 1.6rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
 .btn:active {
-  transform: translateY(-1px);
+  transform: translateY(2px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-.btn--white {
-  background-color: #FFFFFF;
-  color: #B5B4BC; }
-  .btn--white::after {
-    background-color: #FFFFFF; }
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
+
+/*-------------------------------------------
+    Material Input Style
+--------------------------------------------*/
+.input-material {
+  position: relative; }
+  .input-material > label {
+    font-size: 1.2rem;
+    font-family: "OpenSans-Light";
+    font-weight: 600; }
+  .input-material > input {
+    display: block;
+    text-transform: uppercase;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #B5B4BC; }
+    .input-material > input:focus {
+      outline: none; }
+    .input-material > input:focus ~ .bar:before, .input-material > input:focus ~ .bar:after {
+      width: 50%; }
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%; }
+  .bar::after {
+    right: 50%; }
+  .bar::before {
+    left: 50%; }
+
+.bar::before, .bar::after {
+  content: '';
+  height: 1px;
+  width: 0;
+  bottom: 1px;
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s; }
-.btn--animated {
-  animation: moveInBottom .5s ease-out .75s;
-  animation-fill-mode: backwards; }
+  background: #000;
+  transition: 0.2s ease all; }
 
 .row {
   max-width: 114rem;
@@ -156,6 +193,9 @@ body {
   height: 100%;
   overflow: hidden; }
 
+.wrapper {
+  padding: 8rem 7.5rem; }
+
 .landing-container {
   position: relative;
   width: 100%;
@@ -185,8 +225,20 @@ body {
         .landing-container__left > h1 > span > span {
           font-family: 'OpenSans-Bold'; }
   .landing-container__right {
-    color: #FFFFFF;
+    color: #000;
     right: 0;
     background-color: #FFFFFF; }
+    .landing-container__right > div > img {
+      width: 65%; }
+    .landing-container__right > div > div > h5 {
+      font-family: 'OpenSans-Regular';
+      font-size: 1.5vw;
+      font-weight: 100;
+      padding: 2rem;
+      border-bottom: 1px dashed #000; }
+    .landing-container__right > div > div > h6 {
+      font-family: 'OpenSans-Regular';
+      font-size: 1vw;
+      color: #B5B4BC; }
 
 /*# sourceMappingURL=level-placement.css.map */

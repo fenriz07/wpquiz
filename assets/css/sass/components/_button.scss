@@ -3,54 +3,82 @@
     &:visited {
         text-transform: uppercase;
         text-decoration: none;
-        padding: 1.5rem 4rem;
+        padding: 0.5rem 3rem;
         display: inline-block;
-        border-radius: 100px;
+        background-color: $red;
+        color: $white;
+        border-radius: 3px;
         transition: all .1s;
         position: relative;
+        font-family: 'OpenSans-Bold';
         font-size: 1.6rem;
-    }
-
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem;
         box-shadow: 0 1rem 2rem rgba($black,.2);
-
-        &::after{
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0; 
-        }
     }
 
     &:active {
-        transform: translateY(-1px);
+        transform: translateY(2px);
         box-shadow: 0 .5rem 1rem rgba($black,.2);
     }
 
-    &--white {
-        background-color: $white;
-        color: $gray;
+}
 
-        &::after {
-            background-color: $white;
+/*-------------------------------------------
+    Material Input Style
+--------------------------------------------*/
+
+.input-material {
+    position:relative;
+
+    > label {
+        font-size: 1.2rem;
+        font-family: "OpenSans-Light";
+        font-weight: 600;
+    }
+
+    > input {
+        display:block;
+        text-transform: uppercase;
+        width:100%;
+        border:none;
+        border-bottom: 2px solid $gray;
+
+        &:focus { 
+            outline:none; 
         }
-    }
 
-    &::after {
-        content: "";
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 100px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all .4s;
-    }
+        &:focus ~ .bar:before, &:focus ~ .bar:after {
+            width:50%;
+        }
 
-    &--animated{
-        animation: moveInBottom .5s ease-out .75s;
-        animation-fill-mode: backwards;
     }
 }
+
+.bar { 
+    position:relative; 
+    display:block; 
+    width:100%; 
+
+    &::after {
+        right:50%;
+        @extend %bar-pseudo;
+    }
+
+    &::before {
+        left:50%;
+        @extend %bar-pseudo;
+    }
+
+}
+
+%bar-pseudo {
+    &::before, &::after {
+        content:'';
+        height:1px; 
+        width:0;
+        bottom:1px; 
+        position:absolute;
+        background:$black; 
+        transition:0.2s ease all; 
+    }
+}
+
