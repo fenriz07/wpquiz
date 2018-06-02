@@ -169,20 +169,23 @@ body {
     left: 0; }
     .landing-container__left > img {
       position: absolute;
+      width: 18vw;
       left: 50%;
-      top: 20%;
+      top: 15%;
       transform: translateX(-50%); }
     .landing-container__left > h1 {
-      font-size: 4rem;
+      font-size: 2.5vw;
       font-family: 'Roboto-Thin';
       position: absolute;
-      padding: 0 1rem;
       left: 50%;
-      top: 40%;
+      top: 50%;
+      width: 100%;
       text-align: center;
       transform: translateX(-50%); }
       .landing-container__left > h1 > span {
-        font-family: 'Roboto-Bold'; }
+        display: block; }
+        .landing-container__left > h1 > span > span {
+          font-family: 'Roboto-Bold'; }
   .landing-container__right {
     color: #FFFFFF;
     right: 0;
