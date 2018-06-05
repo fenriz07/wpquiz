@@ -50,7 +50,7 @@
            while ($query->have_posts()) : $query->the_post();
            array_push($posts, [
                  'id'      => get_the_ID(),
-                 'title'   => get_the_title(),
+                 'title'   => html_entity_decode(get_the_title()),
                ]);
            endwhile;
        } else {
@@ -71,7 +71,7 @@
        $response = 'answers';
        $posts = self::$result;
 
-       foreach ($posts as $key => $post) {
+       foreach ($posts as $key_post => $post) {
            $answers = rwmb_meta(LEVEL_PLACEMENT_PREFIX_META_BOX . $response, '', $post['id']);
 
            foreach ($answers as $key => $answer) {
@@ -82,8 +82,7 @@
            if($rand == 1){
               shuffle($answers);
            }
-           $meta = compact('answers');
-           $posts[$key]['meta'] = $meta;
+           $posts[$key_post]['meta'] = compact('answers'); ;
        }
 
        self::$result = $posts;
