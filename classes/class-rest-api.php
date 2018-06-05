@@ -35,8 +35,8 @@ class apiRestTest
     $tests = TestModel::select()
                           ->setCategory($data['id'])
                           ->base()
-                          ->addMeta(1)
-                          // ->addAnswer()
+                          //->addMeta(1)
+                          ->addAnswer()
                           ->get();
 
     if ( empty( $tests ) ) {
@@ -120,6 +120,7 @@ class apiRestTest
       $messages['status'] = 7000;
       return $messages;
     }else {
+      //return $data;
       $pq = new ProcessQuestion();
       $pq->processingPost($data);
 

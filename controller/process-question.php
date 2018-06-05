@@ -7,6 +7,8 @@
 class ProcessQuestion
 {
 
+  private $limit_approved_answers = 45;
+
   function __construct()
   {
     // add_action('admin_post_nopriv_process_question', [$this, 'processingPost']);
@@ -27,7 +29,8 @@ class ProcessQuestion
                           ->get();
 
     //Calculamos:
-    $result = $this->caclTest($tests);
+    $result = $this->caclTest($tests,$data['test']);
+
     $data_email = ['personal' => [
                                     'fullname'  => $data['personal']['lastname'],
                                     'email'     => $data['personal']['email'],
@@ -50,15 +53,30 @@ class ProcessQuestion
   private function caclTest($tests,$questions_answers = null){
 
     $n_approved_answers = 0;
-    // TODO: Falta hacer el algoritmo de comprobacion de respuesta incorrecta o correcta
-    foreach ($tests as $key => $value) {
-      $n_approved_answers += 1;
-      $tests[$key]['approved'] = 'Yes';
+
+    foreach ($questions_answers as $key => $answer) {
+      $id   = $answer['id'];
+      $slug = $answer['slug'];
+
+      $key_test = array_search($id, array_column($tests, 'id'));
+
+      $slug_test = $tests[$key_test]['answer']['slug'];
+
+      if (strcmp ($slug , $slug_test ) == 0) {
+        $n_approved_answers += 1;
+        $questions_answers[$key]['approved'] = 'Yes';
+      }else {
+        $questions_answers[$key]['approved'] = 'Not';
+      }
+
+      $questions_answers[$key]['title'] =  $tests[$key_test]['title'];
+
     }
 
-    $approved = ($n_approved_answers >= 45) ? 'Yes' : 'Not';
 
-    return ['results' => $tests, 'n-approved-answers' => $n_approved_answers,'approved' => $approved ];
+    $approved = ($this->$limit_approved_answers >= 45) ? 'Yes' : 'Not';
+
+    return ['results' => $questions_answers, 'n-approved-answers' => $n_approved_answers,'approved' => $approved ];
 
   }
 
@@ -75,7 +93,7 @@ class ProcessQuestion
     $email_html   = '';
 
     foreach ($data['statistics']['results'] as $key => $result) {
-      $tmp = [$key,$result['title'],$result['answer']['text'],$result['approved']];
+      $tmp = [$key,$result['title'],$result['slug'],$result['approved']];
       $html_results .= str_replace($templates->search_result,$tmp,$templates->single_result);
     }
 
