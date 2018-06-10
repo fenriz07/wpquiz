@@ -1,21 +1,9 @@
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; }
-
-*,
-*::after,
-*::before {
+.landing-container > *,
+.landing-container > *::after,
+.landing-container > *::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit; }
-
-html {
-  font-size: 62.5%; }
-
-body {
-  height: 100vh;
-  box-sizing: border-box; }
 
 @keyframes moveInLeft {
   0% {
@@ -48,7 +36,7 @@ body {
   to {
     width: 0;
     background: transparent; } }
-body {
+.landing-container {
   font-family: 'OpenSans-Regular', sans-serif;
   /* font-size: 16px; */
   line-height: 1.7;
@@ -114,7 +102,7 @@ body {
 .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.5rem 3rem;
+  padding: 0.2em 1em;
   display: inline-block;
   background-color: #F00033;
   color: #FFFFFF;
@@ -122,7 +110,7 @@ body {
   transition: all .1s;
   position: relative;
   font-family: 'OpenSans-Bold';
-  font-size: 1.6vw;
+  font-size: 1.5vw;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
 .btn:active {
   transform: translateY(2px);
@@ -134,11 +122,13 @@ body {
 .input-material {
   position: relative; }
   .input-material > label {
-    font-size: 1vw;
+    font-size: 1vw !important;
     font-family: "OpenSans-Light";
     font-weight: 600; }
   .input-material > input {
-    font-size: 1.4vw;
+    font-size: 1.4vw !important;
+    height: auto;
+    margin: 0;
     display: block;
     text-transform: uppercase;
     width: 100%;
@@ -195,45 +185,41 @@ body {
     width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .split {
-  position: absolute;
   width: 50%;
-  height: 100%;
   overflow: hidden; }
 
 .wrapper {
-  padding: 8rem 7.5rem; }
+  max-width: 50vw;
+  padding: 5.5rem 0;
+  display: inline-block; }
 
 .landing-container {
-  position: relative;
-  width: 100%;
-  height: 100%; }
+  display: flex;
+  flex-direction: row; }
   .landing-container__left {
-    background-color: #000;
-    color: #FFFFFF;
-    left: 0; }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; }
     .landing-container__left > img {
-      position: absolute;
-      width: 16vw;
-      left: 50%;
-      top: 11%;
-      transform: translateX(-50%); }
+      top: -13rem;
+      position: relative;
+      width: 16vw; }
     .landing-container__left > h1 {
       font-size: 2.5vw;
+      color: #FFFFFF;
       font-family: 'OpenSans-Light';
-      position: absolute;
       font-weight: 500;
-      left: 50%;
-      top: 50%;
       width: 100%;
       text-align: center;
-      transform: translateX(-50%); }
+      line-height: 4vh; }
       .landing-container__left > h1 > span {
         display: block; }
         .landing-container__left > h1 > span > span {
           font-family: 'OpenSans-Bold'; }
   .landing-container__right {
     color: #000;
-    right: 0;
     background-color: #FFFFFF; }
     .landing-container__right > div > img {
       width: 30vw;
@@ -243,28 +229,10 @@ body {
       font-size: 1.5vw;
       font-weight: 100;
       padding: 2rem;
-      border-bottom: 1px dashed #000; }
-      @media screen and (min-width: 790px) and (max-width: 870px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.1vw !important; } }
-      @media screen and (min-width: 870px) and (max-width: 970px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.2vw !important; } }
-      @media screen and (min-width: 970px) and (max-width: 1105px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.3vw !important; } }
-      @media screen and (max-width: 1278px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.4vw; } }
-      @media screen and (min-width: 1518px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.6vw; } }
-      @media screen and (min-width: 1965px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.7vw; } }
-      @media screen and (min-width: 2700px) {
-        .landing-container__right > div > div > h5 {
-          font-size: 1.8vw; } }
+      border-bottom: 1px dashed #000;
+      line-height: 2.5vh; }
+      .landing-container__right > div > div > h5 > span {
+        display: block; }
     .landing-container__right > div > div > h6 {
       font-family: 'OpenSans-Regular';
       font-size: 1vw;

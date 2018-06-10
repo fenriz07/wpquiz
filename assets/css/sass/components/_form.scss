@@ -6,13 +6,15 @@
     position:relative;
 
     > label {
-        font-size: 1vw;
+        font-size: 1vw !important;
         font-family: "OpenSans-Light";
         font-weight: 600;
     }
 
     > input {
-        font-size: 1.4vw;
+        font-size: 1.4vw !important;
+        height: auto;
+        margin: 0;
         display:block;
         text-transform: uppercase;
         width:100%;

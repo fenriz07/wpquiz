@@ -3,7 +3,7 @@
     &:visited {
         text-transform: uppercase;
         text-decoration: none;
-        padding: 0.5rem 3rem;
+        padding: 0.2em 1em;
         display: inline-block;
         background-color: $red;
         color: $white;
@@ -11,7 +11,7 @@
         transition: all .1s;
         position: relative;
         font-family: 'OpenSans-Bold';
-        font-size: 1.6vw;
+        font-size: 1.5vw;
         box-shadow: 0 1rem 2rem rgba($black,.2);
     }
 
