@@ -4,11 +4,16 @@
 
 
   &__left {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: $black;
+
+    @media (min-width: 770px) {
+      display: flex;
+      width: 50%;
+    }
 
     > img {
       top: -13rem;
@@ -39,29 +44,54 @@
 
   &__right {
     color: $black;
-    background-color: $white;
+    background-color: $black;
+    width: 100%;
+
+    @media (min-width: 770px) {
+      width: 50%;
+      background-color: $white;
+    }
+
+    &--mobile-img{
+      display: inline-block;
+      position: absolute;
+      width: 8rem;
+      top: 2rem;
+      left: 0;
+
+
+      @media (min-width: 770px) {
+        display:none;
+      }
+    }
 
     > div {
       
-      > img {
-        width: 30vw;
-        margin-top: 2.5vh;
 
-      }
+      > img:not(:first-child) {
+        width: 100%;
+        margin-top: 4rem;
 
-      > p {
-
+        @media (min-width: 770px) {
+          width: 30vw;
+          margin-top: 2.5vh;
+        }
       }
 
       > div {
 
         > h5 {
-          font-family: 'OpenSans-Regular';
-          font-size: 1.5vw;
-          font-weight: 100;
-          padding: 2rem;
-          border-bottom: 1px dashed #000;
-          line-height: 2.5vh;
+          display: none;
+
+          @media (min-width:770px) {
+            display: block;
+            font-family: 'OpenSans-Regular';
+            font-size: 1.5vw;
+            font-weight: 100;
+            padding: 2rem;
+            border-bottom: 1px dashed #000;
+            line-height: 2.5vh;
+          }
 
           > span {
             display: block;
@@ -70,9 +100,16 @@
         }
 
         > h6 {
-          font-family: 'OpenSans-Regular';
-          font-size: 1vw;
-          color: $gray;
+          font-family: 'OpenSans-Light';
+          font-size: 1rem;
+          color: $white;
+          font-weight: 600;
+
+          @media (min-width: 770px){
+            font-family: 'OpenSans-Regular';
+            font-size: 1vw;
+            color: $gray;
+          }
         }
         
       }

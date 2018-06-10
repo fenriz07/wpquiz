@@ -7,4 +7,14 @@
   max-width: 50vw;
   padding: 5.5rem 0;
   display: inline-block;
+
+  @media (max-width: 770px) {
+    width: 80vw;
+    max-width: none;
+    position: relative;
+  }
+
+  @media (max-width: 430px) {
+    width: 70vw;
+  }
 }

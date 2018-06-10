@@ -110,8 +110,11 @@
   transition: all .1s;
   position: relative;
   font-family: 'OpenSans-Bold';
-  font-size: 1.5vw;
+  font-size: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  @media (min-width: 770px) {
+    .btn:link, .btn:visited {
+      font-size: 1.5vw; } }
 .btn:active {
   transform: translateY(2px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
@@ -121,19 +124,40 @@
 --------------------------------------------*/
 .input-material {
   position: relative; }
+  .input-material:not(:first-child) {
+    margin-top: 1.5rem; }
+    @media (min-width: 770px) {
+      .input-material:not(:first-child) {
+        margin-top: 2rem; } }
   .input-material > label {
-    font-size: 1vw !important;
+    font-size: 0.8rem !important;
     font-family: "OpenSans-Light";
-    font-weight: 600; }
+    font-weight: 600;
+    color: #FFFFFF; }
+    @media (min-width: 770px) {
+      .input-material > label {
+        font-size: 1vw !important;
+        font-family: "OpenSans-Light";
+        font-weight: 600;
+        color: #000; } }
   .input-material > input {
-    font-size: 1.4vw !important;
+    font-size: 1rem !important;
+    background-color: #000;
+    color: #FFFFFF;
     height: auto;
     margin: 0;
+    padding: 0;
     display: block;
     text-transform: uppercase;
     width: 100%;
     border: none;
-    border-bottom: 2px solid #B5B4BC; }
+    border-bottom: 2px solid #FFFFFF; }
+    @media (min-width: 770px) {
+      .input-material > input {
+        font-size: 1.4vw !important;
+        background-color: #FFFFFF;
+        color: inherit;
+        border-bottom: 2px solid #B5B4BC; } }
     .input-material > input:focus {
       outline: none; }
     .input-material > input:focus ~ .bar:before, .input-material > input:focus ~ .bar:after {
@@ -150,12 +174,18 @@
 
 .bar::before, .bar::after {
   content: '';
-  height: 1px;
+  height: 2px;
   width: 0;
-  bottom: 1px;
+  bottom: 0px;
   position: absolute;
-  background: #000;
+  background: #F00033;
   transition: 0.2s ease all; }
+  @media (min-width: 770px) {
+    .bar::before, .bar::after {
+      background: #000;
+      height: 1px;
+      width: 0;
+      bottom: 1px; } }
 
 .row {
   max-width: 114rem;
@@ -192,16 +222,28 @@
   max-width: 50vw;
   padding: 5.5rem 0;
   display: inline-block; }
+  @media (max-width: 770px) {
+    .wrapper {
+      width: 80vw;
+      max-width: none;
+      position: relative; } }
+  @media (max-width: 430px) {
+    .wrapper {
+      width: 70vw; } }
 
 .landing-container {
   display: flex;
   flex-direction: row; }
   .landing-container__left {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #000; }
+    @media (min-width: 770px) {
+      .landing-container__left {
+        display: flex;
+        width: 50%; } }
     .landing-container__left > img {
       top: -13rem;
       position: relative;
@@ -220,22 +262,50 @@
           font-family: 'OpenSans-Bold'; }
   .landing-container__right {
     color: #000;
-    background-color: #FFFFFF; }
-    .landing-container__right > div > img {
-      width: 30vw;
-      margin-top: 2.5vh; }
+    background-color: #000;
+    width: 100%; }
+    @media (min-width: 770px) {
+      .landing-container__right {
+        width: 50%;
+        background-color: #FFFFFF; } }
+    .landing-container__right--mobile-img {
+      display: inline-block;
+      position: absolute;
+      width: 8rem;
+      top: 2rem;
+      left: 0; }
+      @media (min-width: 770px) {
+        .landing-container__right--mobile-img {
+          display: none; } }
+    .landing-container__right > div > img:not(:first-child) {
+      width: 100%;
+      margin-top: 4rem; }
+      @media (min-width: 770px) {
+        .landing-container__right > div > img:not(:first-child) {
+          width: 30vw;
+          margin-top: 2.5vh; } }
     .landing-container__right > div > div > h5 {
-      font-family: 'OpenSans-Regular';
-      font-size: 1.5vw;
-      font-weight: 100;
-      padding: 2rem;
-      border-bottom: 1px dashed #000;
-      line-height: 2.5vh; }
+      display: none; }
+      @media (min-width: 770px) {
+        .landing-container__right > div > div > h5 {
+          display: block;
+          font-family: 'OpenSans-Regular';
+          font-size: 1.5vw;
+          font-weight: 100;
+          padding: 2rem;
+          border-bottom: 1px dashed #000;
+          line-height: 2.5vh; } }
       .landing-container__right > div > div > h5 > span {
         display: block; }
     .landing-container__right > div > div > h6 {
-      font-family: 'OpenSans-Regular';
-      font-size: 1vw;
-      color: #B5B4BC; }
+      font-family: 'OpenSans-Light';
+      font-size: 1rem;
+      color: #FFFFFF;
+      font-weight: 600; }
+      @media (min-width: 770px) {
+        .landing-container__right > div > div > h6 {
+          font-family: 'OpenSans-Regular';
+          font-size: 1vw;
+          color: #B5B4BC; } }
 
 /*# sourceMappingURL=level-placement.css.map */

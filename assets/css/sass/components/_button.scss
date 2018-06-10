@@ -11,8 +11,12 @@
         transition: all .1s;
         position: relative;
         font-family: 'OpenSans-Bold';
-        font-size: 1.5vw;
+        font-size: 1rem;
         box-shadow: 0 1rem 2rem rgba($black,.2);
+
+        @media (min-width: 770px) {
+            font-size: 1.5vw;
+        }
     }
 
     &:active {
