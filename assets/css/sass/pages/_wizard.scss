@@ -112,14 +112,53 @@
                     border: none;
 
                     .step-1-title {
+                        margin-bottom: 4vh;
+
+                        > span {
+                            font-family: 'OpenSans-Bold';
+                            font-size: 1.1rem;
+                            line-height: 1.2;
+                            display: block;
+                            color: $black;
+
+                            @media (min-width: 770px) {
+                                font-size: 1.8vw;
+                            }
+                        }
 
                     }
 
                     .step-1-tips {
-                        
+                        text-align: left;
+                        width: 90%;
+                        display: inline-block;
+
+                        @media (min-width: 770px) {
+                            width: 60%;
+                        }
+                    
                         > div  {
+                            margin: 0 !important;
+
                             > i {
                                 color: $red;
+                                font-size: 1rem;
+                                
+                                @media (min-widt: 770px) {
+                                    font-size: 2vw;
+                                }
+                            }
+                            
+                            > span {
+                                font-family: 'OpenSans-Regular';
+                                font-size: 0.8rem;
+                                font-weight: 100;
+                                color: $gray;
+                                margin-left: 1rem !important;
+
+                                @media (min-width: 770px) {
+                                    font-size: 1.3vw;
+                                }
                             }
                         }
 

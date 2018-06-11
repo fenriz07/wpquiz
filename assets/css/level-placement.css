@@ -385,8 +385,41 @@
   margin-top: 1.5rem; }
   .wizard-container .content-block > div > form > fieldset {
     border: none; }
-    .wizard-container .content-block > div > form > fieldset .step-1-tips > div > i {
-      color: #F00033; }
+    .wizard-container .content-block > div > form > fieldset .step-1-title {
+      margin-bottom: 4vh; }
+      .wizard-container .content-block > div > form > fieldset .step-1-title > span {
+        font-family: 'OpenSans-Bold';
+        font-size: 1.1rem;
+        line-height: 1.2;
+        display: block;
+        color: #000; }
+        @media (min-width: 770px) {
+          .wizard-container .content-block > div > form > fieldset .step-1-title > span {
+            font-size: 1.8vw; } }
+    .wizard-container .content-block > div > form > fieldset .step-1-tips {
+      text-align: left;
+      width: 90%;
+      display: inline-block; }
+      @media (min-width: 770px) {
+        .wizard-container .content-block > div > form > fieldset .step-1-tips {
+          width: 60%; } }
+      .wizard-container .content-block > div > form > fieldset .step-1-tips > div {
+        margin: 0 !important; }
+        .wizard-container .content-block > div > form > fieldset .step-1-tips > div > i {
+          color: #F00033;
+          font-size: 1rem; }
+          @media (min-widt: 770px) {
+            .wizard-container .content-block > div > form > fieldset .step-1-tips > div > i {
+              font-size: 2vw; } }
+        .wizard-container .content-block > div > form > fieldset .step-1-tips > div > span {
+          font-family: 'OpenSans-Regular';
+          font-size: 0.8rem;
+          font-weight: 100;
+          color: #B5B4BC;
+          margin-left: 1rem !important; }
+          @media (min-width: 770px) {
+            .wizard-container .content-block > div > form > fieldset .step-1-tips > div > span {
+              font-size: 1.3vw; } }
     .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
       color: #000;
       font-family: 'OpenSans-Bold';

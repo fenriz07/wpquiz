@@ -3,7 +3,7 @@
         <div>
 
             <div class="logo-box">
-                <img src="http://localhost/Speaktusucceed/wp-content/plugins/wp-level-placement-plugin/assets/img/speaktosucceed-w.jpg" alt="">
+                <img src="http://localhost:8888/Speaktusucceed/wp-content/plugins/wp-level-placement-plugin/assets/img/speaktosucceed-w.jpg" alt="">
             </div>
 
             <div class="progress-block">
@@ -71,13 +71,16 @@
                                 </div>
                                 <div class="step-1-tips">
                                     <div>
-                                        <i class="fas fa-check"></i>                                   <span>Answer each multiple-choice question</span>
+                                        <i class="fas fa-check"></i>
+                                        <span>Answer each multiple-choice question</span>
                                     </div>
                                     <div>
-                                        <i class="fas fa-check"></i>                                   <span>Answer each multiple-choice question</span>
+                                        <i class="fas fa-check"></i>
+                                        <span>There is no time limit</span>
                                     </div>
                                     <div>
-                                        <i class="fas fa-check"></i>                                   <span>Answer each multiple-choice question</span>
+                                        <i class="fas fa-check"></i>
+                                        <span>Choose the best option to complete the sentece or conversation</span>
                                     </div>
                                 </div>
                             </div>
@@ -357,20 +360,12 @@
                     $(lvlIndicator).addClass('lvl--active');
                     $(prevLevel).show();
 
-                } else if (parseInt(item.dataset['step']) === currentLvl && currentLvl === 1) {
-                    $(item).show();
-                    $(lvlIndicator).addClass('lvl--active');
-                    $(prevLevel).hide();
-
-                } else if(parseInt(item.dataset['step']) === currentLvl && currentLvl === 6) {
-                    $(item).show();
-                    $(lvlIndicator).addClass('lvl--active');
-                    $(nextLevel).hide();
-                } else {
+                }  else {
                     $(item).hide();
                     $(lvlIndicator).removeClass('lvl--active');
                 }
             }
+            console.log(currentLvl);
         }
 
         nextLevel.addEventListener('click', function () {
