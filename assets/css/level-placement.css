@@ -75,6 +75,9 @@
 .u-center-text {
   text-align: center; }
 
+.u-right-text {
+  text-align: right; }
+
 .u-left-text {
   text-align: left; }
 
@@ -231,6 +234,11 @@
     .wrapper {
       width: 70vw; } }
 
+.wizard-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .landing-container {
   display: flex;
   flex-direction: row; }
@@ -307,5 +315,104 @@
           font-family: 'OpenSans-Regular';
           font-size: 1vw;
           color: #B5B4BC; } }
+
+.wizard-container .logo-box {
+  margin-bottom: 2rem;
+  display: block; }
+  @media (min-width: 770px) {
+    .wizard-container .logo-box {
+      display: none; } }
+.wizard-container > div > div {
+  width: 90%; }
+  .wizard-container > div > div > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
+    .wizard-container > div > div > div:nth-child(2) > div {
+      position: relative;
+      border: 1px solid #B5B4BC;
+      border-radius: 50%;
+      width: 1.4rem;
+      height: 1.4rem;
+      text-align: center; }
+      @media (min-width: 770px) {
+        .wizard-container > div > div > div:nth-child(2) > div {
+          width: 3vw;
+          height: 3vw; } }
+      .wizard-container > div > div > div:nth-child(2) > div:not(:last-child) {
+        margin-right: 5vw; }
+      .wizard-container > div > div > div:nth-child(2) > div:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        width: 5vw;
+        top: 50%;
+        left: 100%;
+        height: 1px;
+        background-color: #B5B4BC; }
+      .wizard-container > div > div > div:nth-child(2) > div > div > span {
+        font-size: 1.3rem;
+        font-family: 'OpenSans-Bold';
+        line-height: 1.15; }
+        @media (min-width: 770px) {
+          .wizard-container > div > div > div:nth-child(2) > div > div > span {
+            font-size: 2.5vw;
+            font-family: 'OpenSans-Bold';
+            line-height: 1.15; } }
+.wizard-container .prev-block {
+  margin-top: 2rem; }
+  .wizard-container .prev-block::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .wizard-container .prev-block > div {
+    float: left;
+    width: 100%;
+    font-size: 1rem;
+    font-family: 'OpenSans-Bold';
+    text-transform: uppercase; }
+    @media (min-width: 770px) {
+      .wizard-container .prev-block > div {
+        font-size: 1vw; } }
+    .wizard-container .prev-block > div > a:visited, .wizard-container .prev-block > div a:link {
+      text-decoration: none;
+      color: #B5B4BC;
+      transition: all .3s; }
+      .wizard-container .prev-block > div > a:visited:hover, .wizard-container .prev-block > div a:link:hover {
+        color: #000; }
+      .wizard-container .prev-block > div > a:visited > span:nth-child(1), .wizard-container .prev-block > div a:link > span:nth-child(1) {
+        margin-right: 5px; }
+.wizard-container .content-block {
+  margin-top: 1.5rem; }
+  .wizard-container .content-block > div > form > fieldset {
+    border: none; }
+    .wizard-container .content-block > div > form > fieldset .step-1-tips > div > i {
+      color: #F00033; }
+    .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
+      color: #000;
+      font-family: 'OpenSans-Bold';
+      font-size: 0.8rem; }
+      @media (min-width: 770px) {
+        .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
+          font-size: 1vw; } }
+      .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) > span:nth-child(2) {
+        margin-left: 1rem; }
+    .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
+      margin-top: 0.8rem;
+      color: #000;
+      font-size: 0.6rem; }
+      @media (min-width: 770px) {
+        .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
+          font-size: 1vw; } }
+.wizard-container .next-block {
+  text-align: center; }
+  @media (min-width: 770px) {
+    .wizard-container .next-block {
+      text-align: right; } }
+  .wizard-container .next-block > a {
+    padding: 0.2em 3em; }
+
+.lvl--active {
+  border: 1px solid #F00033 !important;
+  color: #F00033; }
 
 /*# sourceMappingURL=level-placement.css.map */

@@ -1,0 +1,179 @@
+.wizard-container {
+
+    .logo-box {
+        margin-bottom: 2rem;
+        display: block;
+
+        @media(min-width: 770px) {
+            display: none;
+        }
+    }
+
+
+    > div {
+
+        > div {
+            width: 90%;
+
+            > div {
+
+                &:nth-child(2) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    > div {
+                        position: relative;
+                        border: 1px solid $gray;
+                        border-radius: 50%;
+                        width: 1.4rem;
+                        height: 1.4rem;
+                        text-align: center;
+
+                        @media (min-width: 770px) {
+                            width: 3vw;
+                            height: 3vw;
+                        }
+
+                        &:not(:last-child) {
+                            margin-right: 5vw;
+                        }
+
+                        &:not(:last-child)::after {
+                            content: "";
+                            position: absolute;
+                            width: 5vw;
+                            top: 50%;
+                            left: 100%;
+                            height: 1px;
+                            background-color: $gray;
+                        }
+                        
+                        > div {
+
+                            > span {
+                                font-size: 1.3rem;
+                                font-family: 'OpenSans-Bold';
+                                line-height: 1.15;
+
+                                @media (min-width: 770px) {
+                                    font-size: 2.5vw;
+                                    font-family: 'OpenSans-Bold';
+                                    line-height: 1.15;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .prev-block {
+        margin-top: 2rem;
+
+        @include clearfix;
+        
+        > div {
+            float: left;
+            width: 100%;
+            font-size: 1rem;
+            font-family: 'OpenSans-Bold';
+            text-transform: uppercase;
+
+            @media (min-width: 770px) {
+                font-size: 1vw;
+            }
+        
+            > a:visited, a:link {
+                text-decoration: none;
+                color: $gray;
+                transition: all .3s;
+
+                &:hover {
+                    color: $black;
+                }
+
+                > span:nth-child(1) {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .content-block {
+        margin-top: 1.5rem;
+
+        > div {
+
+            > form {
+                > fieldset  {
+                    border: none;
+
+                    .step-1-title {
+
+                    }
+
+                    .step-1-tips {
+                        
+                        > div  {
+                            > i {
+                                color: $red;
+                            }
+                        }
+
+                    }
+
+                    > div {
+
+                        > div {
+
+                            > div:nth-child(1) {
+                                color: $black;
+                                font-family: 'OpenSans-Bold';
+                                font-size: 0.8rem;
+
+                                @media (min-width: 770px) {
+                                    font-size: 1vw;
+                                } 
+                                > span:nth-child(2) {
+                                    margin-left: 1rem;
+                                }
+                            }
+
+                            > div:nth-child(2) {
+                                margin-top: 0.8rem;
+                                color: $black;
+                                font-size: 0.6rem;
+
+                                @media (min-width: 770px) {
+                                    font-size: 1vw;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+           
+    }
+
+    .next-block {
+        text-align: center;
+
+        @media(min-width: 770px) {
+            text-align: right;
+        }
+
+        > a {
+            padding: 0.2em 3em;
+        }
+    }
+} 
+
+
+.lvl--active {
+    border: 1px solid $red !important;
+    color: $red;
+}
