@@ -7,42 +7,42 @@
             </div>
 
             <div class="progress-block">
-                <div>
+                <div class="lvlForm">
                     <div>
                         <span>
                             1
                         </span>
                     </div>
                 </div>
-                <div>
+                <div class="lvlForm">
                     <div>
                         <span>
                             2
                         </span>
                     </div>
                 </div>
-                <div>
+                <div class="lvlForm">
                     <div>
                         <span>
                             3
                         </span>
                     </div>
                 </div>
-                <div>
+                <div class="lvlForm">
                     <div>
                         <span>
                             4
                         </span>
                     </div>
                 </div>
-                <div>
+                <div class="lvlForm">
                     <div>
                         <span>
                             5
                         </span>
                     </div>
                 </div>
-                <div>
+                <div class="lvlForm">
                     <div>
                         <span>
                             6
@@ -53,15 +53,39 @@
 
             <div class="prev-block">
                 <div>
-                    <span>&larr;</span>
-                    <span> Previous</span>
+                    <a id="prev-questions" href="#" hidden>
+                        <span>&larr;</span>
+                        <span> Previous</span>
+                    </a>
+
                 </div>
             </div>
 
             <div class="content-block">
                 <div>
-                    <form>
+                    <form id="levelForm">
                         <fieldset data-step="1">
+                            <div class="u-center-text">
+                                <div class="step-1-title">
+                                    <span>Not a really step one, but here's some useful information:</span>
+                                </div>
+                                <div class="step-1-tips">
+                                    <div>
+                                        <i class="fas fa-check"></i>
+                                        <span>Answer each multiple-choice question</span>
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-check"></i>
+                                        <span>There is no time limit</span>
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-check"></i>
+                                        <span>Choose the best option to complete the sentece or conversation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset data-step="2" hidden>
                             <div>
                                 <div data-question="1">
                                     <div>
@@ -180,8 +204,7 @@
                                 </div>
                             </div>
                         </fieldset>
-
-                        <fieldset data-step="2">
+                        <fieldset data-step="3" hidden>
                             <div>
                                 <div data-question="1">
                                     <div>
@@ -305,9 +328,66 @@
             </div>
 
             <div class="next-block">
-                <a href="#" class="btn u-margin-top-3">next</a>
+                <a id="next-questions" href="#" class="btn u-margin-top-3">next</a>
             </div>
 
         </div>
     </div>
 </div>
+
+<script>
+    jQuery(document).ready(function ($) {
+        var levelform = document.querySelector('#levelForm');
+        var lvlIndicators = document.getElementsByClassName('lvlForm');
+        var nextLevel = document.querySelector('#next-questions');
+        var prevLevel = document.querySelector('#prev-questions');
+        var currentLvl = 1;
+
+
+        var tabChanger = function (a) {
+
+            if (a == 'next') {
+                currentLvl++;
+            } else if (a == 'prev') {
+                currentLvl--;
+            }
+
+            for (let i = 0; i < levelForm.children.length; i++) {
+                const item = levelForm.children.item(i);
+                const lvlIndicator = lvlIndicators.children.item(i);
+                console.log(lvlIndicator);
+
+                if (parseInt(item.dataset['step']) === currentLvl) {
+                    $(item).show();
+                    $(lvlIndicator).addClass('lvl--active');
+                    $(prevLevel).show();
+                    $(nextLevel).show();
+
+                }  else if (parseInt(item.dataset['step']) === currentLvl && lvlIndicator === 0) {
+                    $(item).show();
+                    $(lvlIndicator).addClass('lvl--active');
+                    $(prevLevel).hide();
+                    $(nextLevel).show();
+
+                }  else if (parseInt(item.dataset['step']) === currentLvl && lvlIndicator === 0) {
+                    $(item).show();
+                    $(lvlIndicator).addClass('lvl--active');
+                    $(prevLevel).show();
+                    $(nextLevel).hide();
+                }else {
+                    $(item).hide();
+                    $(lvlIndicator).removeClass('lvl--active');
+                }
+            }
+            console.log(currentLvl);
+        }
+
+        nextLevel.addEventListener('click', function () {
+            tabChanger('next');
+        });
+
+        prevLevel.addEventListener('click', function () {
+            tabChanger('prev');
+        });
+    });
+</script>
