@@ -6,16 +6,9 @@
 }
 
 $fonts: 
-  'OpenSans-Bold',
-  'OpenSans-BoldItalic',
-  'OpenSans-ExtraBold',
-  'OpenSans-ExtraBoldItalic',
-  'OpenSans-Italic',
-  'OpenSans-Light',
-  'OpenSans-LightItalic',
-  'OpenSans-Regular',
-  'OpenSans-SemiBold',
-  'OpenSans-SemiBoldItalic'
+  'Roboto-Black',
+  'Roboto-Light',
+  'Roboto-Regular',
 ;
 
 @each $font in $fonts {
