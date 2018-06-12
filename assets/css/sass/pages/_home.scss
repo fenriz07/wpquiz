@@ -16,7 +16,7 @@
     }
 
     > img {
-      top: -13rem;
+      top: -7rem;
       position: relative;  
       width: 16vw;
     }
@@ -24,17 +24,17 @@
     > h1 {
       font-size: 2.5vw;
       color: $white;
-      font-family: 'OpenSans-Light';
+      font-family: 'Roboto-Light';
       font-weight: 500;
       width: 100%;
       text-align: center;
-      line-height: 4vh;
+      line-height: 1.25;
 
       > span {
         display: block;
 
         > span {
-          font-family: 'OpenSans-Bold';
+          font-family: 'Roboto-Black';
         }
       }
     }
@@ -78,6 +78,73 @@
         }
       }
 
+      .title-block {
+
+        > div {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          > h1 {
+            display: inline-block;
+            font-size: 4rem;
+            line-height: 1;
+            font-family: 'Roboto-Black';
+
+            @media (min-width: 770px) {
+              font-size: 5vw;
+            }
+
+            > span {
+              display: block;
+              color: $white;
+
+              @media (min-width: 770px) {
+                color: $black;
+              }
+
+              &:not(:first-child) {
+                font-size: 3rem;
+                color: $red;
+
+                @media (min-width: 770px) {
+                  font-size: 4vw;
+                }
+              }
+
+              > span {
+                font-size: 3rem;
+
+                @media (min-width: 770px) {
+                  font-size: 4vw;
+                }
+              }
+            }
+          }
+
+          > img {
+            display: none;
+            width: 25%;
+            margin-left: .8vw;
+
+            @media (min-width: 770px) {
+              display: inline-block;
+            }
+          }
+
+          > .mobile-image-logo {
+            display: inline-block;
+            width: 25%;
+            margin-left: .8rem;
+
+            @media (min-width: 770px) {
+              display: none;
+            }
+          }
+        }
+      }
+
       > div {
 
         > h5 {
@@ -85,12 +152,12 @@
 
           @media (min-width:770px) {
             display: block;
-            font-family: 'OpenSans-Regular';
-            font-size: 1.5vw;
+            font-family: 'Roboto-Regular';
+            font-size: 1.6vw;
             font-weight: 100;
             padding: 2rem;
             border-bottom: 1px dashed #000;
-            line-height: 2.5vh;
+            line-height: 1.35;
           }
 
           > span {
@@ -100,13 +167,13 @@
         }
 
         > h6 {
-          font-family: 'OpenSans-Light';
+          font-family: 'Roboto-Regular';
           font-size: 1rem;
           color: $white;
           font-weight: 600;
 
           @media (min-width: 770px){
-            font-family: 'OpenSans-Regular';
+            font-family: 'Roboto-Regular';
             font-size: 1vw;
             color: $gray;
           }

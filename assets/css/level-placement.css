@@ -43,35 +43,14 @@
   color: #000; }
 
 @font-face {
-  font-family: "OpenSans-Bold";
-  src: url("./fonts/OpenSans-Bold.ttf") format("truetype"); }
+  font-family: "Roboto-Black";
+  src: url("./fonts/Roboto-Black.ttf") format("truetype"); }
 @font-face {
-  font-family: "OpenSans-BoldItalic";
-  src: url("./fonts/OpenSans-BoldItalic.ttf") format("truetype"); }
+  font-family: "Roboto-Light";
+  src: url("./fonts/Roboto-Light.ttf") format("truetype"); }
 @font-face {
-  font-family: "OpenSans-ExtraBold";
-  src: url("./fonts/OpenSans-ExtraBold.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-ExtraBoldItalic";
-  src: url("./fonts/OpenSans-ExtraBoldItalic.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-Italic";
-  src: url("./fonts/OpenSans-Italic.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-Light";
-  src: url("./fonts/OpenSans-Light.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-LightItalic";
-  src: url("./fonts/OpenSans-LightItalic.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-Regular";
-  src: url("./fonts/OpenSans-Regular.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-SemiBold";
-  src: url("./fonts/OpenSans-SemiBold.ttf") format("truetype"); }
-@font-face {
-  font-family: "OpenSans-SemiBoldItalic";
-  src: url("./fonts/OpenSans-SemiBoldItalic.ttf") format("truetype"); }
+  font-family: "Roboto-Regular";
+  src: url("./fonts/Roboto-Regular.ttf") format("truetype"); }
 .u-center-text {
   text-align: center; }
 
@@ -112,7 +91,7 @@
   border-radius: 3px;
   transition: all .1s;
   position: relative;
-  font-family: 'OpenSans-Bold';
+  font-family: 'Roboto-Black';
   font-size: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   @media (min-width: 770px) {
@@ -134,13 +113,13 @@
         margin-top: 2rem; } }
   .input-material > label {
     font-size: 0.8rem !important;
-    font-family: "OpenSans-Light";
+    font-family: "Roboto-Regular";
     font-weight: 600;
     color: #FFFFFF; }
     @media (min-width: 770px) {
       .input-material > label {
         font-size: 1vw !important;
-        font-family: "OpenSans-Light";
+        font-family: "Roboto-Regular";
         font-weight: 600;
         color: #000; } }
   .input-material > input {
@@ -253,21 +232,21 @@
         display: flex;
         width: 50%; } }
     .landing-container__left > img {
-      top: -13rem;
+      top: -7rem;
       position: relative;
       width: 16vw; }
     .landing-container__left > h1 {
       font-size: 2.5vw;
       color: #FFFFFF;
-      font-family: 'OpenSans-Light';
+      font-family: 'Roboto-Light';
       font-weight: 500;
       width: 100%;
       text-align: center;
-      line-height: 4vh; }
+      line-height: 1.25; }
       .landing-container__left > h1 > span {
         display: block; }
         .landing-container__left > h1 > span > span {
-          font-family: 'OpenSans-Bold'; }
+          font-family: 'Roboto-Black'; }
   .landing-container__right {
     color: #000;
     background-color: #000;
@@ -292,27 +271,71 @@
         .landing-container__right > div > img:not(:first-child) {
           width: 30vw;
           margin-top: 2.5vh; } }
+    .landing-container__right > div .title-block > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; }
+      .landing-container__right > div .title-block > div > h1 {
+        display: inline-block;
+        font-size: 4rem;
+        line-height: 1;
+        font-family: 'Roboto-Black'; }
+        @media (min-width: 770px) {
+          .landing-container__right > div .title-block > div > h1 {
+            font-size: 5vw; } }
+        .landing-container__right > div .title-block > div > h1 > span {
+          display: block;
+          color: #FFFFFF; }
+          @media (min-width: 770px) {
+            .landing-container__right > div .title-block > div > h1 > span {
+              color: #000; } }
+          .landing-container__right > div .title-block > div > h1 > span:not(:first-child) {
+            font-size: 3rem;
+            color: #F00033; }
+            @media (min-width: 770px) {
+              .landing-container__right > div .title-block > div > h1 > span:not(:first-child) {
+                font-size: 4vw; } }
+          .landing-container__right > div .title-block > div > h1 > span > span {
+            font-size: 3rem; }
+            @media (min-width: 770px) {
+              .landing-container__right > div .title-block > div > h1 > span > span {
+                font-size: 4vw; } }
+      .landing-container__right > div .title-block > div > img {
+        display: none;
+        width: 25%;
+        margin-left: .8vw; }
+        @media (min-width: 770px) {
+          .landing-container__right > div .title-block > div > img {
+            display: inline-block; } }
+      .landing-container__right > div .title-block > div > .mobile-image-logo {
+        display: inline-block;
+        width: 25%;
+        margin-left: .8rem; }
+        @media (min-width: 770px) {
+          .landing-container__right > div .title-block > div > .mobile-image-logo {
+            display: none; } }
     .landing-container__right > div > div > h5 {
       display: none; }
       @media (min-width: 770px) {
         .landing-container__right > div > div > h5 {
           display: block;
-          font-family: 'OpenSans-Regular';
-          font-size: 1.5vw;
+          font-family: 'Roboto-Regular';
+          font-size: 1.6vw;
           font-weight: 100;
           padding: 2rem;
           border-bottom: 1px dashed #000;
-          line-height: 2.5vh; } }
+          line-height: 1.35; } }
       .landing-container__right > div > div > h5 > span {
         display: block; }
     .landing-container__right > div > div > h6 {
-      font-family: 'OpenSans-Light';
+      font-family: 'Roboto-Regular';
       font-size: 1rem;
       color: #FFFFFF;
       font-weight: 600; }
       @media (min-width: 770px) {
         .landing-container__right > div > div > h6 {
-          font-family: 'OpenSans-Regular';
+          font-family: 'Roboto-Regular';
           font-size: 1vw;
           color: #B5B4BC; } }
 
