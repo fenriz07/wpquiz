@@ -29,8 +29,13 @@ class levelPlacementShortcode
     para que tu la agarres con Js y consules el rest-api
     */
 
+    $site_url = get_site_url();
 
-    echo file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
+    $wizard  =  file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
+
+    $html_results = str_replace('{siteurl}',$site_url,$wizard);
+
+    echo $html_results;
   }
 }
 
