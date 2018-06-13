@@ -5,19 +5,51 @@
 .input-material {
     position:relative;
 
+    #testEmail {
+        text-transform: lowercase;
+    }
+
+    &:not(:first-child) {
+        margin-top: 1.5rem;
+
+        @media (min-width: 770px) {
+            margin-top: 2rem;
+        }
+    }
+
     > label {
-        font-size: 1vw;
-        font-family: "OpenSans-Light";
-        font-weight: 600;
+        font-size: 0.8rem !important;
+        font-family: "Roboto-Regular";
+        font-weight: 100;
+        color: $white;
+
+        @media (min-width: 770px) {
+            font-size: 1vw !important;
+            font-family: "Roboto-Regular";
+            font-weight: 100;
+            color: $black;
+        }
     }
 
     > input {
-        font-size: 1.4vw;
+        font-size: 1rem !important;
+        background-color: transparent;
+        color: $white;
+        height: auto;
+        margin: 0;
+        padding: 0;
         display:block;
         text-transform: uppercase;
         width:100%;
         border:none;
-        border-bottom: 2px solid $gray;
+        border-bottom: 2px solid $white;
+
+        @media (min-width: 770px) {
+            font-size: 1.4vw !important;
+            background-color: $white;
+            color: inherit;
+            border-bottom: 2px solid $gray;
+        }
 
         &:focus { 
             outline:none; 
@@ -47,14 +79,32 @@
 
 }
 
+.required-field {
+    color: $red;
+    font-size: .8rem;
+    font-family: 'Roboto-Regular';
+
+    @media (min-width: 1200px) {
+        font-size: 1vw;
+    }
+
+}
+
 %bar-pseudo {
     &::before, &::after {
         content:'';
-        height:1px; 
-        width:0;
-        bottom:1px; 
+        height: 2px;
+        width: 0;
+        bottom: 0px;
         position:absolute;
-        background:$black; 
-        transition:0.2s ease all; 
+        background: $red; 
+        transition: 0.2s ease all; 
+
+        @media (min-width: 770px) {
+            background:$black; 
+            height: 1px;
+            width:0;
+            bottom: 1px; 
+        }
     }
 }

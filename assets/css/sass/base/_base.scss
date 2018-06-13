@@ -1,19 +1,7 @@
-*,
-*::after,
-*::before {
+.landing-container > *,
+.landing-container > *::after,
+.landing-container > *::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-}
-
-html {
-    // This define what 1rem is
-    font-size: 62.5%;
-    @extend %full-landing;
-}
-
-body {
-    height: 100vh;
-    box-sizing: border-box;
-    @extend %full-landing;
 }

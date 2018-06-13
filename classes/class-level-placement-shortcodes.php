@@ -28,10 +28,14 @@ class levelPlacementShortcode
     Para que entiendas la variable idcat es el id de la categoria, esta te la voy a renderizar en el front-end
     para que tu la agarres con Js y consules el rest-api
     */
-    echo $idcat;
 
+    $site_url = get_site_url();
 
-    echo file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
+    $wizard  =  file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
+
+    $html_results = str_replace('{siteurl}',$site_url,$wizard);
+
+    echo $html_results;
   }
 }
 
