@@ -33,9 +33,9 @@ class levelPlacementShortcode
 
     $wizard  =  file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
 
-    $html_results = str_replace('{siteurl}',$site_url,$wizard);
+    $html = str_replace('{siteurl}',$site_url,$wizard);
 
-    echo $html_results;
+    echo $html;
   }
 }
 
