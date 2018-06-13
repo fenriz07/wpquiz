@@ -5,6 +5,10 @@
 .input-material {
     position:relative;
 
+    #testEmail {
+        text-transform: lowercase;
+    }
+
     &:not(:first-child) {
         margin-top: 1.5rem;
 
@@ -16,20 +20,20 @@
     > label {
         font-size: 0.8rem !important;
         font-family: "Roboto-Regular";
-        font-weight: 600;
+        font-weight: 100;
         color: $white;
 
         @media (min-width: 770px) {
             font-size: 1vw !important;
             font-family: "Roboto-Regular";
-            font-weight: 600;
+            font-weight: 100;
             color: $black;
         }
     }
 
     > input {
         font-size: 1rem !important;
-        background-color: $black;
+        background-color: transparent;
         color: $white;
         height: auto;
         margin: 0;
@@ -71,6 +75,17 @@
     &::before {
         left:50%;
         @extend %bar-pseudo;
+    }
+
+}
+
+.required-field {
+    color: $red;
+    font-size: .8rem;
+    font-family: 'Roboto-Regular';
+
+    @media (min-width: 1200px) {
+        font-size: 1vw;
     }
 
 }

@@ -4,6 +4,10 @@
         margin-bottom: 2rem;
         display: block;
 
+        > img {
+            width: 8rem;
+        }
+
         @media(min-width: 770px) {
             display: none;
         }
@@ -53,13 +57,11 @@
 
                             > span {
                                 font-size: 1.3rem;
-                                font-family: 'OpenSans-Bold';
-                                line-height: 1.15;
+                                font-family: 'Roboto-Black';
+                                line-height: 1.2;
 
                                 @media (min-width: 770px) {
                                     font-size: 2.5vw;
-                                    font-family: 'OpenSans-Bold';
-                                    line-height: 1.15;
                                 }
                             }
                         }
@@ -79,7 +81,7 @@
             float: left;
             width: 100%;
             font-size: 1rem;
-            font-family: 'OpenSans-Bold';
+            font-family: 'Roboto-Black';
             text-transform: uppercase;
 
             @media (min-width: 770px) {
@@ -95,8 +97,16 @@
                     color: $black;
                 }
 
-                > span:nth-child(1) {
-                    margin-right: 5px;
+                > img {
+                    width: 1rem;
+
+                    @media (min-width: 770px)  {
+                        width: 1vw;
+                    }
+                }
+
+                > span:nth-child(2) {
+                    margin-left: 5px;
                 }
             }
         }
@@ -115,7 +125,7 @@
                         margin-bottom: 4vh;
 
                         > span {
-                            font-family: 'OpenSans-Bold';
+                            font-family: 'Roboto-Black';
                             font-size: 1.1rem;
                             line-height: 1.2;
                             display: block;
@@ -140,21 +150,17 @@
                         > div  {
                             margin: 0 !important;
 
-                            > i {
-                                color: $red;
-                                font-size: 1rem;
-                                
-                                @media (min-widt: 770px) {
-                                    font-size: 2vw;
-                                }
+                            > img {
+                                width: 5%;
+    
                             }
                             
                             > span {
-                                font-family: 'OpenSans-Regular';
+                                font-family: 'Roboto-Regular';
                                 font-size: 0.8rem;
                                 font-weight: 100;
                                 color: $gray;
-                                margin-left: 1rem !important;
+                                margin-left: .5rem !important;
 
                                 @media (min-width: 770px) {
                                     font-size: 1.3vw;
@@ -170,7 +176,7 @@
 
                             > div:nth-child(1) {
                                 color: $black;
-                                font-family: 'OpenSans-Bold';
+                                font-family: 'Roboto-Black';
                                 font-size: 0.8rem;
 
                                 @media (min-width: 770px) {
@@ -184,7 +190,8 @@
                             > div:nth-child(2) {
                                 margin-top: 0.8rem;
                                 color: $black;
-                                font-size: 0.6rem;
+                                font-size: 0.75rem;
+                                font-family: 'Roboto-Regular';
 
                                 @media (min-width: 770px) {
                                     font-size: 1vw;
