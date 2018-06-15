@@ -13,9 +13,7 @@ jQuery(document).ready(function ($) {
     var validPhone    = false;
     var startNow      = $('#startTest');
 
-
-    $(startNow).unbind("click");
-
+    
     var tabChanger = function (a) {
 
         if (a == 'next') {
@@ -49,7 +47,6 @@ jQuery(document).ready(function ($) {
                 $(item).hide();
             }
         }
-        console.log(currentLvl);
     }
 
     nextLevel.addEventListener('click', function () {
@@ -109,21 +106,7 @@ jQuery(document).ready(function ($) {
             $('.landing-container').hide();
             $('.wizard-container').show();
 
-            //new CategoryView();
-            $.getJSON( siteUrl + "/wp-json/levelplacement/v1/tests/category/24", function( data ) {
-                var questions = [];
-                $.each( data, function( key, val ) {
-                    questions.push(val);
-                });
-                var fases = splitIntoSubArray(questions,10);
-                fases.map(function(item) {
-                    // $(levelform).append(`<div class="debug-border"></div>`);
-                    item.map(function(item2) {
-                        console.log(item2.meta.answers[0]);
-                        // $('.debug-border').append(`<div class="debug-border">${item2.title}</div>`);
-                    });
-                });
-            });
+            new CategoryView();
         }else {
           alert("Faltan campos por rellenar");
         }
