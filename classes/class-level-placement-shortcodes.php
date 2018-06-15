@@ -15,8 +15,10 @@ class levelPlacementShortcode
   //[test-category idcat="1"]
   public static function getTestCategory($atts)
   {
+    wp_enqueue_script( 'wp-api' );
     wp_enqueue_script('level-placement-js');
     wp_enqueue_style('level-placement-css');
+
 
     $atts = shortcode_atts([
       'idcat' => 1,

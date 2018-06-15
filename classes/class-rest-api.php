@@ -43,7 +43,7 @@ class apiRestTest
   		return new WP_Error( 'awesome_is_empty', 'No questions associated with the category', array( 'status' => 404 ) );
   	}
 
-    return $tests;
+    return ['result' => $tests ];
   }
 
   public function setTest($request)

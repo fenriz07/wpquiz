@@ -1,16 +1,49 @@
 jQuery(document).ready(function ($) {
-    var levelform = document.querySelector('#levelForm');
-    var lvlsBar = document.querySelector('.progress-block');
-    var nextLevel = document.querySelector('#next-questions');
-    var prevLevel = document.querySelector('.prev-block');
-    var startTest = document.querySelector('#startTest');
-    var currentLvl = 1;
-    var inputName = $('#testFullName');
-    var inputEmail = $('#testEmail');
-    var inputPhone = $('#testTelNo');
-    var validEmail = false;
+    var levelform     = document.querySelector('#levelForm');
+    var lvlsBar       = document.querySelector('.progress-block');
+    var nextLevel     = document.querySelector('#next-questions');
+    var prevLevel     = document.querySelector('.prev-block');
+    var startTest     = document.querySelector('#startTest');
+    var currentLvl    = 1;
+    var inputName     = $('#testFullName');
+    var inputEmail    = $('#testEmail');
+    var inputPhone    = $('#testTelNo');
+    var validEmail    = false;
     var validFullName = false;
-    var validPhone = false;
+    var validPhone    = false;
+    var startNow      = $('#startTest');
+    var siteUrl       = window.location.host;
+
+    /*
+
+      Ejemplo de consulta get con BackboneJs
+      Debes remplazar speaksandra.com por tu caso.
+
+    */
+    //Inicio
+      var ROOT = 'http://speaksandra.com/wp-json/levelplacement/v1/tests';
+
+      var CategoryModel = Backbone.Model.extend({
+        urlRoot:ROOT + '/category',
+      });
+
+      var CategoryView = Backbone.View.extend({
+        initialize:function(){
+          this.model = new CategoryModel({id:24});
+          this.model.fetch({
+            traditional: true,
+          });
+          this.model.on("change", this.render,this);
+        },
+        render: function(){
+          console.log(this.model.get('result'));
+        }
+      });
+
+      new CategoryView();
+    //FIN
+
+    $(startNow).unbind("click");
 
     var tabChanger = function (a) {
 
@@ -89,14 +122,15 @@ jQuery(document).ready(function ($) {
     function splitIntoSubArray(arr, count) {
         var newArray = [];
         while (arr.length > 0) {
-          newArray.push(arr.splice(0, count)); 
+          newArray.push(arr.splice(0, count));
         }
         return newArray;
     }
 
     $("#startTest").click(function (event) {
 
-        if (validFullName === true && validEmail === true && validPhone === true) {
+        console.log("Epa");
+        if (validFullName == true && validEmail == true && validPhone == true) {
 
             var nameVal = $(inputName).val();
             var emailVal = $(inputEmail).val();
@@ -105,7 +139,10 @@ jQuery(document).ready(function ($) {
             $('.landing-container').hide();
             $('.wizard-container').show();
 
-            $.getJSON( "http://localhost/Speaktusucceed/wp-json/levelplacement/v1/tests/category/22", function( data ) {
+            console.log(siteUrl + "/wp-json/levelplacement/v1/tests/category/24");
+
+
+            $.getJSON( siteUrl + "/wp-json/levelplacement/v1/tests/category/24", function( data ) {
                 var questions = [];
                 $.each( data, function( key, val ) {
                     questions.push(val);
@@ -119,6 +156,8 @@ jQuery(document).ready(function ($) {
                     });
                 });
             });
+        }else {
+          alert("Faltan campos por rellenar");
         }
     });
 
