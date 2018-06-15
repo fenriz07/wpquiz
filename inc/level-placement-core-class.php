@@ -34,6 +34,8 @@ class LevelPlacementCore
   private function initJs()
   {
     wp_register_script('level-placement-js',  LEVEL_PLACEMENT_URI .  'assets/js/level-placement.js');
+    wp_register_script('model-test',  LEVEL_PLACEMENT_URI .  'assets/js/backbone/model.js');
+    wp_register_script('view-test',  LEVEL_PLACEMENT_URI .  'assets/js/backbone/view.js');
   }
 
   private function initPostType()

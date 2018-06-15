@@ -12,36 +12,7 @@ jQuery(document).ready(function ($) {
     var validFullName = false;
     var validPhone    = false;
     var startNow      = $('#startTest');
-    var siteUrl       = window.location.host;
 
-    /*
-
-      Ejemplo de consulta get con BackboneJs
-      Debes remplazar speaksandra.com por tu caso.
-
-    */
-    //Inicio
-      var ROOT = 'http://speaksandra.com/wp-json/levelplacement/v1/tests';
-
-      var CategoryModel = Backbone.Model.extend({
-        urlRoot:ROOT + '/category',
-      });
-
-      var CategoryView = Backbone.View.extend({
-        initialize:function(){
-          this.model = new CategoryModel({id:24});
-          this.model.fetch({
-            traditional: true,
-          });
-          this.model.on("change", this.render,this);
-        },
-        render: function(){
-          console.log(this.model.get('result'));
-        }
-      });
-
-      new CategoryView();
-    //FIN
 
     $(startNow).unbind("click");
 
@@ -129,7 +100,6 @@ jQuery(document).ready(function ($) {
 
     $("#startTest").click(function (event) {
 
-        console.log("Epa");
         if (validFullName == true && validEmail == true && validPhone == true) {
 
             var nameVal = $(inputName).val();
@@ -139,9 +109,7 @@ jQuery(document).ready(function ($) {
             $('.landing-container').hide();
             $('.wizard-container').show();
 
-            console.log(siteUrl + "/wp-json/levelplacement/v1/tests/category/24");
-
-
+            //new CategoryView();
             $.getJSON( siteUrl + "/wp-json/levelplacement/v1/tests/category/24", function( data ) {
                 var questions = [];
                 $.each( data, function( key, val ) {

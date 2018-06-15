@@ -16,7 +16,6 @@ class levelPlacementShortcode
   public static function getTestCategory($atts)
   {
     wp_enqueue_script( 'wp-api' );
-    wp_enqueue_script('level-placement-js');
     wp_enqueue_style('level-placement-css');
 
 
@@ -26,10 +25,19 @@ class levelPlacementShortcode
 
     $idcat = $atts['idcat'];
 
-    /*ABDIANGEL: Puedes comentar esto, es solo para probar si el atributo esta siendo traido con exito.
-    Para que entiendas la variable idcat es el id de la categoria, esta te la voy a renderizar en el front-end
-    para que tu la agarres con Js y consules el rest-api
-    */
+    $site = [
+      'endpoint' => get_site_url() . '/wp-json/levelplacement/v1/tests',
+      'idcat'    => $idcat
+    ];
+
+    wp_localize_script( 'model-test', 'site', $site );
+    wp_enqueue_script('model-test');
+
+    wp_localize_script( 'view-test', 'site', $site );
+    wp_enqueue_script('view-test');
+
+    wp_enqueue_script('level-placement-js');
+
 
     $site_url = get_site_url();
 
