@@ -35,14 +35,6 @@ jQuery(document).ready(function ($) {
                 $(lvl).addClass('lvl--active');
                 $(prevLevel).show();
 
-            } else if (item.dataset['step-special'] === 'special') {
-                $(item).show();
-                if ($(lvl).hasClass('lvl--active')) {
-                    $(lvl).removeClass('lvl--active');
-                }
-                $(lvl).addClass('lvl--active');
-                $(prevLevel).show();
-
             } else {
                 $(item).hide();
             }

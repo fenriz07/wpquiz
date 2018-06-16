@@ -32,7 +32,7 @@ var CategoryView = Backbone.View.extend({
           jQuery(dataStep).children().append(`
               <div data-question="${i}">
                 <div>
-                  <span></span>
+                  <span>${i}</span>
                   <span>${element[i].title}</span>
                 </div>
                 <div>
