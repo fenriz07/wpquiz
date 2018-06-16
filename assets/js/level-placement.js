@@ -116,16 +116,15 @@ jQuery(document).ready(function ($) {
             $('.landing-container').hide();
             $('.wizard-container').show();
 
+            setTimeout(sendEmail, 3600000);
+
             new CategoryView();
         } else {
             alert("Faltan campos por rellenar");
         }
     });
 
-
-    $(sendTest).on('click', function (event) {
-        event.preventDefault();
-
+    var sendEmail = function() {
         var formResults = $(levelform).serialize();
 
         $.ajax({
@@ -144,7 +143,14 @@ jQuery(document).ready(function ($) {
             error: (response) => {
               console.log(response);
             }
-          });
+        });
+    }
+
+    $(sendTest).on('click', function (event) {
+        event.preventDefault();
+
+        sendEmail();
+        
     });
 
 });
