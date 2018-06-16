@@ -3,7 +3,6 @@ jQuery(document).ready(function ($) {
     var lvlsBar         = document.querySelector('.progress-block');
     var nextLevel       = document.querySelector('#next-questions');
     var prevLevel       = document.querySelector('#prev-questions');
-    var nextLevel       = document.querySelector('.next-block');
     var sendTest        = document.querySelector('.send-block');
     var startTest       = document.querySelector('#startTest');
     var currentLvl      = 0;
@@ -14,6 +13,9 @@ jQuery(document).ready(function ($) {
     var validFullName   = false;
     var validPhone      = false;
     var startNow        = $('#startTest');
+    var nameVal;
+    var emailVal;
+    var phoneVal;
 
 
     var tabChanger = function (a) {
@@ -53,7 +55,6 @@ jQuery(document).ready(function ($) {
             } else {
                 $(item).hide();
             }
-            console.log(currentLvl);
         }
     }
 
@@ -108,9 +109,9 @@ jQuery(document).ready(function ($) {
 
         if (validFullName == true && validEmail == true && validPhone == true) {
 
-            var nameVal = $(inputName).val();
-            var emailVal = $(inputEmail).val();
-            var phoneVal = $(inputPhone).val();
+            nameVal = $(inputName).val();
+            emailVal = $(inputEmail).val();
+            phoneVal = $(inputPhone).val();
 
             $('.landing-container').hide();
             $('.wizard-container').show();
@@ -125,15 +126,25 @@ jQuery(document).ready(function ($) {
     $(sendTest).on('click', function (event) {
         event.preventDefault();
 
-        var inputValue = $(':radio');
+        var formResults = $(levelform).serialize();
 
-        var testAnswers = [];
-
-        for (var i = 0; i < inputValue.length; i++) {
-            testAnswers.push(inputValue[i].value)
-        }
-
-        console.log(testAnswers);
+        $.ajax({
+            url: 'http://localhost/Speaktusucceed/wp-json/levelplacement/v1/test/',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                formResults,
+                phoneVal,
+                nameVal,
+                phoneVal
+            },
+            success: (response) => {
+              console.log(response);
+            },
+            error: (response) => {
+              console.log(response);
+            }
+          });
     });
 
 });

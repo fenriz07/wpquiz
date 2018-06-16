@@ -49,19 +49,19 @@ var CategoryView = Backbone.View.extend({
                 <div>
                   <div>
                     <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="question-${iPlus}" id="question-${iPlus}-option-0" value=""> 
+                      <input type="radio" name="question-${iPlus}" id="question-${iPlus}-option-0" value="1"> 
                         ${answerOne}
                     </label>
                   </div>
                   <div>
                     <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="question-${iPlus}" id="question-${iPlus}-option-0" value=""> 
+                      <input type="radio" name="question-${iPlus}" id="question-${iPlus}-option-0" value="2"> 
                         ${answerTwo}
                     </label>
                   </div>
                   <div>
                     <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="question-${iPlus}" id="question-${iPlus}-option-0" value=""> 
+                      <input type="radio" name="question-${iPlus}" id="question-${iPlus}-option-0" value="3"> 
                         ${answerThree}
                     </label>
                   </div>
