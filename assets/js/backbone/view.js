@@ -18,20 +18,46 @@ var CategoryView = Backbone.View.extend({
     var fases = this.splitIntoSubArray(result, 10);
 
     fases.forEach(function(element, index) {
-      jQuery(levelForm).append('<div class="debug-border" data-step="'+ index +'"></div>');
-      for(var i = 0; i < element.length; i++ ) {
+      jQuery(levelForm).append('<fieldset data-step="'+ index +'" hidden><div></div></fieldset>');
+      
+      var elLen = element.length;
+      var dataStep = jQuery('[data-step=' + index + ']');
+      
+      for(var i = 0; i < elLen; i++ ) {
 
-          jQuery('[data-step='+index+']').append(element[i].title);
-          console.log(element[i].title);
-          console.log(i);
-          console.log(index);
+        var answerOne = element[i].meta.answers[0].text;
+        var answerTwo = element[i].meta.answers[1].text;
+        var answerThree = element[i].meta.answers[2].text;
 
+          jQuery(dataStep).children().append(`
+              <div data-question="${i}">
+                <div>
+                  <span></span>
+                  <span>${element[i].title}</span>
+                </div>
+                <div>
+                  <div>
+                    <label for="question-${i}-option-0">
+                      <input type="radio" name="question-${i}" id="question-${i}-option-0"> 
+                        ${answerOne}
+                    </label>
+                  </div>
+                  <div>
+                    <label for="question-${i}-option-0">
+                      <input type="radio" name="question-${i}" id="question-${i}-option-0"> 
+                        ${answerTwo}
+                    </label>
+                  </div>
+                  <div>
+                    <label for="question-${i}-option-0">
+                      <input type="radio" name="question-${i}" id="question-${i}-option-0"> 
+                        ${answerThree}
+                    </label>
+                  </div>
+                </div> 
+              </div> 
+          `);
       }
     });
-
-    // for(var i = 0; i < fases.length; i++ ) {
-
-    //   console.log(fases[i]);
-    // }
   }
 });

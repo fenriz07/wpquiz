@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
     var nextLevel     = document.querySelector('#next-questions');
     var prevLevel     = document.querySelector('.prev-block');
     var startTest     = document.querySelector('#startTest');
-    var currentLvl    = 1;
+    var currentLvl    = 0;
     var inputName     = $('#testFullName');
     var inputEmail    = $('#testEmail');
     var inputPhone    = $('#testTelNo');
@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
                 $(lvl).addClass('lvl--active');
                 $(prevLevel).show();
 
-            } else if (parseInt(item.dataset['step']) === currentLvl && lvlIndex) {
+            } else if (item.dataset['step-special'] === 'special') {
                 $(item).show();
                 if ($(lvl).hasClass('lvl--active')) {
                     $(lvl).removeClass('lvl--active');
