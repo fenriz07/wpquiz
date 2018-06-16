@@ -74,7 +74,7 @@ class ProcessQuestion
     }
 
 
-    $approved = ($this->$limit_approved_answers >= 45) ? 'Yes' : 'Not';
+    $approved = ($this->limit_approved_answers >= 45) ? 'Yes' : 'Not';
 
     return ['results' => $questions_answers, 'n-approved-answers' => $n_approved_answers,'approved' => $approved ];
 
