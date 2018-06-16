@@ -125,24 +125,35 @@ jQuery(document).ready(function ($) {
     });
 
     var sendEmail = function() {
-        var formResults = $(levelform).serialize();
+        var test = $(levelform).serializeArray();
 
-        $.ajax({
-            url: 'http://localhost/Speaktusucceed/wp-json/levelplacement/v1/test/',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                formResults,
-                phoneVal,
-                nameVal,
-                phoneVal
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost/Speaktusucceed/wp-json/levelplacement/v1/test",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control": "no-cache",
             },
-            success: (response) => {
-              console.log(response);
-            },
-            error: (response) => {
-              console.log(response);
+            "data": {
+              "email": emailVal,
+              "lastname": nameVal,
+              "phone": phoneVal,
+              "id_category": "22",
+              "name-test": "A1",
+              "action": "process_question"
+
             }
+        }
+
+        for (var i = 0; i < test.length; i++) {
+            settings.data['test['+i+'][id]'] = test[i].name;
+            settings.data['test['+i+'][slug]'] = test[i].value;
+        }
+          
+        $.ajax(settings).done(function (response) {
+            console.log(response);
         });
     }
 
