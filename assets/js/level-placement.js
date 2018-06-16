@@ -1,19 +1,21 @@
 jQuery(document).ready(function ($) {
-    var levelform     = document.querySelector('#levelForm');
-    var lvlsBar       = document.querySelector('.progress-block');
-    var nextLevel     = document.querySelector('#next-questions');
-    var prevLevel     = document.querySelector('.prev-block');
-    var startTest     = document.querySelector('#startTest');
-    var currentLvl    = 0;
-    var inputName     = $('#testFullName');
-    var inputEmail    = $('#testEmail');
-    var inputPhone    = $('#testTelNo');
-    var validEmail    = false;
-    var validFullName = false;
-    var validPhone    = false;
-    var startNow      = $('#startTest');
+    var levelform       = document.querySelector('#levelForm');
+    var lvlsBar         = document.querySelector('.progress-block');
+    var nextLevel       = document.querySelector('#next-questions');
+    var prevLevel       = document.querySelector('#prev-questions');
+    var nextLevel       = document.querySelector('.next-block');
+    var sendTest        = document.querySelector('.send-block');
+    var startTest       = document.querySelector('#startTest');
+    var currentLvl      = 0;
+    var inputName       = $('#testFullName');
+    var inputEmail      = $('#testEmail');
+    var inputPhone      = $('#testTelNo');
+    var validEmail      = false;
+    var validFullName   = false;
+    var validPhone      = false;
+    var startNow        = $('#startTest');
 
-    
+
     var tabChanger = function (a) {
 
         if (a == 'next') {
@@ -23,9 +25,23 @@ jQuery(document).ready(function ($) {
         }
 
         for (let i = 0; i < levelForm.children.length; i++) {
-            const item = levelForm.children.item(i);
-            const lvl = lvlsBar.children.item(i);
+            const item     = levelForm.children.item(i);
+            const lvl      = lvlsBar.children.item(i);
             const lvlIndex = $(lvl).index();
+
+            if (currentLvl === 6) {
+                $(nextLevel).hide();
+                $(sendTest).show();
+            } else {
+                $(nextLevel).show();
+                $(sendTest).hide();
+            }
+
+            if (currentLvl === 0) {
+                $(prevLevel).hide();
+            } else {
+                $(prevLevel).show();
+            }
 
             if (parseInt(item.dataset['step']) === currentLvl) {
                 $(item).show();
@@ -33,11 +49,11 @@ jQuery(document).ready(function ($) {
                     $('.lvl--active').removeClass('lvl--active');
                 }
                 $(lvl).addClass('lvl--active');
-                $(prevLevel).show();
 
             } else {
                 $(item).hide();
             }
+            console.log(currentLvl);
         }
     }
 
@@ -82,12 +98,13 @@ jQuery(document).ready(function ($) {
     function splitIntoSubArray(arr, count) {
         var newArray = [];
         while (arr.length > 0) {
-          newArray.push(arr.splice(0, count));
+            newArray.push(arr.splice(0, count));
         }
         return newArray;
     }
 
     $("#startTest").click(function (event) {
+        event.preventDefault();
 
         if (validFullName == true && validEmail == true && validPhone == true) {
 
@@ -99,9 +116,24 @@ jQuery(document).ready(function ($) {
             $('.wizard-container').show();
 
             new CategoryView();
-        }else {
-          alert("Faltan campos por rellenar");
+        } else {
+            alert("Faltan campos por rellenar");
         }
+    });
+
+
+    $(sendTest).on('click', function (event) {
+        event.preventDefault();
+
+        var inputValue = $(':radio');
+
+        var testAnswers = [];
+
+        for (var i = 0; i < inputValue.length; i++) {
+            testAnswers.push(inputValue[i].value)
+        }
+
+        console.log(testAnswers);
     });
 
 });
