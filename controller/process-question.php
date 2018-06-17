@@ -23,7 +23,7 @@ class ProcessQuestion
 
     //Consultamos el modelo para traer las preguntas, respuesta y comparar el resultado
     $tests = TestModel::select()
-                          ->setCategory($id_category)
+                          ->setCategory($id_category )
                           ->base()
                           ->addAnswer()
                           ->get();
@@ -55,8 +55,9 @@ class ProcessQuestion
     $n_approved_answers = 0;
 
     foreach ($questions_answers as $key => $answer) {
-      $id   = $answer['id'];
-      $slug = $answer['slug'];
+      $id   = (int) $answer['name'];
+      $slug = $answer['value'];
+
 
       $key_test = array_search($id, array_column($tests, 'id'));
 
@@ -93,7 +94,7 @@ class ProcessQuestion
     $email_html   = '';
 
     foreach ($data['statistics']['results'] as $key => $result) {
-      $tmp = [$key,$result['title'],$result['slug'],$result['approved']];
+      $tmp = [$key,$result['title'],$result['value'],$result['approved']];
       $html_results .= str_replace($templates->search_result,$tmp,$templates->single_result);
     }
 

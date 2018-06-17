@@ -25,9 +25,12 @@ class levelPlacementShortcode
 
     $idcat = $atts['idcat'];
 
+    $term = get_term( $idcat, 'category-test' );
+
     $site = [
-      'endpoint' => get_site_url() . '/wp-json/levelplacement/v1/tests',
-      'idcat'    => $idcat
+      'endpoint' => get_site_url() . '/wp-json/levelplacement/v1/',
+      'idcat'    => $idcat,
+      'nametest' => $term->name
     ];
 
     wp_localize_script( 'model-test', 'site', $site );

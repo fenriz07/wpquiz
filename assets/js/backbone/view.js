@@ -54,24 +54,24 @@ var CategoryView = Backbone.View.extend({
                 <div>
                   <div>
                     <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetOneSlug}"> 
+                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetOneSlug}">
                         ${answerOne}
                     </label>
                   </div>
                   <div>
                     <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetTwoSlug}"> 
+                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetTwoSlug}">
                         ${answerTwo}
                     </label>
                   </div>
                   <div>
                     <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetThreeSlug}"> 
+                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetThreeSlug}">
                         ${answerThree}
                     </label>
                   </div>
-                </div> 
-              </div> 
+                </div>
+              </div>
           `);
       }
     });
@@ -80,4 +80,34 @@ var CategoryView = Backbone.View.extend({
 
 
   }
+});
+
+
+var TestView = Backbone.View.extend({
+
+  b : '#send-questions',
+  initialize : function(data){
+    this.model = new TestModel();
+    this.blockEl();
+    this.model.set("email",data.email);
+    this.model.set("lastname",data.lastname);
+    this.model.set("phone",data.phone);
+    this.model.set("test",data.test);
+    this.model.set("id_category",site.idcat);
+    this.model.set("name-test",site.nametest);
+    this.model.set("action", "process_question");
+    this.model.save()
+    this.model.on("change", this.render, this);
+    this.model.on("change",this.render,this);
+  },
+  render : function(){
+    jQuery(this.b).hide('fast');
+    alert("Test Finalizado. Gracias por avisar.");
+  },
+  blockEl:function(){
+    // TODO: BLOQUEAR LA POSIBILIDAD DE VOLVER A DARLE CLICK AL BOTON...
+    alert("Procesando Test...");
+  },
+
+
 });

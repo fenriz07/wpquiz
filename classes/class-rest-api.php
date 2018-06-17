@@ -101,6 +101,8 @@ class apiRestTest
       }
     }
 
+    //return $request['test'];
+
 
     $data = [
       'personal' => [
@@ -113,6 +115,8 @@ class apiRestTest
       'test'        => $request['test'],
       'name-test'   => $request['name-test'],
     ];
+
+    //return $request['test'][1]['value'];
 
 
 

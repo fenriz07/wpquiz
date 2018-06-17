@@ -113,10 +113,8 @@ jQuery(document).ready(function ($) {
             emailVal = $(inputEmail).val();
             phoneVal = $(inputPhone).val();
 
-            $('.landing-container').hide();
-            $('.wizard-container').show();
-
-            setTimeout(sendEmail, 3600000);
+            $('.landing-container').hide('400');
+            $('.wizard-container').show('400');
 
             new CategoryView();
         } else {
@@ -124,44 +122,27 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    var sendEmail = function() {
-        var test = $(levelform).serializeArray();
-
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "http://localhost/Speaktusucceed/wp-json/levelplacement/v1/test",
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Cache-Control": "no-cache",
-            },
-            "data": {
-              "email": emailVal,
-              "lastname": nameVal,
-              "phone": phoneVal,
-              "id_category": "22",
-              "name-test": "A1",
-              "action": "process_question"
-
-            }
-        }
-
-        for (var i = 0; i < test.length; i++) {
-            settings.data['test['+i+'][id]'] = test[i].name;
-            settings.data['test['+i+'][slug]'] = test[i].value;
-        }
-          
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-        });
-    }
 
     $(sendTest).on('click', function (event) {
-        event.preventDefault();
+        //event.preventDefault();
 
-        sendEmail();
-        
+        /*
+            TODO BLOQUEAR EL BOTON CUANDO SE LE DA CLICK.
+            TODO EMITIR UN MENSAJE DE QUE EL TEST SE ESTA PROCESANDO
+            TODO AL FINALIZAR EL TEST, EMITE LA FUNCION RENDER EN EL modelo
+            TODO DESTRUIR EL TEST Y EMITIR MENSAJE
+            TODO EMITIR MENSAJE DE QUE EL TEST FUE PROCESADO.
+
+        */
+        var test = $(levelform).serializeArray();
+
+        new TestView({
+          email:    emailVal,
+          lastname: nameVal,
+          phone:    phoneVal,
+          test :    test
+        });
+
     });
 
 });
