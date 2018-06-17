@@ -31,7 +31,7 @@ jQuery(document).ready(function ($) {
             const lvl      = lvlsBar.children.item(i);
             const lvlIndex = $(lvl).index();
 
-            if (currentLvl === 6) {
+            if (currentLvl === (levelForm.children.length - 1)) {
                 $(nextLevel).hide();
                 $(sendTest).show();
             } else {

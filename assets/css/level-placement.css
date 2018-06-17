@@ -387,6 +387,44 @@
     display: flex;
     flex-direction: row;
     justify-content: center; }
+    .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch {
+      position: relative;
+      border: 1px solid #B5B4BC;
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      text-align: center; }
+      @media (min-width: 770px) {
+        .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch {
+          width: 3.1vw;
+          height: 3.1vw; } }
+      .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch > div > span {
+        font-size: 0.7rem;
+        font-family: 'Roboto-Black';
+        position: relative;
+        top: -0.5rem;
+        line-height: 0; }
+        @media (min-width: 770px) {
+          .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch > div > span {
+            font-size: 2.15vw;
+            line-height: 1.41;
+            top: 0; } }
+      .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child) {
+        margin-right: 1.5vw; }
+        @media (min-width: 770px) {
+          .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child) {
+            margin-right: 2vw; } }
+      .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        width: 1.5vw;
+        top: 50%;
+        left: 100%;
+        height: 1px;
+        background-color: #B5B4BC; }
+        @media (min-width: 770px) {
+          .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child)::after {
+            width: 2vw; } }
     .wizard-container > div > div > div:nth-child(2) > div {
       position: relative;
       border: 1px solid #B5B4BC;
@@ -495,6 +533,8 @@
       @media (min-width: 770px) {
         .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
           font-size: 1vw; } }
+      .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) > div > label > input {
+        margin-right: 0.5rem; }
 .wizard-container .next-block {
   text-align: center; }
   @media (min-width: 770px) {

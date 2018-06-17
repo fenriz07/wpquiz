@@ -7,14 +7,7 @@ var CategoryView = Backbone.View.extend({
       traditional: true,
     });
     this.model.on("change", this.render, this);
-    }//,
-  // checkRadio: function(inputValue){
-  //   for (var i = 0; i < inputValue.length; i++){
-  //     if (!jQuery().is(':checked')) {
-  //       $(this).prop('checked', true);
-  //     }
-  //   }
-  // }
+    }
   ,
   splitIntoSubArray: function (arr, count) {
     var newArray = [];
@@ -25,11 +18,31 @@ var CategoryView = Backbone.View.extend({
   },
   render: function () {
     var result = this.model.get('result');
-    var fases = this.splitIntoSubArray(result, 10);
+    var half = result.length / 5;
+    var fases = this.splitIntoSubArray(result, 5);
+    var lvlBars = document.querySelector('.progress-block');
+    
+    if (half > 7) {
+      jQuery(lvlBars).children().removeClass('lvlForm');
+      jQuery(lvlBars).children().addClass('lvlForm--stretch');
+
+      for (var i = 1; i < (fases.length + 1); i++) {
+        jQuery(lvlBars).append(`
+        <div class="lvlForm--stretch">
+          <div>
+            <span>
+                ${i + 1}
+            </span>
+          </div>
+        </div>
+        `);
+      }
+    }
 
     fases.forEach(function (element, index) {
-      jQuery(levelForm).append('<fieldset data-step="' + (index + 1) + '" hidden><div></div></fieldset>');
 
+      jQuery(levelForm).append('<fieldset data-step="' + (index + 1) + '" hidden><div></div></fieldset>');
+      
       var elLen = element.length;
       var dataStep = jQuery('[data-step=' + (index + 1) + ']');
 
@@ -59,14 +72,14 @@ var CategoryView = Backbone.View.extend({
                     </label>
                   </div>
                   <div>
-                    <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetTwoSlug}">
+                    <label for="question-${iPlus}-option-1">
+                      <input type="radio" name="${id}" id="question-${iPlus}-option-1" value="${answetTwoSlug}">
                         ${answerTwo}
                     </label>
                   </div>
                   <div>
-                    <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetThreeSlug}">
+                    <label for="question-${iPlus}-option-2">
+                      <input type="radio" name="${id}" id="question-${iPlus}-option-2" value="${answetThreeSlug}">
                         ${answerThree}
                     </label>
                   </div>
@@ -75,9 +88,6 @@ var CategoryView = Backbone.View.extend({
           `);
       }
     });
-
-    // var inputValue = jQuery(':radio');
-
 
   }
 });
