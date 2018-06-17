@@ -98,7 +98,6 @@ var TestView = Backbone.View.extend({
     this.model.set("action", "process_question");
     this.model.save()
     this.model.on("change", this.render, this);
-    this.model.on("change",this.render,this);
   },
   render : function(){
     jQuery(this.b).hide('fast');
