@@ -78,20 +78,20 @@ var CategoryView = Backbone.View.extend({
                 </div>
                 <div>
                   <div>
-                    <label for="question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-0" value="${answetOneSlug}">
+                    <label for="data-step-${index + 1}-question-${iPlus}-option-0">
+                      <input type="radio" name="${id}" id="data-step-${index + 1}-question-${iPlus}-option-0" value="${answetOneSlug}">
                         ${answerOne}
                     </label>
                   </div>
                   <div>
-                    <label for="question-${iPlus}-option-1">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-1" value="${answetTwoSlug}">
+                    <label for="data-step-${index + 1}-question-${iPlus}-option-1">
+                      <input type="radio" name="${id}" id="data-step-${index + 1}-question-${iPlus}-option-1" value="${answetTwoSlug}">
                         ${answerTwo}
                     </label>
                   </div>
                   <div>
-                    <label for="question-${iPlus}-option-2">
-                      <input type="radio" name="${id}" id="question-${iPlus}-option-2" value="${answetThreeSlug}">
+                    <label for="data-step-${index + 1}-question-${iPlus}-option-2">
+                      <input type="radio" name="${id}" id="data-step-${index + 1}-question-${iPlus}-option-2" value="${answetThreeSlug}">
                         ${answerThree}
                     </label>
                   </div>
@@ -122,11 +122,29 @@ var TestView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
   render : function(){
-    alert("Test Finalizado. Gracias por avisar.");
+    jQuery('.wizard-container').hide();
+    jQuery('.result-container').show();
+    jQuery('.result-container').children().removeClass('d-none');
+    jQuery('.result-container').children().removeClass('d-flex');
+    jQuery('.result-container').addClass('result-container--show');
+    jQuery('.landing-container').remove();
+    jQuery('.wizard-container').remove();
   },
   blockEl:function(){
-    // TODO: BLOQUEAR LA POSIBILIDAD DE VOLVER A DARLE CLICK AL BOTON...
-    alert("Procesando Test...");
+    jQuery('.wizard-container').append(`
+    <div class="modal-block">
+      <div class="modal-block-content modal-block-content--animated">
+        <div>
+            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+        </div>
+        <div>
+            <span>Su test está siendo procesado...</span>
+        </div>
+      </div>
+    </div>
+    `);
   },
 
 

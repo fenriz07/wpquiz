@@ -1,0 +1,33 @@
+.modal-block {
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+    background: rgba($black,.4);
+    display: flex;
+    justify-content: center;
+
+
+
+    > .modal-block-content {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: $white;
+        border-radius: 2px;
+        width: 50% !important;
+        height: 40%;
+
+        &--animated{
+            display: flex;
+            animation: moveInBottom .5s ease-out .75s;
+            animation-fill-mode: backwards;
+        }
+        
+    }
+    
+}

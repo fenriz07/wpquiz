@@ -13,6 +13,7 @@ jQuery(document).ready(function ($) {
     var validEmail      = false;
     var validFullName   = false;
     var validPhone      = false;
+    var fullLoaded      = false;
     var startNow        = $('#startTest');
     var nameVal;
     var emailVal;
@@ -105,15 +106,21 @@ jQuery(document).ready(function ($) {
         return newArray;
     }
 
+    var stopLoading = function() {
+        $('.loading-overlay').addClass('d-none');
+        fullLoaded = true;
+        return fullLoaded;
+    }
+
     $("#startTest").click(function (event) {
         event.preventDefault();
 
-        //Timer
-        document.getElementById('timer').innerHTML = 01 + ":" + 00;
-        startTimer();
-
-
         if (validFullName == true && validEmail == true && validPhone == true) {
+
+            setTimeout(stopLoading, 3000);
+            //Timer HERE YOU SELECT THE TIME THAT YOU WANT TO 
+            document.getElementById('timer').innerHTML = 01 + ":" + 00;
+            startTimer();
 
             nameVal = $(inputName).val();
             emailVal = $(inputEmail).val();
@@ -187,16 +194,7 @@ jQuery(document).ready(function ($) {
 
         $(this).prop('disabled', true);
 
-        /*
-            TODO BLOQUEAR EL BOTON CUANDO SE LE DA CLICK.
-            TODO EMITIR UN MENSAJE DE QUE EL TEST SE ESTA PROCESANDO
-            TODO AL FINALIZAR EL TEST, EMITE LA FUNCION RENDER EN EL modelo
-            TODO DESTRUIR EL TEST Y EMITIR MENSAJE
-            TODO EMITIR MENSAJE DE QUE EL TEST FUE PROCESADO.
-
-        */
-       sendTestEmail();
-
+        sendTestEmail();
     });
 
 });

@@ -1,0 +1,63 @@
+.loading-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba($white,.95);
+    top: 0;
+    z-index: 999;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// Here is where the magic happens
+
+// MATERIAL DESIGN LOAD SPINNER
+
+$offset: 187;
+$duration: 1.4s;
+
+.spinner {
+  animation: rotator $duration linear infinite;
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation:
+    dash $duration ease-in-out infinite, 
+    colors ($duration*4) ease-in-out infinite;
+}
+
+@keyframes colors {
+	0% { stroke: $red; }
+	25% { stroke: $gray; }
+	50% { stroke: $red; }
+	75% { stroke: $gray; }
+  100% { stroke: $red; }
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: $offset; }
+ 50% {
+   stroke-dashoffset: $offset/4;
+   transform:rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: $offset;
+   transform:rotate(450deg);
+ }
+}

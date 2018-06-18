@@ -272,6 +272,10 @@
                                     font-size: 1vw;
                                 }
 
+                                @media (min-width: 1080px) {
+                                    font-size: 1.3vw;
+                                }
+
                                 > div {
 
                                     > label {

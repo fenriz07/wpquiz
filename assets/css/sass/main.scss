@@ -9,9 +9,12 @@
 
 @import "components/button";
 @import "components/form";
+@import "components/load-overlay";
+@import "components/modal";
 
 @import "layout/grid";
 @import "layout/wrapper";
 
 @import "pages/home";
+@import "pages/result";
 @import "pages/wizard";
