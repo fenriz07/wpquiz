@@ -19,8 +19,21 @@
         flex-direction: column;
         background: $white;
         border-radius: 2px;
-        width: 50% !important;
-        height: 40%;
+        width: 70% !important;
+        height: 30%;
+
+        > div {
+            padding: 0 0.5rem;
+
+            > span {
+                font-size: 1rem;
+                font-family: 'Roboto-Black';
+
+                @media (min-width: 770px) {
+                    font-size: 2vw;
+                }
+            }
+        }
 
         &--animated{
             display: flex;

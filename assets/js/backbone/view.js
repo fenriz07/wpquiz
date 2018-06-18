@@ -127,8 +127,6 @@ var TestView = Backbone.View.extend({
     jQuery('.result-container').children().removeClass('d-none');
     jQuery('.result-container').children().removeClass('d-flex');
     jQuery('.result-container').addClass('result-container--show');
-    jQuery('.landing-container').remove();
-    jQuery('.wizard-container').remove();
   },
   blockEl:function(){
     jQuery('.wizard-container').append(`
@@ -139,7 +137,7 @@ var TestView = Backbone.View.extend({
                 <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
             </svg>
         </div>
-        <div>
+        <div class="u-center-text">
             <span>Su test está siendo procesado...</span>
         </div>
       </div>

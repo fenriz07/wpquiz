@@ -280,8 +280,16 @@
     flex-direction: column;
     background: #FFFFFF;
     border-radius: 2px;
-    width: 50% !important;
-    height: 40%; }
+    width: 70% !important;
+    height: 30%; }
+    .modal-block > .modal-block-content > div {
+      padding: 0 0.5rem; }
+      .modal-block > .modal-block-content > div > span {
+        font-size: 1rem;
+        font-family: 'Roboto-Black'; }
+        @media (min-width: 770px) {
+          .modal-block > .modal-block-content > div > span {
+            font-size: 2vw; } }
     .modal-block > .modal-block-content--animated {
       display: flex;
       animation: moveInBottom .5s ease-out .75s;
@@ -426,6 +434,9 @@
             @media (min-width: 395px) {
               .landing-container__right > div .title-block > div > h1 > span:not(:first-child) {
                 font-size: 2.5rem; } }
+            @media (min-width: 440px) {
+              .landing-container__right > div .title-block > div > h1 > span:not(:first-child) {
+                font-size: 3rem; } }
             @media (min-width: 770px) {
               .landing-container__right > div .title-block > div > h1 > span:not(:first-child) {
                 font-size: 4vw; } }
@@ -498,8 +509,11 @@
     .result-container > div > div:not(:first-child) {
       margin-top: 2rem; }
     .result-container > div > div > span {
-      font-size: 2vw;
+      font-size: 1rem;
       font-family: 'Roboto-Black'; }
+      @media (min-width: 770px) {
+        .result-container > div > div > span {
+          font-size: 2vw; } }
 
 .wizard-container .logo-box {
   margin-bottom: 2rem;
