@@ -110,7 +110,7 @@ var TestView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
   render : function(){
-    jQuery(this.b).hide('fast');
+    
     alert("Test Finalizado. Gracias por avisar.");
   },
   blockEl:function(){

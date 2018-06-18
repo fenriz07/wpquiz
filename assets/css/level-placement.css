@@ -104,6 +104,27 @@
   transform: translateY(2px);
   box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.2); }
 
+.btn-send {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.2em 1em;
+  border: none;
+  display: inline-block;
+  background-color: #d60026;
+  color: #FFFFFF;
+  border-radius: 3px;
+  transition: all .1s;
+  position: relative;
+  font-family: 'Roboto-Black';
+  font-size: 1rem;
+  box-shadow: 0 1rem 2rem rgba(51, 51, 51, 0.2); }
+  @media (min-width: 770px) {
+    .btn-send {
+      font-size: 1.5vw; } }
+  .btn-send:active {
+    transform: translateY(2px);
+    box-shadow: 0 0.5rem 1rem rgba(51, 51, 51, 0.2); }
+
 /*-------------------------------------------
     Material Input Style
 --------------------------------------------*/
@@ -381,13 +402,27 @@
   @media (min-width: 770px) {
     .wizard-container .logo-box {
       display: none; } }
+.wizard-container .timer-block {
+  color: #333;
+  font-size: 1rem;
+  font-family: 'Roboto-Black';
+  text-align: center;
+  text-align: right;
+  margin-bottom: 2rem; }
+  @media (min-width: 770px) {
+    .wizard-container .timer-block {
+      font-size: 2vw; } }
+  .wizard-container .timer-block > div {
+    display: inline-block; }
+    .wizard-container .timer-block > div > span:not(:last-child) {
+      color: #d60026; }
 .wizard-container > div > div {
   width: 90%; }
-  .wizard-container > div > div > div:nth-child(2) {
+  .wizard-container > div > div > div:nth-child(3) {
     display: flex;
     flex-direction: row;
     justify-content: center; }
-    .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch {
+    .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch {
       position: relative;
       border: 1px solid #B5B4BC;
       border-radius: 50%;
@@ -395,26 +430,26 @@
       height: 1rem;
       text-align: center; }
       @media (min-width: 770px) {
-        .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch {
+        .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch {
           width: 3.1vw;
           height: 3.1vw; } }
-      .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch > div > span {
+      .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch > div > span {
         font-size: 0.7rem;
         font-family: 'Roboto-Black';
         position: relative;
         top: -0.5rem;
         line-height: 0; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch > div > span {
+          .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch > div > span {
             font-size: 2.15vw;
-            line-height: 1.41;
+            line-height: 1.5;
             top: 0; } }
-      .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child) {
+      .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child) {
         margin-right: 1.5vw; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child) {
+          .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child) {
             margin-right: 2vw; } }
-      .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child)::after {
+      .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child)::after {
         content: "";
         position: absolute;
         width: 1.5vw;
@@ -423,9 +458,9 @@
         height: 1px;
         background-color: #B5B4BC; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(2) > .lvlForm--stretch:not(:last-child)::after {
+          .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child)::after {
             width: 2vw; } }
-    .wizard-container > div > div > div:nth-child(2) > div {
+    .wizard-container > div > div > div:nth-child(3) > div {
       position: relative;
       border: 1px solid #B5B4BC;
       border-radius: 50%;
@@ -433,12 +468,12 @@
       height: 1.4rem;
       text-align: center; }
       @media (min-width: 770px) {
-        .wizard-container > div > div > div:nth-child(2) > div {
+        .wizard-container > div > div > div:nth-child(3) > div {
           width: 3vw;
           height: 3vw; } }
-      .wizard-container > div > div > div:nth-child(2) > div:not(:last-child) {
+      .wizard-container > div > div > div:nth-child(3) > div:not(:last-child) {
         margin-right: 5vw; }
-      .wizard-container > div > div > div:nth-child(2) > div:not(:last-child)::after {
+      .wizard-container > div > div > div:nth-child(3) > div:not(:last-child)::after {
         content: "";
         position: absolute;
         width: 5vw;
@@ -446,12 +481,12 @@
         left: 100%;
         height: 1px;
         background-color: #B5B4BC; }
-      .wizard-container > div > div > div:nth-child(2) > div > div > span {
+      .wizard-container > div > div > div:nth-child(3) > div > div > span {
         font-size: 1.3rem;
         font-family: 'Roboto-Black';
         line-height: 1.2; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(2) > div > div > span {
+          .wizard-container > div > div > div:nth-child(3) > div > div > span {
             font-size: 2.5vw; } }
 .wizard-container .prev-block {
   margin-top: 2rem; }
@@ -516,25 +551,27 @@
           @media (min-width: 770px) {
             .wizard-container .content-block > div > form > fieldset .step-1-tips > div > span {
               font-size: 1.3vw; } }
-    .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
-      color: #333;
-      font-family: 'Roboto-Black';
-      font-size: 0.8rem; }
-      @media (min-width: 770px) {
-        .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
-          font-size: 1vw; } }
-      .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) > span:nth-child(2) {
-        margin-left: 1rem; }
-    .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
-      margin-top: 0.8rem;
-      color: #333;
-      font-size: 0.75rem;
-      font-family: 'Roboto-Regular'; }
-      @media (min-width: 770px) {
-        .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
-          font-size: 1vw; } }
-      .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) > div > label > input {
-        margin-right: 0.5rem; }
+    .wizard-container .content-block > div > form > fieldset > div {
+      margin-top: 0.8vh; }
+      .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
+        color: #333;
+        font-family: 'Roboto-Black';
+        font-size: 0.8rem; }
+        @media (min-width: 770px) {
+          .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) {
+            font-size: 1vw; } }
+        .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(1) > span:nth-child(2) {
+          margin-left: 1rem; }
+      .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
+        margin-top: 0.6rem;
+        color: #333;
+        font-size: 0.75rem;
+        font-family: 'Roboto-Regular'; }
+        @media (min-width: 770px) {
+          .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) {
+            font-size: 1vw; } }
+        .wizard-container .content-block > div > form > fieldset > div > div > div:nth-child(2) > div > label > input {
+          margin-right: 0.5rem; }
 .wizard-container .next-block {
   text-align: center; }
   @media (min-width: 770px) {
@@ -547,8 +584,8 @@
   @media (min-width: 770px) {
     .wizard-container .send-block {
       text-align: right; } }
-  .wizard-container .send-block > a {
-    padding: 0.2em 3em; }
+  .wizard-container .send-block > button {
+    padding: 0.6em 3em; }
 
 .lvl--active {
   border: 1px solid #d60026 !important;

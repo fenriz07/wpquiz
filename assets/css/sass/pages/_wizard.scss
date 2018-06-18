@@ -13,6 +13,27 @@
         }
     }
 
+    .timer-block {
+        color: $black;
+        font-size: 1rem;
+        font-family: 'Roboto-Black';
+        text-align: center;
+        text-align: right;
+        margin-bottom: 2rem;
+
+        @media (min-width: 770px) {
+            font-size: 2vw;
+        }
+
+        > div {
+            display: inline-block;
+
+            > span:not(:last-child) {
+                color: #d60026;
+            }
+        }
+    }
+
 
     > div {
 
@@ -21,7 +42,7 @@
 
             > div {
 
-                &:nth-child(2) {
+                &:nth-child(3) {
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
@@ -50,7 +71,7 @@
 
                                 @media (min-width: 770px) {
                                     font-size: 2.15vw;
-                                    line-height: 1.41;
+                                    line-height: 1.5;
                                     top: 0;
                                 }
                             }
@@ -224,6 +245,7 @@
                     }
 
                     > div {
+                        margin-top: 0.8vh;
 
                         > div {
 
@@ -241,7 +263,7 @@
                             }
 
                             > div:nth-child(2) {
-                                margin-top: 0.8rem;
+                                margin-top: 0.6rem;
                                 color: $black;
                                 font-size: 0.75rem;
                                 font-family: 'Roboto-Regular';
@@ -287,8 +309,8 @@
             text-align: right;
         }
 
-        > a {
-            padding: 0.2em 3em;
+        > button {
+            padding: 0.6em 3em;
         }
     }
 

@@ -3,7 +3,8 @@ jQuery(document).ready(function ($) {
     var lvlsBar         = document.querySelector('.progress-block');
     var nextLevel       = document.querySelector('#next-questions');
     var prevLevel       = document.querySelector('#prev-questions');
-    var sendTest        = document.querySelector('.send-block');
+    var sendBlock       = document.querySelector('.send-block');
+    var sendTest        = document.querySelector('#send-questions');
     var startTest       = document.querySelector('#startTest');
     var currentLvl      = 0;
     var inputName       = $('#testFullName');
@@ -33,10 +34,10 @@ jQuery(document).ready(function ($) {
 
             if (currentLvl === (levelForm.children.length - 1)) {
                 $(nextLevel).hide();
-                $(sendTest).show();
+                $(sendBlock).show();
             } else {
                 $(nextLevel).show();
-                $(sendTest).hide();
+                $(sendBlock).hide();
             }
 
             if (currentLvl === 0) {
@@ -107,6 +108,11 @@ jQuery(document).ready(function ($) {
     $("#startTest").click(function (event) {
         event.preventDefault();
 
+        //Timer
+        document.getElementById('timer').innerHTML = 01 + ":" + 00;
+        startTimer();
+
+
         if (validFullName == true && validEmail == true && validPhone == true) {
 
             nameVal = $(inputName).val();
@@ -122,9 +128,64 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    // TIMER TO FIRE FUNCTION
+
+    var startTimer = function () {
+        var presentTime = document.getElementById('timer').innerHTML;
+        var timeArray = presentTime.split(/[:]+/);
+        var m = timeArray[0];
+        var s = checkSecond((timeArray[1] - 1));
+        var finishSend = false;
+    
+        if (s == 59) {
+            m = m - 1;
+        }
+
+        if (m < 0)   {
+            sendTestEmail();
+            finishSend = true;
+        }
+    
+        document.getElementById('timer').innerHTML = m + ":" + s;
+        if (!finishSend) {
+            setTimeout(startTimer, 1000);
+        } else {
+            document.getElementById('timer').innerHTML = '00' + ":" + '00';
+        }
+    }
+
+    // CHECK THE TIMER
+
+    function checkSecond(sec) {
+
+        if (sec < 10 && sec >= 0) {
+            sec = "0" + sec;
+        } // add zero in front of numbers < 10
+
+        if (sec < 0) {
+            sec = "59"
+        }
+        
+        return sec;
+    }
+
+    // FUNCTION TO SEND TEST TO EMAIL VIA AJAX
+
+    var sendTestEmail = function() {
+        var test = $(levelform).serializeArray();
+
+        new TestView({
+          email:    emailVal,
+          lastname: nameVal,
+          phone:    phoneVal,
+          test :    test
+        });
+    }
 
     $(sendTest).on('click', function (event) {
-        //event.preventDefault();
+        event.preventDefault();
+
+        $(this).prop('disabled', true);
 
         /*
             TODO BLOQUEAR EL BOTON CUANDO SE LE DA CLICK.
@@ -134,14 +195,7 @@ jQuery(document).ready(function ($) {
             TODO EMITIR MENSAJE DE QUE EL TEST FUE PROCESADO.
 
         */
-        var test = $(levelform).serializeArray();
-
-        new TestView({
-          email:    emailVal,
-          lastname: nameVal,
-          phone:    phoneVal,
-          test :    test
-        });
+       sendTestEmail();
 
     });
 
