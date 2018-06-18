@@ -37,6 +37,18 @@ var CategoryView = Backbone.View.extend({
         </div>
         `);
       }
+    } else {
+      for (var i = 1; i < (fases.length + 1); i++) {
+        jQuery(lvlBars).append(`
+        <div class="lvlForm">
+          <div>
+            <span>
+                ${i + 1}
+            </span>
+          </div>
+        </div>
+        `);
+      }
     }
 
     fases.forEach(function (element, index) {
@@ -110,7 +122,6 @@ var TestView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
   render : function(){
-    
     alert("Test Finalizado. Gracias por avisar.");
   },
   blockEl:function(){
