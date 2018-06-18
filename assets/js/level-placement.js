@@ -131,7 +131,11 @@ jQuery(document).ready(function ($) {
 
             new CategoryView();
         } else {
-            alert("Faltan campos por rellenar");
+            $('.input-material:nth-child(3)').append(`
+            <div> 
+                <span class="required-field">Faltan campos por rellenar o son incorrectos</span>
+            </div>
+            `);
         }
     });
 
