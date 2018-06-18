@@ -119,8 +119,8 @@ jQuery(document).ready(function ($) {
 
             setTimeout(stopLoading, 3000);
             //Timer HERE YOU SELECT THE TIME THAT YOU WANT TO 
-            document.getElementById('timer').innerHTML = 01 + ":" + 00;
-            startTimer();
+            document.getElementById('timer').innerHTML = 60 + ":" + 0 + 0;
+            // startTimer();
 
             nameVal = $(inputName).val();
             emailVal = $(inputEmail).val();
