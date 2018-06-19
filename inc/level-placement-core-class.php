@@ -56,6 +56,7 @@ class LevelPlacementCore
   private function initController()
   {
       require_once LEVEL_PLACEMENT_DIR . "controller/process-question.php";
+      require_once LEVEL_PLACEMENT_DIR . "controller/process-contact.php";
   }
 
 

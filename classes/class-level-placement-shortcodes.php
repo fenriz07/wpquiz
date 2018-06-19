@@ -30,7 +30,8 @@ class levelPlacementShortcode
     $site = [
       'endpoint' => get_site_url() . '/wp-json/levelplacement/v1/',
       'idcat'    => $idcat,
-      'nametest' => $term->name
+      'nametest' => $term->name,
+      'action'   => 'process_question'
     ];
 
     wp_localize_script( 'model-test', 'site', $site );

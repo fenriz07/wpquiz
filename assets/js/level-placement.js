@@ -118,7 +118,7 @@ jQuery(document).ready(function ($) {
         if (validFullName == true && validEmail == true && validPhone == true) {
 
             setTimeout(stopLoading, 3000);
-            //Timer HERE YOU SELECT THE TIME THAT YOU WANT TO 
+            //Timer HERE YOU SELECT THE TIME THAT YOU WANT TO
             document.getElementById('timer').innerHTML = 60 + ":" + 0 + 0;
             // startTimer();
 
@@ -126,13 +126,21 @@ jQuery(document).ready(function ($) {
             emailVal = $(inputEmail).val();
             phoneVal = $(inputPhone).val();
 
+            var modelContact = new ContactModel();
+                modelContact.set("email",emailVal);
+                modelContact.set("lastname",nameVal);
+                modelContact.set("phone",phoneVal);
+                modelContact.set("name-test",site.nametest);
+                modelContact.set("action", "process_question");
+                modelContact.save()
+
             $('.landing-container').hide('400');
             $('.wizard-container').show('400');
 
             new CategoryView();
         } else {
             $('.input-material:nth-child(3)').append(`
-            <div> 
+            <div>
                 <span class="required-field">Faltan campos por rellenar o son incorrectos</span>
             </div>
             `);
@@ -147,7 +155,7 @@ jQuery(document).ready(function ($) {
         var m = timeArray[0];
         var s = checkSecond((timeArray[1] - 1));
         var finishSend = false;
-    
+
         if (s == 59) {
             m = m - 1;
         }
@@ -156,7 +164,7 @@ jQuery(document).ready(function ($) {
             sendTestEmail();
             finishSend = true;
         }
-    
+
         document.getElementById('timer').innerHTML = m + ":" + s;
         if (!finishSend) {
             setTimeout(startTimer, 1000);
@@ -176,7 +184,7 @@ jQuery(document).ready(function ($) {
         if (sec < 0) {
             sec = "59"
         }
-        
+
         return sec;
     }
 

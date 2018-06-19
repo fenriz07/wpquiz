@@ -21,7 +21,7 @@ var CategoryView = Backbone.View.extend({
     var half = result.length / 5;
     var fases = this.splitIntoSubArray(result, 5);
     var lvlBars = document.querySelector('.progress-block');
-    
+
     if (half > 7) {
       jQuery(lvlBars).children().removeClass('lvlForm');
       jQuery(lvlBars).children().addClass('lvlForm--stretch');
@@ -54,7 +54,7 @@ var CategoryView = Backbone.View.extend({
     fases.forEach(function (element, index) {
 
       jQuery(levelForm).append('<fieldset data-step="' + (index + 1) + '" hidden><div></div></fieldset>');
-      
+
       var elLen = element.length;
       var dataStep = jQuery('[data-step=' + (index + 1) + ']');
 
@@ -104,7 +104,6 @@ var CategoryView = Backbone.View.extend({
   }
 });
 
-
 var TestView = Backbone.View.extend({
 
   b : '#send-questions',
@@ -115,9 +114,6 @@ var TestView = Backbone.View.extend({
     this.model.set("lastname",data.lastname);
     this.model.set("phone",data.phone);
     this.model.set("test",data.test);
-    this.model.set("id_category",site.idcat);
-    this.model.set("name-test",site.nametest);
-    this.model.set("action", "process_question");
     this.model.save()
     this.model.on("change", this.render, this);
   },

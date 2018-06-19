@@ -6,4 +6,17 @@ var CategoryModel = Backbone.Model.extend({
 
 var TestModel = Backbone.Model.extend({
   urlRoot: ROOT + 'test',
+  defaults:{
+    'id_category' : site.idcat,
+    'name-test'   : site.nametest,
+    'action'      : site.action
+  }
+});
+
+var ContactModel = Backbone.Model.extend({
+  urlRoot: ROOT + 'contact',
+  defaults:{
+    'name-test'   : site.nametest,
+    'action'      : site.action
+  }
 });
