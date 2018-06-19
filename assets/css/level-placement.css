@@ -539,11 +539,11 @@
       color: #d60026; }
 .wizard-container > div > div {
   width: 90%; }
-  .wizard-container > div > div > div:nth-child(3) {
+  .wizard-container > div > div > .progress-block {
     display: flex;
     flex-direction: row;
     justify-content: center; }
-    .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch {
+    .wizard-container > div > div > .progress-block > .lvlForm--stretch {
       position: relative;
       border: 1px solid #B5B4BC;
       border-radius: 50%;
@@ -551,26 +551,26 @@
       height: 1rem;
       text-align: center; }
       @media (min-width: 770px) {
-        .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch {
+        .wizard-container > div > div > .progress-block > .lvlForm--stretch {
           width: 3.1vw;
           height: 3.1vw; } }
-      .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch > div > span {
+      .wizard-container > div > div > .progress-block > .lvlForm--stretch > div > span {
         font-size: 0.7rem;
         font-family: 'Roboto-Black';
         position: relative;
         top: -0.5rem;
         line-height: 0; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch > div > span {
+          .wizard-container > div > div > .progress-block > .lvlForm--stretch > div > span {
             font-size: 2.15vw;
             line-height: 1.5;
             top: 0; } }
-      .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child) {
+      .wizard-container > div > div > .progress-block > .lvlForm--stretch:not(:last-child) {
         margin-right: 1.5vw; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child) {
+          .wizard-container > div > div > .progress-block > .lvlForm--stretch:not(:last-child) {
             margin-right: 2vw; } }
-      .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child)::after {
+      .wizard-container > div > div > .progress-block > .lvlForm--stretch:not(:last-child)::after {
         content: "";
         position: absolute;
         width: 1.5vw;
@@ -579,9 +579,9 @@
         height: 1px;
         background-color: #B5B4BC; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(3) > .lvlForm--stretch:not(:last-child)::after {
+          .wizard-container > div > div > .progress-block > .lvlForm--stretch:not(:last-child)::after {
             width: 2vw; } }
-    .wizard-container > div > div > div:nth-child(3) > div {
+    .wizard-container > div > div > .progress-block > div {
       position: relative;
       border: 1px solid #B5B4BC;
       border-radius: 50%;
@@ -589,12 +589,12 @@
       height: 1.4rem;
       text-align: center; }
       @media (min-width: 770px) {
-        .wizard-container > div > div > div:nth-child(3) > div {
+        .wizard-container > div > div > .progress-block > div {
           width: 3vw;
           height: 3vw; } }
-      .wizard-container > div > div > div:nth-child(3) > div:not(:last-child) {
+      .wizard-container > div > div > .progress-block > div:not(:last-child) {
         margin-right: 5vw; }
-      .wizard-container > div > div > div:nth-child(3) > div:not(:last-child)::after {
+      .wizard-container > div > div > .progress-block > div:not(:last-child)::after {
         content: "";
         position: absolute;
         width: 5vw;
@@ -602,12 +602,12 @@
         left: 100%;
         height: 1px;
         background-color: #B5B4BC; }
-      .wizard-container > div > div > div:nth-child(3) > div > div > span {
+      .wizard-container > div > div > .progress-block > div > div > span {
         font-size: 1.3rem;
         font-family: 'Roboto-Black';
         line-height: 1.2; }
         @media (min-width: 770px) {
-          .wizard-container > div > div > div:nth-child(3) > div > div > span {
+          .wizard-container > div > div > .progress-block > div > div > span {
             font-size: 2.5vw; } }
 .wizard-container .prev-block {
   margin-top: 2rem; }
