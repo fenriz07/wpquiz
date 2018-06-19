@@ -118,8 +118,9 @@ jQuery(document).ready(function ($) {
         if (validFullName == true && validEmail == true && validPhone == true) {
 
             setTimeout(stopLoading, 3000);
+
             //Timer HERE YOU SELECT THE TIME THAT YOU WANT TO
-            document.getElementById('timer').innerHTML = 60 + ":" + 0 + 0;
+            //document.getElementById('timer').innerHTML = 60 + ":" + 00;
             // startTimer();
 
             nameVal = $(inputName).val();

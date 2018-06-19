@@ -40,9 +40,7 @@
         > div {
             width: 90%;
 
-            > div {
-
-                &:nth-child(3) {
+            > .progress-block {
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
@@ -140,7 +138,6 @@
                             }
                         }
                     }
-                }
             }
 
         }
