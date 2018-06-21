@@ -1,22 +1,31 @@
 var ROOT = site.endpoint;
+var LEVELS = site.levels;
 
+//GET TEST
 var CategoryModel = Backbone.Model.extend({
   urlRoot: ROOT + 'tests/category',
 });
 
+//GET NIVELES
+var LvlsModel = Backbone.Model.extend({
+  urlRoot: ROOT + 'test/lvls',
+});
+
+//POST
 var TestModel = Backbone.Model.extend({
   urlRoot: ROOT + 'test',
   defaults:{
-    'id_category' : site.idcat,
     'name-test'   : site.nametest,
+    'name-level'  : 'Nameless',
     'action'      : site.action
   }
 });
 
+//POST
 var ContactModel = Backbone.Model.extend({
   urlRoot: ROOT + 'contact',
   defaults:{
-    'name-test'   : site.nametest,
+    'name-test'   : site.contact,
     'action'      : site.action
   }
 });

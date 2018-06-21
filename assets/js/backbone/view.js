@@ -1,7 +1,7 @@
 var CategoryView = Backbone.View.extend({
-  initialize: function () {
+  initialize: function (data) {
     this.model = new CategoryModel({
-      id: site.idcat
+      id: data.idcat
     });
     this.model.fetch({
       traditional: true,
@@ -110,6 +110,7 @@ var TestView = Backbone.View.extend({
   initialize : function(data){
     this.model = new TestModel();
     this.blockEl();
+    this.model.set("id_category",data.idcat);
     this.model.set("email",data.email);
     this.model.set("lastname",data.lastname);
     this.model.set("phone",data.phone);
@@ -143,3 +144,27 @@ var TestView = Backbone.View.extend({
 
 
 });
+
+/*
+  Example use for class LvlView:
+
+  new LvlView({
+    idcat: lvlid
+  });
+
+*/
+var LvlView = Backbone.View.extend({
+  initialize : function(data){
+    this.model = new CategoryModel({
+      id: data.idcat
+    });
+    this.model.fetch({
+      traditional: true,
+    });
+    this.model.on("change", this.setLevels, this);
+  },
+  setLevels: function () {
+    this.levels = this.model.get('levels');
+    console.log(this.levels);
+  }
+})

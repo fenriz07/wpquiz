@@ -32,10 +32,11 @@ class ProcessQuestion
     $result = $this->caclTest($tests,$data['test']);
 
     $data_email = ['personal' => [
-                                    'fullname'  => $data['personal']['lastname'],
-                                    'email'     => $data['personal']['email'],
-                                    'phone'     => $data['personal']['phone'],
-                                    'name-test' => $data['name-test'],
+                                    'fullname'   => $data['personal']['lastname'],
+                                    'email'      => $data['personal']['email'],
+                                    'name-test'  => $data['name-test'],
+                                    'phone'      => $data['personal']['phone'],
+                                    'name-level' => $data['name-level'],
                                  ],
                     'statistics'     => $result,
                   ];
@@ -84,7 +85,7 @@ class ProcessQuestion
   private function notifyTest($data)
   {
     $templates = (object) [
-      'search_email'  => ['{fullname}','{email}','{phone}','{name-test}','{result}','{n-approved-answers}','{approved}'],
+      'search_email'  => ['{fullname}','{email}','{name-test}','{phone}', '{name-level}','{result}','{n-approved-answers}','{approved}'],
       'email'         => file_get_contents(LEVEL_PLACEMENT_DIR .'partials/email.html'),
       'search_result' => ['{id}','{question}','{answer}','{approved}'],
       'single_result' => file_get_contents(LEVEL_PLACEMENT_DIR .'partials/single-result.html'),

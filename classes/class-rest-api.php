@@ -21,6 +21,14 @@ class apiRestTest
       ]);
     });
 
+    add_action( 'rest_api_init', function () {
+      register_rest_route( $this->namespace, '/test/lvls/(?P<id>\d+)',[
+        'methods' => 'GET',
+        'callback' => [$this, 'getLvls'],
+      ]);
+    });
+
+
     add_action( 'rest_api_init', function(){
       register_rest_route( $this->namespace,  '/test/',[
         'methods'  => 'POST',
@@ -175,6 +183,7 @@ class apiRestTest
       'action'      => $request['action'],
       'test'        => $request['test'],
       'name-test'   => $request['name-test'],
+      'name-level'  => $request['name-level']
     ];
 
     //return $request['test'][1]['value'];
@@ -192,6 +201,26 @@ class apiRestTest
       $messages['status'] = 1;
       return $messages;
     }
+
+  }
+
+  public function getLvls($data)
+  {
+
+    $nametaxonomy = 'category-test';
+    $idcat        = $data['id'];
+    $childrens    = get_term_children( $idcat, $nametaxonomy );
+    $lvls         = [];
+
+    foreach ($childrens as $key => $idchild) {
+      $lvl    = get_term($idchild,$nametaxonomy);
+      $lvls[] = [
+          'idcat'   => $idchild,
+          'namelvl' => $lvl->name
+        ];
+    }
+
+    return  ['levels' => $lvls ] ;
 
   }
 

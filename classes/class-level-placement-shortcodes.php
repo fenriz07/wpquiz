@@ -27,10 +27,18 @@ class levelPlacementShortcode
 
     $term = get_term( $idcat, 'category-test' );
 
+    if($term->parent != 0){
+
+      $html_results = file_get_contents(LEVEL_PLACEMENT_DIR .'partials/warning.html');
+
+      return $html_results;
+    }
+
     $site = [
       'endpoint' => get_site_url() . '/wp-json/levelplacement/v1/',
       'idcat'    => $idcat,
       'nametest' => $term->name,
+      'contact'  => 'Contact',
       'action'   => 'process_question'
     ];
 
@@ -49,7 +57,7 @@ class levelPlacementShortcode
 
     $html_results = str_replace('{siteurl}',$site_url,$wizard);
 
-    echo $html_results;
+    return $html_results;
   }
 }
 

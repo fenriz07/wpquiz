@@ -4,7 +4,7 @@
   Plugin Name: WP Level Placement Plugin
   Plugin URI: http://speaktosucceed.es/
   Description: Create simple tests for your students in multiple languages, with multiple answers answers to the test
-  Version: 0.1
+  Version: 1.0
   Author: Cmantikweb
   Author URI: https://cmantikweb.com/
   */
