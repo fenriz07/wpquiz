@@ -148,16 +148,12 @@ var TestView = Backbone.View.extend({
 /*
   Example use for class LvlView:
 
-  new LvlView({
-    idcat: lvlid
-  });
+  new LvlView();
 
 */
 var LvlView = Backbone.View.extend({
   initialize : function(data){
-    this.model = new CategoryModel({
-      id: data.idcat
-    });
+    this.model = new LvlsModel();
     this.model.fetch({
       traditional: true,
     });

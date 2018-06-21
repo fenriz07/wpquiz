@@ -9,6 +9,9 @@ var CategoryModel = Backbone.Model.extend({
 //GET NIVELES
 var LvlsModel = Backbone.Model.extend({
   urlRoot: ROOT + 'test/lvls',
+  defaults:{
+    id : site.idcat
+  }
 });
 
 //POST
