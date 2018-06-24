@@ -1,4 +1,4 @@
-var ROOT = site.endpoint;
+var ROOT   = site.endpoint;
 var LEVELS = site.levels;
 
 //GET TEST

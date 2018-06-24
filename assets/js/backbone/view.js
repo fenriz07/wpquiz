@@ -2,7 +2,7 @@ var CategoryView = Backbone.View.extend({
   initialize: function (data) {
 
     this.model = new CategoryModel({
-      id: 25,
+      id: data.id,
     });
     this.model.fetch({
       traditional: true,
@@ -18,6 +18,7 @@ var CategoryView = Backbone.View.extend({
     return newArray;
   },
   render: function () {
+
     var result = this.model.get('result');
     console.log(result);
     // var half = result.length / 5;
@@ -154,15 +155,18 @@ var TestView = Backbone.View.extend({
 
 */
 var LvlView = Backbone.View.extend({
-  initialize : function(data){
+  initialize : function(){
     this.model = new LvlsModel();
     this.model.fetch({
       traditional: true,
     });
     this.model.on("change", this.setLevels, this);
   },
-  setLevels: function () {
+  setLevels : function () {
     this.levels = this.model.get('levels');
-    console.log(this.levels);
+    //new CategoryView({id:this.levels[0].idcat});
+  },
+  getLevels : function(){
+    return this.levels;
   }
 })

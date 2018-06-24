@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+
     var levelform       = document.querySelector('#levelForm');
     var lvlsBar         = document.querySelector('.progress-block');
     var nextLevel       = document.querySelector('#next-questions');
@@ -18,7 +19,7 @@ jQuery(document).ready(function ($) {
     var nameVal;
     var emailVal;
     var phoneVal;
-    var lvlsInTest;
+    var lvlsInTest  = new LvlView();
 
 
     var tabChanger = function (a) {
@@ -139,15 +140,8 @@ jQuery(document).ready(function ($) {
             $('.landing-container').hide('400');
             $('.wizard-container').show('400');
 
-            lvlsInTest = new LvlView();
+            console.log(lvlsInTest.getLevels());
 
-            // Quiero pasarle como argumento los ids que me bota la vista de arriba,
-            // Pero al momento del click los lvls no están aun definidos comenzando por allí
-            // Entonces intente llamar la vista y los modelos de LvlView (ya que no hallaba que hacer)
-            // Desde la view de CategoryView, pero no me sirvio lo que necesito es pasarle dinamicamente
-            // los ids del objeto de arriba al objeto de aqui abajo.
-            new CategoryView();
-            
         } else {
             $('.input-material:nth-child(3)').append(`
             <div>
