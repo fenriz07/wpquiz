@@ -141,6 +141,23 @@
                 <button id="send-questions" href="#" class="btn-send u-margin-top-3">send</button>
             </div>
 
+            <div class="modal-block d-none">
+                <div class="modal-block-content modal-block-content--animated">
+                    <div>
+                        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        </svg>
+                    </div>
+                    <div class="u-center-text">
+                        <span>Su test está siendo procesado...</span>
+                    </div>
+                    <div class="test-last-step" hidden>
+                        <span>Desea continuar?</span>
+                        <button id="next-level" class="btn-send u-margin-top-3">si</button>
+                        <button id="cancel-test" class="btn-send u-margin-top-3">no</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -8,6 +8,7 @@ jQuery(document).ready(function ($) {
     var sendTest        = document.querySelector('#send-questions');
     var startTest       = document.querySelector('#startTest');
     var currentLvl      = 0;
+    var currentTestLvl  = 0;
     var inputName       = $('#testFullName');
     var inputEmail      = $('#testEmail');
     var inputPhone      = $('#testTelNo');
@@ -20,7 +21,6 @@ jQuery(document).ready(function ($) {
     var emailVal;
     var phoneVal;
     var lvlsInTest  = new LvlView();
-
 
     var tabChanger = function (a) {
 
@@ -140,7 +140,9 @@ jQuery(document).ready(function ($) {
             $('.landing-container').hide('400');
             $('.wizard-container').show('400');
 
-            console.log(lvlsInTest.getLevels());
+            var lvlsInTestSend = lvlsInTest.getLevels();
+
+            new CategoryView({id: lvlsInTestSend[0].idcat});
 
         } else {
             $('.input-material:nth-child(3)').append(`
@@ -149,6 +151,23 @@ jQuery(document).ready(function ($) {
             </div>
             `);
         }
+    });
+
+    var changeLevel = function() {
+        currentTestLvl++;
+        var lvlsInTestSend = lvlsInTest.getLevels();
+        var lvlsLen = lvlsInTestSend.length;
+        for (var i = 0; i < lvlsLen; i++) {
+            if (i === currentTestLvl) {
+                new CategoryView({id: lvlsInTestSend[i].idcat });
+                // categoryView.set("id", lvlsInTestSend[i].idcat);
+                // categoryView.fetch()
+            }
+        }
+    }
+
+    $('#next-level').on('click', function() {
+        changeLevel();
     });
 
     // TIMER TO FIRE FUNCTION
