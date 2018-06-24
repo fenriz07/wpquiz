@@ -124,33 +124,9 @@ var TestView = Backbone.View.extend({
   render : function(){
     jQuery('.modal-block').children().children().hide();
     jQuery('.test-last-step').show();
-    // jQuery('.wizard-container').hide();
-    // jQuery('.result-container').show();
-    // jQuery('.result-container').children().removeClass('d-none');
-    // jQuery('.result-container').children().removeClass('d-flex');
-    // jQuery('.result-container').addClass('result-container--show');
   },
   blockEl:function(){
     jQuery('.modal-block').removeClass('d-none');
-    // jQuery('.wizard-container').append(`
-    // <div class="modal-block">
-    //   <div class="modal-block-content modal-block-content--animated">
-    //     <div>
-    //         <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-    //             <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-    //         </svg>
-    //     </div>
-    //     <div class="u-center-text">
-    //         <span>Su test está siendo procesado...</span>
-    //     </div>
-    //   </div>
-    //   <div class="test-last-step" hidden>
-    //       <span>Desea continuar?</span>
-    //       <button id="next-level" class="btn-send u-margin-top-3">si</button>
-    //       <button id="cancel-test"  class="btn-send u-margin-top-3">no</button>
-    //   </div>
-    // </div>
-    // `);
   },
 
 

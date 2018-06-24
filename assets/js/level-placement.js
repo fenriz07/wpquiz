@@ -167,8 +167,41 @@ jQuery(document).ready(function ($) {
     }
 
     $('#next-level').on('click', function() {
+
+        $(this).parent().parent().parent().addClass('d-none');
+        $(this).parent().hide();
+
+        fullLoaded = false;
+        $('.loading-overlay').removeClass('d-none');
+        setTimeout(stopLoading, 4000);
+        
+        $(sendTest).prop('disabled', false);
+
+        currentLvl = 0;
+
+        var formNotFirstChild = $(levelform).children().not(':first');
+        var formFirstChild = $(levelform).children().first();
+        var progressFirstChild = $(lvlsBar).children().first();
+        var progressNotFirstChild = $(lvlsBar).children().not(':first')
+
+            $(formFirstChild).show();
+            $(progressFirstChild).addClass('lvl--active');
+        
+        $(formNotFirstChild).remove();
+        $(progressNotFirstChild).remove();
+        $(sendBlock).hide();
+        $(nextLevel).show();
+        $(prevLevel).hide();
         changeLevel();
     });
+
+    $('#cancel-test').on('click', function() {
+        $('.wizard-container').hide();
+        $('.result-container').show();
+        $('.result-container').children().removeClass('d-none');
+        $('.result-container').children().removeClass('d-flex');
+        $('.result-container').addClass('result-container--show');
+    })
 
     // TIMER TO FIRE FUNCTION
 
@@ -226,6 +259,10 @@ jQuery(document).ready(function ($) {
 
     $(sendTest).on('click', function (event) {
         event.preventDefault();
+
+        if(jQuery('.modal-block').children().children().css('display') == 'none') {
+            $('.modal-block').children().children().show();
+        }
 
         $(this).prop('disabled', true);
 
