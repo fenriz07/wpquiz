@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    var levelform       = document.querySelector('#levelForm');
+    var levelForm       = document.querySelector('#levelForm');
     var lvlsBar         = document.querySelector('.progress-block');
     var nextLevel       = document.querySelector('#next-questions');
     var prevLevel       = document.querySelector('#prev-questions');
@@ -21,6 +21,7 @@ jQuery(document).ready(function ($) {
     var emailVal;
     var phoneVal;
     var lvlsInTest  = new LvlView();
+    var actualIdTest;
 
     var tabChanger = function (a) {
 
@@ -51,14 +52,10 @@ jQuery(document).ready(function ($) {
 
             if (parseInt(item.dataset['step']) === currentLvl) {
                 $(item).show();
-                if ($('.lvl--active')) {
-                    $('.lvl--active').removeClass('lvl--active');
-                }
-                $(lvl).addClass('lvl--active');
-
             } else {
                 $(item).hide();
             }
+            console.log(currentLvl);
         }
     }
 
@@ -141,8 +138,41 @@ jQuery(document).ready(function ($) {
             $('.wizard-container').show('400');
 
             var lvlsInTestSend = lvlsInTest.getLevels();
+            var levelsLen = lvlsInTestSend.length;
 
-            new CategoryView({id: lvlsInTestSend[0].idcat});
+            if (levelsLen > 7) {
+                jQuery(lvlsBar).children().removeClass('lvlForm');
+                jQuery(lvlsBar).children().addClass('lvlForm--stretch');
+          
+                for (var i = 1; i < levelsLen; i++) {
+                  jQuery(lvlsBar).append(`
+                  <div class="lvlForm--stretch">
+                    <div>
+                      <span>
+                          ${i + 1}
+                      </span>
+                    </div>
+                  </div>
+                  `);
+                }
+              } else {
+                for (var i = 1; i < levelsLen; i++) {
+                  jQuery(lvlsBar).append(`
+                  <div class="lvlForm">
+                    <div>
+                      <span>
+                          ${i + 1}
+                      </span>
+                    </div>
+                  </div>
+                  `);
+                }
+              }
+
+            new CategoryView({
+                id: lvlsInTestSend[0].idcat,
+            });
+            actualIdTest = lvlsInTestSend[0].idcat;
 
         } else {
             $('.input-material:nth-child(3)').append(`
@@ -158,10 +188,18 @@ jQuery(document).ready(function ($) {
         var lvlsInTestSend = lvlsInTest.getLevels();
         var lvlsLen = lvlsInTestSend.length;
         for (var i = 0; i < lvlsLen; i++) {
+            const lvl      = lvlsBar.children.item(i);
+
             if (i === currentTestLvl) {
-                new CategoryView({id: lvlsInTestSend[i].idcat });
-                // categoryView.set("id", lvlsInTestSend[i].idcat);
-                // categoryView.fetch()
+                new CategoryView({
+                    id:             lvlsInTestSend[i].idcat,
+                    conditional:    true
+                });
+                actualIdTest = lvlsInTestSend[i].idcat;
+                if ($('.lvl--active')) {
+                    $('.lvl--active').removeClass('lvl--active');
+                }
+                $(lvl).addClass('lvl--active');
             }
         }
     }
@@ -179,16 +217,9 @@ jQuery(document).ready(function ($) {
 
         currentLvl = 0;
 
-        var formNotFirstChild = $(levelform).children().not(':first');
-        var formFirstChild = $(levelform).children().first();
-        var progressFirstChild = $(lvlsBar).children().first();
-        var progressNotFirstChild = $(lvlsBar).children().not(':first')
-
-            $(formFirstChild).show();
-            $(progressFirstChild).addClass('lvl--active');
+        var formContent = $(levelForm).children();
         
-        $(formNotFirstChild).remove();
-        $(progressNotFirstChild).remove();
+        $(formContent).remove();
         $(sendBlock).hide();
         $(nextLevel).show();
         $(prevLevel).hide();
@@ -247,13 +278,14 @@ jQuery(document).ready(function ($) {
     // FUNCTION TO SEND TEST TO EMAIL VIA AJAX
 
     var sendTestEmail = function() {
-        var test = $(levelform).serializeArray();
+        var test = $(levelForm).serializeArray();
 
         new TestView({
-          email:    emailVal,
-          lastname: nameVal,
-          phone:    phoneVal,
-          test :    test
+          email:       emailVal,
+          lastname:    nameVal,
+          phone:       phoneVal,
+          test :       test,
+          idcat:       actualIdTest
         });
     }
 

@@ -295,6 +295,10 @@
       animation: moveInBottom .5s ease-out .75s;
       animation-fill-mode: backwards; }
 
+.test-last-step > span {
+  color: #000;
+  display: block; }
+
 .row {
   max-width: 114rem;
   background-color: #eee;

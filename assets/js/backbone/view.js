@@ -1,6 +1,8 @@
 var CategoryView = Backbone.View.extend({
   initialize: function (data) {
 
+    this.conditionalLvl = data.conditional;
+
     this.model = new CategoryModel({
       id: data.id,
     });
@@ -20,46 +22,22 @@ var CategoryView = Backbone.View.extend({
   render: function () {
 
     var result = this.model.get('result');
-    console.log(result);
     var half = result.length / 5;
     var fases = this.splitIntoSubArray(result, 5);
-    var lvlBars = document.querySelector('.progress-block');
-
-    if (half > 7) {
-      jQuery(lvlBars).children().removeClass('lvlForm');
-      jQuery(lvlBars).children().addClass('lvlForm--stretch');
-
-      for (var i = 1; i < (fases.length + 1); i++) {
-        jQuery(lvlBars).append(`
-        <div class="lvlForm--stretch">
-          <div>
-            <span>
-                ${i + 1}
-            </span>
-          </div>
-        </div>
-        `);
-      }
-    } else {
-      for (var i = 1; i < (fases.length + 1); i++) {
-        jQuery(lvlBars).append(`
-        <div class="lvlForm">
-          <div>
-            <span>
-                ${i + 1}
-            </span>
-          </div>
-        </div>
-        `);
-      }
-    }
+    var conditional = this.conditionalLvl;
 
     fases.forEach(function (element, index) {
 
-      jQuery(levelForm).append('<fieldset data-step="' + (index + 1) + '" hidden><div></div></fieldset>');
+      if (conditional === true){
+        indexFieldset = index;
+      } else {
+        indexFieldset = (index + 1);
+      }
+
+      jQuery(levelForm).append('<fieldset data-step="' + (indexFieldset) + '" hidden><div></div></fieldset>');
 
       var elLen = element.length;
-      var dataStep = jQuery('[data-step=' + (index + 1) + ']');
+      var dataStep = jQuery('[data-step=' + (indexFieldset) + ']');
 
       for (var i = 0; i < elLen; i++) {
 
@@ -81,20 +59,20 @@ var CategoryView = Backbone.View.extend({
                 </div>
                 <div>
                   <div>
-                    <label for="data-step-${index + 1}-question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="data-step-${index + 1}-question-${iPlus}-option-0" value="${answetOneSlug}">
+                    <label for="data-step-${indexFieldset}-question-${iPlus}-option-0">
+                      <input type="radio" name="${id}" id="data-step-${indexFieldset}-question-${iPlus}-option-0" value="${answetOneSlug}">
                         ${answerOne}
                     </label>
                   </div>
                   <div>
-                    <label for="data-step-${index + 1}-question-${iPlus}-option-1">
-                      <input type="radio" name="${id}" id="data-step-${index + 1}-question-${iPlus}-option-1" value="${answetTwoSlug}">
+                    <label for="data-step-${indexFieldset}-question-${iPlus}-option-1">
+                      <input type="radio" name="${id}" id="data-step-${indexFieldset}-question-${iPlus}-option-1" value="${answetTwoSlug}">
                         ${answerTwo}
                     </label>
                   </div>
                   <div>
-                    <label for="data-step-${index + 1}-question-${iPlus}-option-2">
-                      <input type="radio" name="${id}" id="data-step-${index + 1}-question-${iPlus}-option-2" value="${answetThreeSlug}">
+                    <label for="data-step-${indexFieldset}-question-${iPlus}-option-2">
+                      <input type="radio" name="${id}" id="data-step-${indexFieldset}-question-${iPlus}-option-2" value="${answetThreeSlug}">
                         ${answerThree}
                     </label>
                   </div>
@@ -102,6 +80,9 @@ var CategoryView = Backbone.View.extend({
               </div>
           `);
       }
+      if (conditional === true) {
+        jQuery(levelForm).children().first().show();
+      } 
     });
 
   }
@@ -122,11 +103,12 @@ var TestView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
   render : function(){
-    jQuery('.modal-block').children().children().hide();
+    jQuery('.modal-block').children().children().not(':last-child').hide();
     jQuery('.test-last-step').show();
   },
   blockEl:function(){
     jQuery('.modal-block').removeClass('d-none');
+    jQuery('.test-last-step').hide();
   },
 
 
