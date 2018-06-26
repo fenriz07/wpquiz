@@ -55,7 +55,6 @@ jQuery(document).ready(function ($) {
             } else {
                 $(item).hide();
             }
-            console.log(currentLvl);
         }
     }
 
@@ -189,6 +188,10 @@ jQuery(document).ready(function ($) {
         var lvlsLen = lvlsInTestSend.length;
         for (var i = 0; i < lvlsLen; i++) {
             const lvl      = lvlsBar.children.item(i);
+
+            if (currentTestLvl === lvlsLen){
+                
+            }
 
             if (i === currentTestLvl) {
                 new CategoryView({

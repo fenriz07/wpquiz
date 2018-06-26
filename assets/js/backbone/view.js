@@ -12,6 +12,19 @@ var CategoryView = Backbone.View.extend({
     this.model.on("change", this.render, this);
     }
   ,
+  sendTestEmail : function() {
+    var test = jQuery(levelForm).serializeArray();
+
+    new TestView({
+      email:       emailVal,
+      lastname:    nameVal,
+      phone:       phoneVal,
+      test :       test,
+      idcat:       actualIdTest
+    });
+
+    return false;
+  },
   splitIntoSubArray: function (arr, count) {
     var newArray = [];
     while (arr.length > 0) {
@@ -85,6 +98,28 @@ var CategoryView = Backbone.View.extend({
       } 
     });
 
+    jQuery('input:radio').on('click', function(event){
+
+      var check = true;
+      jQuery("input:radio").each(function(){
+          var name = jQuery(this).attr("name");
+          if(jQuery("input:radio[name="+name+"]:checked").length == 0){
+              check = false;
+          }
+      });
+      
+      if (check) {
+
+        if(jQuery('.modal-block').children().children().css('display') == 'none') {
+          jQuery('.modal-block').children().children().show();
+        }
+        
+        this.sendTestEmail();
+        
+      } else {
+        alert('Please select one option in each question.');
+      }
+    });
   }
 });
 
