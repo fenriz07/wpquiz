@@ -2,6 +2,7 @@ var CategoryView = Backbone.View.extend({
   initialize: function (data) {
 
     this.conditionalLvl = data.conditional;
+    this.finalLvl       = data.finalLvl;
     this.email          = data.email;
     this.lastname       = data.lastname;
     this.phone          = data.phone;
@@ -18,7 +19,7 @@ var CategoryView = Backbone.View.extend({
   ,
   // FUNCTION TO SEND TEST TO EMAIL VIA AJAX
 
-  sendTestEmail : function(email,lastname,phone,actualId) {
+  sendTestEmail : function(email,lastname,phone,actualId, finalLvl) {
     var test      = jQuery(levelForm).serializeArray();
 
     new TestView({
@@ -26,7 +27,8 @@ var CategoryView = Backbone.View.extend({
       lastname:    lastname,
       phone:       phone,
       test :       test,
-      idcat:       actualId
+      idcat:       actualId,
+      finalLvl:    finalLvl
     });
   },
   splitIntoSubArray: function (arr, count) {
@@ -47,6 +49,7 @@ var CategoryView = Backbone.View.extend({
     var half        = result.length / 5;
     var fases       = this.splitIntoSubArray(result, 5);
     var conditional = this.conditionalLvl;
+    var finalLvl    = this.finalLvl;
 
     fases.forEach(function (element, index) {
 
@@ -123,7 +126,7 @@ var CategoryView = Backbone.View.extend({
           jQuery('.modal-block').children().children().show();
         }
         // Here Im sending the email, passing the following args defined at the beginning of render()
-        sendTest(email,lastname,phone,actualId);        
+        sendTest(email,lastname,phone,actualId, finalLvl);        
       }
     });
   }
@@ -133,6 +136,7 @@ var TestView = Backbone.View.extend({
 
   b : '#send-questions',
   initialize : function(data){
+    this.finalLvl = data.finalLvl;
     this.model = new TestModel();
     this.blockEl();
     this.model.set("id_category",data.idcat);
@@ -144,8 +148,18 @@ var TestView = Backbone.View.extend({
     this.model.on("change", this.render, this);
   },
   render : function(){
+    var finalLvl = this.finalLvl;
     jQuery('.modal-block').children().children().not(':last-child').hide();
-    jQuery('.test-last-step').show();
+    if (!finalLvl) {
+      jQuery('.test-last-step').show();
+    } else {
+      jQuery('.test-last-step').hide();
+      jQuery('.wizard-container').hide();
+      jQuery('.result-container').show();
+      jQuery('.result-container').children().removeClass('d-none');
+      jQuery('.result-container').children().removeClass('d-flex');
+      jQuery('.result-container').addClass('result-container--show');
+    }
   },
   blockEl:function(){
     jQuery('.modal-block').removeClass('d-none');

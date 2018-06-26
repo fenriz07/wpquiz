@@ -20,8 +20,9 @@ jQuery(document).ready(function ($) {
     var nameVal;
     var emailVal;
     var phoneVal;
-    var lvlsInTest  = new LvlView();
+    var lvlsInTest      = new LvlView();
     var actualIdTest;
+    var finalLvl        = false;
 
     var tabChanger = function (a) {
 
@@ -169,6 +170,7 @@ jQuery(document).ready(function ($) {
             new CategoryView({
                 id:         lvlsInTestSend[0].idcat,
                 email:      emailVal,
+                finalLvl:   finalLvl,
                 lastname:   nameVal,
                 phone:      phoneVal,
                 actualId:   lvlsInTestSend[0].idcat,
@@ -194,11 +196,16 @@ jQuery(document).ready(function ($) {
         for (var i = 0; i < lvlsLen; i++) {
             const lvl      = lvlsBar.children.item(i);
 
+            if (currentTestLvl === (lvlsLen - 1)) {
+                finalLvl = true;
+            }
+
             if (i === currentTestLvl) {
 
                 new CategoryView({
                     id:           lvlsInTestSend[i].idcat,
                     conditional:  true,
+                    finalLvl:     finalLvl,
                     email:        emailVal,
                     lastname:     nameVal,
                     phone:        phoneVal,
@@ -212,7 +219,7 @@ jQuery(document).ready(function ($) {
                 }
 
                 $(lvl).addClass('lvl--active');
-                
+
             }
         }
     }
