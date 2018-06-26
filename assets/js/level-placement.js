@@ -39,7 +39,9 @@ jQuery(document).ready(function ($) {
 
             if (currentLvl === (levelForm.children.length - 1)) {
                 $(nextLevel).hide();
+                $(sendBlock).show();
             } else {
+                $(sendBlock).hide();
                 $(nextLevel).show();
             }
 
@@ -295,6 +297,18 @@ jQuery(document).ready(function ($) {
         return sec;
     }
 
+    $(sendTest).on('click', function (event) {
+        event.preventDefault();
+        
+        if(jQuery('.modal-block').children().children().css('display') == 'none') {
+            $('.modal-block').children().children().show();
+        }
+        
+        $(this).prop('disabled', true);
+        
+        sendTestEmail();
+    });
+
     // FUNCTION TO SEND TEST TO EMAIL VIA AJAX
 
     var sendTestEmail = function() {
@@ -305,7 +319,8 @@ jQuery(document).ready(function ($) {
           lastname:    nameVal,
           phone:       phoneVal,
           test :       test,
-          idcat:       actualIdTest
+          idcat:       actualIdTest,
+          finalLvl:    finalLvl
         });
     }
 
