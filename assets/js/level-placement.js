@@ -22,6 +22,7 @@ jQuery(document).ready(function ($) {
     var phoneVal;
     var lvlsInTest      = new LvlView();
     var actualIdTest;
+    var actualNameLevel;
     var finalLvl        = false;
 
     var tabChanger = function (a) {
@@ -176,9 +177,11 @@ jQuery(document).ready(function ($) {
                 lastname:   nameVal,
                 phone:      phoneVal,
                 actualId:   lvlsInTestSend[0].idcat,
+                namelvl:    lvlsInTestSend[0].namelvl
             });
 
-            actualIdTest = lvlsInTestSend[0].idcat;
+            actualNameLevel     = lvlsInTestSend[0].namelvl
+            actualIdTest        = lvlsInTestSend[0].idcat;
 
         } else {
             $('.input-material:nth-child(3)').append(`
@@ -212,9 +215,11 @@ jQuery(document).ready(function ($) {
                     lastname:     nameVal,
                     phone:        phoneVal,
                     actualId:     lvlsInTestSend[i].idcat,
+                    namelvl:      lvlsInTestSend[i].namelvl
                 });
 
-                actualIdTest = lvlsInTestSend[i].idcat;
+                actualIdTest    = lvlsInTestSend[i].idcat;
+                actualNameLevel = lvlsInTestSend[i].namelvl;
 
                 if ($('.lvl--active')) {
                     $('.lvl--active').removeClass('lvl--active');
@@ -320,7 +325,8 @@ jQuery(document).ready(function ($) {
           phone:       phoneVal,
           test :       test,
           idcat:       actualIdTest,
-          finalLvl:    finalLvl
+          finalLvl:    finalLvl,
+          namelvl:     actualNameLevel
         });
     }
 

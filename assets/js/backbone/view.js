@@ -7,6 +7,7 @@ var CategoryView = Backbone.View.extend({
     this.lastname       = data.lastname;
     this.phone          = data.phone;
     this.actualId       = data.actualId;
+    this.namelvl        = data.namelvl;
 
     this.model = new CategoryModel({
       id: data.id,
@@ -19,7 +20,7 @@ var CategoryView = Backbone.View.extend({
   ,
   // FUNCTION TO SEND TEST TO EMAIL VIA AJAX
 
-  sendTestEmail : function(email,lastname,phone,actualId, finalLvl) {
+  sendTestEmail : function(email,lastname,phone,actualId, finalLvl, namelvl) {
     var test      = jQuery(levelForm).serializeArray();
 
     new TestView({
@@ -28,7 +29,8 @@ var CategoryView = Backbone.View.extend({
       phone:       phone,
       test :       test,
       idcat:       actualId,
-      finalLvl:    finalLvl
+      finalLvl:    finalLvl,
+      namelvl:     namelvl
     });
   },
   splitIntoSubArray: function (arr, count) {
@@ -50,6 +52,7 @@ var CategoryView = Backbone.View.extend({
     var fases       = this.splitIntoSubArray(result, 5);
     var conditional = this.conditionalLvl;
     var finalLvl    = this.finalLvl;
+    var namelvl     = this.namelvl;
 
     fases.forEach(function (element, index) {
 
@@ -126,7 +129,7 @@ var CategoryView = Backbone.View.extend({
           jQuery('.modal-block').children().children().show();
         }
         // Here Im sending the email, passing the following args defined at the beginning of render()
-        sendTest(email,lastname,phone,actualId, finalLvl);        
+        sendTest(email,lastname,phone,actualId, finalLvl, namelvl);        
       }
     });
   }
@@ -144,6 +147,7 @@ var TestView = Backbone.View.extend({
     this.model.set("lastname",data.lastname);
     this.model.set("phone",data.phone);
     this.model.set("test",data.test);
+    this.model.set("name-level",data.namelvl);
     this.model.save()
     this.model.on("change", this.render, this);
   },
@@ -185,6 +189,7 @@ var LvlView = Backbone.View.extend({
   },
   setLevels : function () {
     this.levels = this.model.get('levels');
+    console.log(this.levels);
     // new CategoryView({id:this.levels[0].idcat});
   },
   getLevels : function(){
