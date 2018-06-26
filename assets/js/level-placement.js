@@ -38,10 +38,8 @@ jQuery(document).ready(function ($) {
 
             if (currentLvl === (levelForm.children.length - 1)) {
                 $(nextLevel).hide();
-                $(sendBlock).show();
             } else {
                 $(nextLevel).show();
-                $(sendBlock).hide();
             }
 
             if (currentLvl === 0) {
@@ -169,8 +167,13 @@ jQuery(document).ready(function ($) {
               }
 
             new CategoryView({
-                id: lvlsInTestSend[0].idcat,
+                id:         lvlsInTestSend[0].idcat,
+                email:      emailVal,
+                lastname:   nameVal,
+                phone:      phoneVal,
+                actualId:   lvlsInTestSend[0].idcat,
             });
+
             actualIdTest = lvlsInTestSend[0].idcat;
 
         } else {
@@ -183,26 +186,33 @@ jQuery(document).ready(function ($) {
     });
 
     var changeLevel = function() {
+
         currentTestLvl++;
         var lvlsInTestSend = lvlsInTest.getLevels();
         var lvlsLen = lvlsInTestSend.length;
+
         for (var i = 0; i < lvlsLen; i++) {
             const lvl      = lvlsBar.children.item(i);
 
-            if (currentTestLvl === lvlsLen){
-                
-            }
-
             if (i === currentTestLvl) {
+
                 new CategoryView({
-                    id:             lvlsInTestSend[i].idcat,
-                    conditional:    true
+                    id:           lvlsInTestSend[i].idcat,
+                    conditional:  true,
+                    email:        emailVal,
+                    lastname:     nameVal,
+                    phone:        phoneVal,
+                    actualId:     lvlsInTestSend[i].idcat,
                 });
+
                 actualIdTest = lvlsInTestSend[i].idcat;
+
                 if ($('.lvl--active')) {
                     $('.lvl--active').removeClass('lvl--active');
                 }
+
                 $(lvl).addClass('lvl--active');
+                
             }
         }
     }
@@ -291,17 +301,5 @@ jQuery(document).ready(function ($) {
           idcat:       actualIdTest
         });
     }
-
-    $(sendTest).on('click', function (event) {
-        event.preventDefault();
-
-        if(jQuery('.modal-block').children().children().css('display') == 'none') {
-            $('.modal-block').children().children().show();
-        }
-
-        $(this).prop('disabled', true);
-
-        sendTestEmail();
-    });
 
 });

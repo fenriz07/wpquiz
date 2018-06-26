@@ -2,6 +2,10 @@ var CategoryView = Backbone.View.extend({
   initialize: function (data) {
 
     this.conditionalLvl = data.conditional;
+    this.email          = data.email;
+    this.lastname       = data.lastname;
+    this.phone          = data.phone;
+    this.actualId       = data.actualId;
 
     this.model = new CategoryModel({
       id: data.id,
@@ -12,18 +16,18 @@ var CategoryView = Backbone.View.extend({
     this.model.on("change", this.render, this);
     }
   ,
-  sendTestEmail : function() {
-    var test = jQuery(levelForm).serializeArray();
+  // FUNCTION TO SEND TEST TO EMAIL VIA AJAX
+
+  sendTestEmail : function(email,lastname,phone,actualId) {
+    var test      = jQuery(levelForm).serializeArray();
 
     new TestView({
-      email:       emailVal,
-      lastname:    nameVal,
-      phone:       phoneVal,
+      email:       email,
+      lastname:    lastname,
+      phone:       phone,
       test :       test,
-      idcat:       actualIdTest
+      idcat:       actualId
     });
-
-    return false;
   },
   splitIntoSubArray: function (arr, count) {
     var newArray = [];
@@ -34,9 +38,14 @@ var CategoryView = Backbone.View.extend({
   },
   render: function () {
 
-    var result = this.model.get('result');
-    var half = result.length / 5;
-    var fases = this.splitIntoSubArray(result, 5);
+    var email       = this.email;
+    var lastname    = this.lastname;
+    var phone       = this.phone;
+    var actualId    = this.actualId;
+    var result      = this.model.get('result');
+    var sendTest    = this.sendTestEmail;
+    var half        = result.length / 5;
+    var fases       = this.splitIntoSubArray(result, 5);
     var conditional = this.conditionalLvl;
 
     fases.forEach(function (element, index) {
@@ -113,11 +122,8 @@ var CategoryView = Backbone.View.extend({
         if(jQuery('.modal-block').children().children().css('display') == 'none') {
           jQuery('.modal-block').children().children().show();
         }
-        
-        this.sendTestEmail();
-        
-      } else {
-        alert('Please select one option in each question.');
+        // Here Im sending the email, passing the following args defined at the beginning of render()
+        sendTest(email,lastname,phone,actualId);        
       }
     });
   }
