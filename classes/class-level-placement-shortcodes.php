@@ -31,7 +31,9 @@ class levelPlacementShortcode
     if($idcat != 1){
         $instructions = ___get_term_meta_text($idcat);
         foreach ($instructions as $key => $instruction) {
-          $html_results_ins .= str_replace(['{check}','{instruction}'],[$icon_check,$instruction],$html_instruction);
+          if(!empty($instruction)){
+            $html_results_ins .= str_replace(['{check}','{instruction}'],[$icon_check,$instruction],$html_instruction);
+          }
         }
     }
 
