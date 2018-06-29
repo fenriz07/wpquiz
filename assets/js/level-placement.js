@@ -24,6 +24,8 @@ jQuery(document).ready(function ($) {
     var actualIdTest;
     var actualNameLevel;
     var finalLvl        = false;
+    var nQuestion       = 1;
+    var cv = null;
 
     var tabChanger = function (a) {
 
@@ -144,7 +146,7 @@ jQuery(document).ready(function ($) {
             if (levelsLen > 7) {
                 jQuery(lvlsBar).children().removeClass('lvlForm');
                 jQuery(lvlsBar).children().addClass('lvlForm--stretch');
-          
+
                 for (var i = 1; i < levelsLen; i++) {
                   jQuery(lvlsBar).append(`
                   <div class="lvlForm--stretch">
@@ -170,15 +172,17 @@ jQuery(document).ready(function ($) {
                 }
               }
 
-            new CategoryView({
-                id:         lvlsInTestSend[0].idcat,
-                email:      emailVal,
-                finalLvl:   finalLvl,
-                lastname:   nameVal,
-                phone:      phoneVal,
-                actualId:   lvlsInTestSend[0].idcat,
-                namelvl:    lvlsInTestSend[0].namelvl
-            });
+             cv = new CategoryView({
+                        id         : lvlsInTestSend[0].idcat,
+                        email      : emailVal,
+                        finalLvl   : finalLvl,
+                        lastname   : nameVal,
+                        phone      : phoneVal,
+                        actualId   : lvlsInTestSend[0].idcat,
+                        namelvl    : lvlsInTestSend[0].namelvl,
+                        nQuestion  : nQuestion
+                    });
+
 
             actualNameLevel     = lvlsInTestSend[0].namelvl
             actualIdTest        = lvlsInTestSend[0].idcat;
@@ -207,16 +211,28 @@ jQuery(document).ready(function ($) {
 
             if (i === currentTestLvl) {
 
-                new CategoryView({
-                    id:           lvlsInTestSend[i].idcat,
-                    conditional:  true,
-                    finalLvl:     finalLvl,
-                    email:        emailVal,
-                    lastname:     nameVal,
-                    phone:        phoneVal,
-                    actualId:     lvlsInTestSend[i].idcat,
-                    namelvl:      lvlsInTestSend[i].namelvl
+                cv.setNewLvl({
+                  id          :  lvlsInTestSend[i].idcat,
+                  conditional :  true,
+                  finalLvl    :  finalLvl,
+                  email       :  emailVal,
+                  lastname    :  nameVal,
+                  phone       :  phoneVal,
+                  actualId    :  lvlsInTestSend[i].idcat,
+                  namelvl     :  lvlsInTestSend[i].namelvl,
                 });
+
+                // new CategoryView({
+                //     id          :  lvlsInTestSend[i].idcat,
+                //     conditional :  true,
+                //     finalLvl    :  finalLvl,
+                //     email       :  emailVal,
+                //     lastname    :  nameVal,
+                //     phone       :  phoneVal,
+                //     actualId    :  lvlsInTestSend[i].idcat,
+                //     namelvl     :  lvlsInTestSend[i].namelvl,
+                //     nQuestion   :  nQuestion
+                // });
 
                 actualIdTest    = lvlsInTestSend[i].idcat;
                 actualNameLevel = lvlsInTestSend[i].namelvl;
@@ -239,13 +255,13 @@ jQuery(document).ready(function ($) {
         fullLoaded = false;
         $('.loading-overlay').removeClass('d-none');
         setTimeout(stopLoading, 4000);
-        
+
         $(sendTest).prop('disabled', false);
 
         currentLvl = 0;
 
         var formContent = $(levelForm).children();
-        
+
         $(formContent).remove();
         $(sendBlock).hide();
         $(nextLevel).show();
@@ -304,13 +320,13 @@ jQuery(document).ready(function ($) {
 
     $(sendTest).on('click', function (event) {
         event.preventDefault();
-        
+
         if(jQuery('.modal-block').children().children().css('display') == 'none') {
             $('.modal-block').children().children().show();
         }
-        
+
         $(this).prop('disabled', true);
-        
+
         sendTestEmail();
     });
 

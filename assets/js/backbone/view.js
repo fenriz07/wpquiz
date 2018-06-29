@@ -8,7 +8,7 @@ var CategoryView = Backbone.View.extend({
     this.phone          = data.phone;
     this.actualId       = data.actualId;
     this.namelvl        = data.namelvl;
-
+    this.nQuestion      = data.nQuestion;
     this.model = new CategoryModel({
       id: data.id,
     });
@@ -53,9 +53,9 @@ var CategoryView = Backbone.View.extend({
     var conditional = this.conditionalLvl;
     var finalLvl    = this.finalLvl;
     var namelvl     = this.namelvl;
+    var qn          = this.nQuestion;
 
     fases.forEach(function (element, index) {
-
       if (conditional === true){
         indexFieldset = index;
       } else {
@@ -78,11 +78,10 @@ var CategoryView = Backbone.View.extend({
         var answerThree = element[i].meta.answers[2].text;
         var answetThreeSlug = element[i].meta.answers[2].slug;
         var iPlus = i + 1;
-
         jQuery(dataStep).children().append(`
               <div data-question="${iPlus}">
                 <div>
-                  <span>${iPlus}.</span>
+                  <span>${qn}.</span>
                   <span>${title}</span>
                 </div>
                 <div>
@@ -107,11 +106,13 @@ var CategoryView = Backbone.View.extend({
                 </div>
               </div>
           `);
+          qn += 1;
       }
       if (conditional === true) {
         jQuery(levelForm).children().first().show();
-      } 
+      }
     });
+    this.nQuestion = qn;
 
     jQuery('input:radio').on('click', function(event){
 
@@ -122,16 +123,36 @@ var CategoryView = Backbone.View.extend({
               check = false;
           }
       });
-      
+
       if (check) {
 
         if(jQuery('.modal-block').children().children().css('display') == 'none') {
           jQuery('.modal-block').children().children().show();
         }
         // Here Im sending the email, passing the following args defined at the beginning of render()
-        sendTest(email,lastname,phone,actualId, finalLvl, namelvl);        
+        sendTest(email,lastname,phone,actualId, finalLvl, namelvl);
       }
     });
+  },
+  setNewLvl : function(data){
+
+    this.conditionalLvl = data.conditional;
+    this.finalLvl       = data.finalLvl;
+    this.email          = data.email;
+    this.lastname       = data.lastname;
+    this.phone          = data.phone;
+    this.actualId       = data.actualId;
+    this.namelvl        = data.namelvl;
+
+    this.model = new CategoryModel({
+      id: data.id,
+    });
+    this.model.fetch({
+      traditional: true,
+    });
+
+    this.model.on("change", this.render, this);
+
   }
 });
 
@@ -189,7 +210,6 @@ var LvlView = Backbone.View.extend({
   },
   setLevels : function () {
     this.levels = this.model.get('levels');
-    console.log(this.levels);
     // new CategoryView({id:this.levels[0].idcat});
   },
   getLevels : function(){
