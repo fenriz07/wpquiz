@@ -40,7 +40,7 @@
        self::$args['post_type'] = self::$post_type;
        self::$args['post_status' ] = 'publish';
        self::$args['posts_per_page'] = -1;
-       self::$args['orderby'] = 'rand';
+       //self::$args['orderby'] = 'rand';
 
        $posts = [];
        $query = new WP_Query(self::$args);
