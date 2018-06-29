@@ -138,12 +138,8 @@ var CategoryView = Backbone.View.extend({
 
     this.conditionalLvl = data.conditional;
     this.finalLvl       = data.finalLvl;
-    this.email          = data.email;
-    this.lastname       = data.lastname;
-    this.phone          = data.phone;
     this.actualId       = data.actualId;
-    this.namelvl        = data.namelvl;
-
+    
     this.model = new CategoryModel({
       id: data.id,
     });

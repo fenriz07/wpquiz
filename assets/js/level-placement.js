@@ -25,7 +25,7 @@ jQuery(document).ready(function ($) {
     var actualNameLevel;
     var finalLvl        = false;
     var nQuestion       = 1;
-    var cv = null;
+    var cv              = null;
 
     var tabChanger = function (a) {
 
@@ -215,24 +215,8 @@ jQuery(document).ready(function ($) {
                   id          :  lvlsInTestSend[i].idcat,
                   conditional :  true,
                   finalLvl    :  finalLvl,
-                  email       :  emailVal,
-                  lastname    :  nameVal,
-                  phone       :  phoneVal,
                   actualId    :  lvlsInTestSend[i].idcat,
-                  namelvl     :  lvlsInTestSend[i].namelvl,
                 });
-
-                // new CategoryView({
-                //     id          :  lvlsInTestSend[i].idcat,
-                //     conditional :  true,
-                //     finalLvl    :  finalLvl,
-                //     email       :  emailVal,
-                //     lastname    :  nameVal,
-                //     phone       :  phoneVal,
-                //     actualId    :  lvlsInTestSend[i].idcat,
-                //     namelvl     :  lvlsInTestSend[i].namelvl,
-                //     nQuestion   :  nQuestion
-                // });
 
                 actualIdTest    = lvlsInTestSend[i].idcat;
                 actualNameLevel = lvlsInTestSend[i].namelvl;
