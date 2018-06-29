@@ -18,12 +18,23 @@ class levelPlacementShortcode
     wp_enqueue_script( 'wp-api' );
     wp_enqueue_style('level-placement-css');
 
-
+    $instructions = '';
+    $html_instruction = file_get_contents(LEVEL_PLACEMENT_DIR .'partials/instruction.html');
+    $html_results_ins = '';
+    $icon_check       =  LEVEL_PLACEMENT_URI . '/assets/img/icon-check.svg';
     $atts = shortcode_atts([
       'idcat' => 1,
     ],$atts);
 
     $idcat = $atts['idcat'];
+
+    if($idcat != 1){
+        $instructions = ___get_term_meta_text($idcat);
+        foreach ($instructions as $key => $instruction) {
+          $html_results_ins .= str_replace(['{check}','{instruction}'],[$icon_check,$instruction],$html_instruction);
+        }
+    }
+
 
     $term = get_term( $idcat, 'category-test' );
 
@@ -55,7 +66,7 @@ class levelPlacementShortcode
 
     $wizard  =  file_get_contents(LEVEL_PLACEMENT_DIR .'partials/wizard.html');
 
-    $html_results = str_replace('{siteurl}',$site_url,$wizard);
+    $html_results = str_replace(['{siteurl}','{instructions}'],[$site_url,$html_results_ins],$wizard);
 
     return $html_results;
   }

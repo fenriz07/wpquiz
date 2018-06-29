@@ -145,3 +145,102 @@ function filter_test_by_taxonomies( $post_type, $which ) {
 
 }
 add_action( 'restrict_manage_posts', 'filter_test_by_taxonomies' , 10, 2);
+
+
+// REGISTER TERM META
+add_action( 'init', '___register_term_meta_text' );
+function ___register_term_meta_text() {
+    register_meta( 'term', '__term_meta_instruction_1', '___sanitize_term_meta_text' );
+}
+
+// SANITIZE DATA
+function ___sanitize_term_meta_text ( $value ) {
+    return sanitize_text_field ($value);
+}
+// GETTER (will be sanitized)
+function ___get_term_meta_text( $term_id ) {
+
+  $instruction_1 = get_term_meta( $term_id, '__term_meta_instruction_1', true );
+  $instruction_1 = ___sanitize_term_meta_text( $instruction_1 );
+
+  $instruction_2 = get_term_meta( $term_id, '__term_meta_instruction_2', true );
+  $instruction_2 = ___sanitize_term_meta_text( $instruction_2 );
+
+  $instruction_3 = get_term_meta( $term_id, '__term_meta_instruction_3', true );
+  $instruction_3 = ___sanitize_term_meta_text( $instruction_3 );
+
+  return compact('instruction_1','instruction_2','instruction_3');
+}
+// ADD FIELD TO CATEGORY TERM PAGE
+add_action( 'category-test_add_form_fields', '___add_form_field_term_meta_text' );
+function ___add_form_field_term_meta_text() { ?>
+    <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_text_nonce' ); ?>
+
+    <div class="form-field term-meta-text-wrap">
+        <label for="term-meta-text"><?php _e( 'Instruction 1', 'text_domain' ); ?></label>
+        <input type="text" name="term_meta_instruction_1" id="term_meta_instruction_1" value="" class="term-meta-text-field" />
+    </div>
+
+    <div class="form-field term-meta-text-wrap">
+        <label for="term-meta-text"><?php _e( 'Instruction 2', 'text_domain' ); ?></label>
+        <input type="text" name="term_meta_instruction_2" id="term_meta_instruction_2" value="" class="term-meta-text-field" />
+    </div>
+
+
+    <div class="form-field term-meta-text-wrap">
+        <label for="term-meta-text"><?php _e( 'Instruction 3', 'text_domain' ); ?></label>
+        <input type="text" name="term_meta_instruction_3" id="term_meta_instruction_3" value="" class="term-meta-text-field" />
+    </div>
+
+
+
+<?php }
+// ADD FIELD TO CATEGORY EDIT PAGE
+add_action( 'category-test_edit_form_fields', '___edit_form_field_term_meta_text' );
+function ___edit_form_field_term_meta_text( $term ) {
+    $value  = ___get_term_meta_text( $term->term_id );
+    ?>
+
+    <tr class="form-field term-meta-text-wrap">
+        <th scope="row"><label for="term-meta-text"><?php _e( 'Instruction 1', 'text_domain' ); ?></label></th>
+        <td>
+            <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_text_nonce' ); ?>
+            <input type="text" name="term_meta_instruction_1" id="term_meta_instruction_1" value="<?php echo esc_attr( $value['instruction_1'] ); ?>" class="term-meta-text-field"  />
+        </td>
+    </tr>
+
+    <tr class="form-field term-meta-text-wrap">
+        <th scope="row"><label for="term-meta-text"><?php _e( 'Instruction 2', 'text_domain' ); ?></label></th>
+        <td>
+            <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_text_nonce' ); ?>
+            <input type="text" name="term_meta_instruction_2" id="term_meta_instruction_2" value="<?php echo esc_attr( $value['instruction_2'] ); ?>" class="term-meta-text-field"  />
+        </td>
+    </tr>
+
+    <tr class="form-field term-meta-text-wrap">
+        <th scope="row"><label for="term-meta-text"><?php _e( 'Instruction 3', 'text_domain' ); ?></label></th>
+        <td>
+            <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_text_nonce' ); ?>
+            <input type="text" name="term_meta_instruction_3" id="term_meta_instruction_3" value="<?php echo esc_attr( $value['instruction_3'] ); ?>" class="term-meta-text-field"  />
+        </td>
+    </tr>
+<?php }
+// SAVE TERM META (on term edit & create)
+add_action( 'edit_category-test',   '___save_term_meta_text' );
+add_action( 'create_category-test', '___save_term_meta_text' );
+
+function ___save_term_meta_text( $term_id ) {
+    // verify the nonce --- remove if you don't care
+    if ( ! isset( $_POST['term_meta_text_nonce'] ) || ! wp_verify_nonce( $_POST['term_meta_text_nonce'], basename( __FILE__ ) ) )
+        return;
+    $old_value  = ___get_term_meta_text( $term_id );
+
+    $i1 = isset( $_POST['term_meta_instruction_1'] ) ? ___sanitize_term_meta_text ( $_POST['term_meta_instruction_1'] ) : '';
+    $i2 = isset( $_POST['term_meta_instruction_2'] ) ? ___sanitize_term_meta_text ( $_POST['term_meta_instruction_2'] ) : '';
+    $i3 = isset( $_POST['term_meta_instruction_3'] ) ? ___sanitize_term_meta_text ( $_POST['term_meta_instruction_3'] ) : '';
+
+    update_term_meta( $term_id, '__term_meta_instruction_1', $i1 );
+    update_term_meta( $term_id, '__term_meta_instruction_2', $i2 );
+    update_term_meta( $term_id, '__term_meta_instruction_3', $i3 );
+
+}
