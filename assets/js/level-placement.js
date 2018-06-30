@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
     var sendBlock       = document.querySelector('.send-block');
     var sendTest        = document.querySelector('#send-questions');
     var startTest       = document.querySelector('#startTest');
-    var currentLvl      = 0;
+    var currentLvl      = 1;
     var currentTestLvl  = 0;
     var inputName       = $('#testFullName');
     var inputEmail      = $('#testEmail');
@@ -40,7 +40,7 @@ jQuery(document).ready(function ($) {
             const lvl      = lvlsBar.children.item(i);
             const lvlIndex = $(lvl).index();
 
-            if (currentLvl === (levelForm.children.length - 1)) {
+            if (currentLvl === (levelForm.children.length)) {
                 $(nextLevel).hide();
                 $(sendBlock).show();
             } else {
@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
                 $(nextLevel).show();
             }
 
-            if (currentLvl === 0) {
+            if (currentLvl === 1) {
                 $(prevLevel).hide();
             } else {
                 $(prevLevel).show();
@@ -59,7 +59,10 @@ jQuery(document).ready(function ($) {
             } else {
                 $(item).hide();
             }
+
+            console.log(currentLvl);
         }
+
     }
 
     nextLevel.addEventListener('click', function () {
@@ -147,45 +150,30 @@ jQuery(document).ready(function ($) {
                 jQuery(lvlsBar).children().removeClass('lvlForm');
                 jQuery(lvlsBar).children().addClass('lvlForm--stretch');
 
-                for (var i = 1; i < levelsLen; i++) {
+                for (var i = 1; i < (levelsLen + 1); i++) {
                   jQuery(lvlsBar).append(`
                   <div class="lvlForm--stretch">
                     <div>
                       <span>
-                          ${i + 1}
+                          ${i}
                       </span>
                     </div>
                   </div>
                   `);
                 }
               } else {
-                for (var i = 1; i < levelsLen; i++) {
+                for (var i = 1; i < (levelsLen + 1); i++) {
                   jQuery(lvlsBar).append(`
                   <div class="lvlForm">
                     <div>
                       <span>
-                          ${i + 1}
+                          ${i}
                       </span>
                     </div>
                   </div>
                   `);
                 }
               }
-
-             cv = new CategoryView({
-                        id         : lvlsInTestSend[0].idcat,
-                        email      : emailVal,
-                        finalLvl   : finalLvl,
-                        lastname   : nameVal,
-                        phone      : phoneVal,
-                        actualId   : lvlsInTestSend[0].idcat,
-                        namelvl    : lvlsInTestSend[0].namelvl,
-                        nQuestion  : nQuestion
-                    });
-
-
-            actualNameLevel     = lvlsInTestSend[0].namelvl
-            actualIdTest        = lvlsInTestSend[0].idcat;
 
         } else {
             $('.input-material:nth-child(3)').append(`
@@ -196,14 +184,52 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $('#start-questions').on('click', function(){
+
+        fullLoaded = false;
+        $('.loading-overlay').removeClass('d-none');
+        setTimeout(stopLoading, 4000);
+
+        var lvlsInTestSend = lvlsInTest.getLevels();
+        var levelsLen = lvlsInTestSend.length;
+        const lvl      = lvlsBar.children.item(1);
+
+        $('[data-step="0"]').remove();
+        $(this).hide();
+        $('.next-block').show();
+
+        cv = new CategoryView({
+            id         : lvlsInTestSend[0].idcat,
+            email      : emailVal,
+            finalLvl   : finalLvl,
+            lastname   : nameVal,
+            phone      : phoneVal,
+            actualId   : lvlsInTestSend[0].idcat,
+            namelvl    : lvlsInTestSend[0].namelvl,
+            nQuestion  : nQuestion
+        });
+
+
+        actualNameLevel     = lvlsInTestSend[0].namelvl
+        actualIdTest        = lvlsInTestSend[0].idcat;
+
+        if ($('.lvl--active')) {
+            $('.lvl--active').removeClass('lvl--active');
+        }
+
+        $(lvl).addClass('lvl--active');
+        
+    });
+
     var changeLevel = function() {
 
         currentTestLvl++;
+        currentLvl = 1;
         var lvlsInTestSend = lvlsInTest.getLevels();
         var lvlsLen = lvlsInTestSend.length;
 
         for (var i = 0; i < lvlsLen; i++) {
-            const lvl      = lvlsBar.children.item(i);
+            const lvl      = lvlsBar.children.item(i + 1);
 
             if (currentTestLvl === (lvlsLen - 1)) {
                 finalLvl = true;
@@ -241,8 +267,6 @@ jQuery(document).ready(function ($) {
         setTimeout(stopLoading, 4000);
 
         $(sendTest).prop('disabled', false);
-
-        currentLvl = 0;
 
         var formContent = $(levelForm).children();
 

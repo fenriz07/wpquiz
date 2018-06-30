@@ -56,11 +56,8 @@ var CategoryView = Backbone.View.extend({
     var qn          = this.nQuestion;
 
     fases.forEach(function (element, index) {
-      if (conditional === true){
-        indexFieldset = index;
-      } else {
-        indexFieldset = (index + 1);
-      }
+
+      indexFieldset = (index + 1);
 
       jQuery(levelForm).append('<fieldset data-step="' + (indexFieldset) + '" hidden><div></div></fieldset>');
 
@@ -110,6 +107,8 @@ var CategoryView = Backbone.View.extend({
       }
       if (conditional === true) {
         jQuery(levelForm).children().first().show();
+      } else {
+        jQuery('[data-step="1"]').show();
       }
     });
     this.nQuestion = qn;

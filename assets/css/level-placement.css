@@ -707,6 +707,13 @@
       text-align: right; } }
   .wizard-container .next-block > a {
     padding: 0.2em 3em; }
+.wizard-container .start-block {
+  text-align: center; }
+  @media (min-width: 770px) {
+    .wizard-container .start-block {
+      text-align: right; } }
+  .wizard-container .start-block > a {
+    padding: 0.2em 3em; }
 .wizard-container .send-block {
   text-align: center; }
   @media (min-width: 770px) {

@@ -303,6 +303,18 @@
         }
     }
 
+    .start-block {
+        text-align: center;
+
+        @media(min-width: 770px) {
+            text-align: right;
+        }
+
+        > a {
+            padding: 0.2em 3em;
+        }
+    }
+
     .send-block {
         text-align: center;
 
