@@ -645,36 +645,36 @@
   margin-top: 1.5rem; }
   .wizard-container .content-block > div > form > fieldset {
     border: none; }
-    .wizard-container .content-block > div > form > fieldset .step-1-title {
+    .wizard-container .content-block > div > form > fieldset .step-0-title {
       margin-bottom: 4vh; }
-      .wizard-container .content-block > div > form > fieldset .step-1-title > span {
+      .wizard-container .content-block > div > form > fieldset .step-0-title > span {
         font-family: 'Roboto-Black';
         font-size: 1.1rem;
         line-height: 1.2;
         display: block;
         color: #333; }
         @media (min-width: 770px) {
-          .wizard-container .content-block > div > form > fieldset .step-1-title > span {
+          .wizard-container .content-block > div > form > fieldset .step-0-title > span {
             font-size: 1.8vw; } }
-    .wizard-container .content-block > div > form > fieldset .step-1-tips {
+    .wizard-container .content-block > div > form > fieldset .step-0-tips {
       text-align: left;
       width: 90%;
       display: inline-block; }
       @media (min-width: 770px) {
-        .wizard-container .content-block > div > form > fieldset .step-1-tips {
+        .wizard-container .content-block > div > form > fieldset .step-0-tips {
           width: 60%; } }
-      .wizard-container .content-block > div > form > fieldset .step-1-tips > div {
+      .wizard-container .content-block > div > form > fieldset .step-0-tips > div {
         margin: 0 !important; }
-        .wizard-container .content-block > div > form > fieldset .step-1-tips > div > img {
+        .wizard-container .content-block > div > form > fieldset .step-0-tips > div > img {
           width: 5%; }
-        .wizard-container .content-block > div > form > fieldset .step-1-tips > div > span {
+        .wizard-container .content-block > div > form > fieldset .step-0-tips > div > span {
           font-family: 'Roboto-Regular';
           font-size: 0.8rem;
           font-weight: 100;
           color: #B5B4BC;
           margin-left: .5rem !important; }
           @media (min-width: 770px) {
-            .wizard-container .content-block > div > form > fieldset .step-1-tips > div > span {
+            .wizard-container .content-block > div > form > fieldset .step-0-tips > div > span {
               font-size: 1.3vw; } }
     .wizard-container .content-block > div > form > fieldset > div {
       margin-top: 0.8vh; }
