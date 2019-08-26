@@ -1,0 +1,10 @@
+{
+    "name": "mzzo/wp-level-placement-plugin",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\"       : "app/",
+            "Bootstrap\\" : "bootstrap/"
+        }
+    }
+}

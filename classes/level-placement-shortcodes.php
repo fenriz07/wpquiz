@@ -26,9 +26,7 @@ class levelPlacementShortcode
                         ->base()
                         ->addMeta()
                         ->get();
-    echo '<pre>';
-      var_dump($tests);
-    echo '</pre>';
+  
   }
 }
 
