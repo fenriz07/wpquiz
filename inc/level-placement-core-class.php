@@ -23,7 +23,7 @@ class LevelPlacementCore
   private function initClass()
   {
       require_once LEVEL_PLACEMENT_DIR  . "classes/class-level-placement-shortcodes.php";
-      require_once LEVEL_PLACEMENT_DIR  . "classes/class-rest-api.php";
+      //require_once LEVEL_PLACEMENT_DIR  . "classes/class-rest-api.php";
 
   }
 
