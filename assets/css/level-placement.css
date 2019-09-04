@@ -3,7 +3,7 @@
 .landing-container > *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit; } 
 
 @keyframes moveInLeft {
   0% {
