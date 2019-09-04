@@ -15,33 +15,29 @@ class apiRestTest
     $this->namespace = 'levelplacement/v1';
 
     add_action( 'rest_api_init', function () {
+
     	register_rest_route( $this->namespace, '/tests/category/(?P<id>\d+)',[
         'methods' => 'GET',
         'callback' => [$this, 'getTests'],
       ]);
-    });
 
-    add_action( 'rest_api_init', function () {
       register_rest_route( $this->namespace, '/test/lvls/(?P<id>\d+)',[
         'methods' => 'GET',
         'callback' => [$this, 'getLvls'],
       ]);
-    });
 
-
-    add_action( 'rest_api_init', function(){
       register_rest_route( $this->namespace,  '/test/',[
         'methods'  => 'POST',
         'callback' => [$this,'setTest'],
       ]);
-    });
 
-    add_action( 'rest_api_init', function(){
       register_rest_route( $this->namespace,  '/contact/',[
         'methods'  => 'POST',
         'callback' => [$this,'setEmailContact'],
       ]);
+
     });
+
 
   }
 

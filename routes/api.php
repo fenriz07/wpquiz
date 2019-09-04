@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\LevelsController;
+use App\Http\Controllers\Api\ContactController;
 
 /**
  *
@@ -15,89 +17,32 @@ class apiRestTest
     $this->namespace = 'levelplacement/v1';
 
     add_action( 'rest_api_init', function () {
+
     	register_rest_route( $this->namespace, '/tests/category/(?P<id>\d+)',[
         'methods' => 'GET',
         'callback' => [$this, 'getTests'],
       ]);
-    });
 
-    add_action( 'rest_api_init', function () {
       register_rest_route( $this->namespace, '/test/lvls/(?P<id>\d+)',[
         'methods' => 'GET',
-        'callback' => [$this, 'getLvls'],
+        'callback' => [ LevelsController::class, 'show'],
       ]);
-    });
 
-
-    add_action( 'rest_api_init', function(){
       register_rest_route( $this->namespace,  '/test/',[
         'methods'  => 'POST',
         'callback' => [$this,'setTest'],
       ]);
-    });
 
-    add_action( 'rest_api_init', function(){
       register_rest_route( $this->namespace,  '/contact/',[
         'methods'  => 'POST',
-        'callback' => [$this,'setEmailContact'],
+        'callback' => [ContactController::class,'store'],
       ]);
+
     });
 
-  }
-
-  public function setEmailContact($request)
-  {
-    if(!isset($request['action'])){
-      return new WP_Error( 'ups', 'Sorry no process', array( 'status' => 404 ) );
-    }else {
-      if($this->action != $request['action'] ){
-        return new WP_Error( 'ups', 'Sorry no process', array( 'status' => 404 ) );
-      }
-    }
-
-    $messages = [];
-
-    if(!isset($request['lastname'])){
-      $messages[] = new WP_Error( 'Validation Error', 'Missing the full name', array( 'status' => 7001 ) );
-    }else {
-      $request['lastname'] = filter_var($request['lastname'], FILTER_SANITIZE_STRING);
-    }
-
-    if(!isset($request['email'])){
-        $messages[] = new WP_Error( 'Validation Error', 'Missing the email', array( 'status' => 7002 ) );
-    }else {
-        $request['email'] = filter_var($request['email'], FILTER_VALIDATE_EMAIL);
-        if ($request['email']  == false) {
-            $messages[] = new WP_Error( 'Validation Error', 'Email no validate', array( 'status' => 7002 ) );
-        }
-    }
-
-    if(!isset($request['phone'])){
-        $messages[] = new WP_Error( 'Validation Error', 'Missing Phone', array( 'status' => 7003 ) );
-    }
-
-    $data = [
-      'personal' => [
-        'lastname'  => $request['lastname'],
-        'email'     => $request['email'],
-        'phone'     => $request['phone'],
-        'name-test' => $request['name-test']
-      ]
-    ];
-
-    if(count($messages) > 0){
-      $messages['status'] = 7000;
-      return $messages;
-    }else {
-      //return $data;
-      $pq = new ProcessContact();
-      $pq->processingPost($data);
-
-      $messages['status'] = 1;
-      return $messages;
-    }
 
   }
+
 
   public function getTests($data)
   {
@@ -201,26 +146,6 @@ class apiRestTest
       $messages['status'] = 1;
       return $messages;
     }
-
-  }
-
-  public function getLvls($data)
-  {
-
-    $nametaxonomy = 'category-test';
-    $idcat        = $data['id'];
-    $childrens    = get_term_children( $idcat, $nametaxonomy );
-    $lvls         = [];
-
-    foreach ($childrens as $key => $idchild) {
-      $lvl    = get_term($idchild,$nametaxonomy);
-      $lvls[] = [
-          'idcat'   => $idchild,
-          'namelvl' => $lvl->name
-        ];
-    }
-
-    return  ['levels' => $lvls ] ;
 
   }
 
