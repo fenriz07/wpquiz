@@ -6,7 +6,6 @@ trait Loader
 
     public function loadDir($dir)
     {
-
         $directory = LEVEL_PLACEMENT_DIR . $dir;
 
         foreach (glob("{$directory}/*.php") as $filename)

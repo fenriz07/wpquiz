@@ -2,7 +2,7 @@
 
 class LevelsController
 {
-    public function show($data)
+    public static function show($data)
     {
 
         $nametaxonomy = 'category-test';

@@ -20,8 +20,7 @@ class ContactController extends BaseController
 
     if( is_wp_error( $request ) )
     {
-        return $request;
-      
+        return $request;      
     }
 
     $data = [
