@@ -11,11 +11,13 @@ class App
     private function __construct()
     {
         $this->setConst();
+        $this->loadDir('app/Helpers');
         $this->loadDir('app/PostTypes');
         $this->loadDir('app/Taxonomies');
         $this->loadDir('app/MetaBox');
         $this->loadFile('lib/meta-box/meta-box');
-        $this->loadDir('app/Helpers');
+        $this->loadFile('lib/mb-term-meta/mb-term-meta');
+        $this->loadFile('lib/meta-box-group/meta-box-group');
         $this->loadDir('routes');
         $this->loadDir('app/Shortcodes');
 
@@ -46,7 +48,8 @@ class App
 
     public function initCss()
     {
-      wp_register_style( 'level-placement-css', LEVEL_PLACEMENT_URI . 'assets/css/level-placement.css','', $this->versionAssets );
+      wp_register_style( 'level-placement-admin-css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css','',     $this->versionAssets );
+
     }
 
     public function initJs()
