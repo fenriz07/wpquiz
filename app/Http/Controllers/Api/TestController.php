@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Api;
 
+use \WP_Error;
 use App\Models\TestModel;
 use App\Http\Requests\TestRequest;
 use App\Repository\Api\TestRepository;
@@ -11,6 +12,15 @@ class TestController
      */
     public static function show( $data )    
     {
+        $question_id = $data['id'];
+
+        $type = testModel::typeQuestion( $question_id );
+
+        $questions = testModel::getQuestionType($type,$question_id);
+
+        /*return $questions;
+
+
         $tests = TestModel::select()
             ->setCategory( $data['id'] )
             ->base()
@@ -20,9 +30,9 @@ class TestController
 
         if ( empty( $tests ) ) {
             return new WP_Error( 'awesome_is_empty', 'No questions associated with the category', array( 'status' => 404 ) );
-        }
+        }*/
 
-        return ['result' => $tests ];
+        return ['result' => $questions];
     }
 
     public static function store ( $request )

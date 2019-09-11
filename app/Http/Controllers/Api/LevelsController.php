@@ -1,11 +1,27 @@
 <?php namespace App\Http\Controllers\Api;
 
+use App\Models\TestModel;
+
+
 class LevelsController
 {
     public static function show($data)
     {
 
-        $nametaxonomy = 'category-test';
+        $tests = TestModel::select()
+        ->setCategory( $data['id'] )
+        ->base()
+        //->addMeta(1)
+        //->addAnswer()
+        ->get();
+
+        if ( empty( $tests ) ) {
+            return new WP_Error( 'awesome_is_empty', 'No questions associated with the category', array( 'status' => 404 ) );
+        }
+
+        return ['levels' => $tests];
+
+       /* $nametaxonomy = 'category-test';
         $idcat        = $data['id'];
         $childrens    = get_term_children( $idcat, $nametaxonomy );
         $lvls         = [];
@@ -18,7 +34,7 @@ class LevelsController
             ];
         }
 
-        return  ['levels' => $lvls ] ;            
+        return  ['levels' => $lvls ] ;   */         
         
     }
 }

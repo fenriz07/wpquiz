@@ -49,6 +49,8 @@ class App
     public function initCss()
     {
       wp_register_style( 'level-placement-admin-css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css','',     $this->versionAssets );
+      wp_register_style( 'level-placement-css', LEVEL_PLACEMENT_URI . 'assets/css/level-placement.css','',     $this->versionAssets );
+
 
     }
 

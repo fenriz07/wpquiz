@@ -111,6 +111,7 @@ var CategoryView = Backbone.View.extend({
         jQuery('[data-step="1"]').show();
       }
     });
+    
     this.nQuestion = qn;
 
     jQuery('input:radio').on('click', function(event){

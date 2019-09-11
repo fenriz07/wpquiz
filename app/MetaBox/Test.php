@@ -47,7 +47,7 @@ class MetaBoxTest{
             'audio'   ,
         ];
 
-        if( !isset( $_GET['action'] ) && is_admin() )
+        if( !isset( $_GET['action'] )  )
         {            
             
             return self::allMetabox($meta_boxes);
@@ -151,11 +151,84 @@ class MetaBoxTest{
 
     private static function parrafos( $meta_boxes )
     {
+        $meta_boxes[] = [
+            'title'      => 'Tipo: Parrafo',
+            'post_types' => ['test'],
+            'fields'     => [
+                [
+                    'name' => 'Imagen',
+                    'id'   => LEVEL_PLACEMENT_PREFIX_META_BOX . 'image',
+                    'type' => 'image_advanced',
+                    'max_file_uploads' => 1,
+                ],
+                [
+                    'type' => 'divider',
+                ],
+                [
+                    'id'         => 'questions_parrafo',
+                    'type'       => 'group',
+                    'clone'      => true,
+                    'add_button' => 'Agregar respuesta',
+                    'fields'     => [
+                        [
+                            'id' => LEVEL_PLACEMENT_PREFIX_META_BOX . 'id_answers',
+                            'type' => 'text',
+                            'name' => 'Identificador de la respuesta',
+                            'placeholder' => '1',
+                            'size' =>  60,
+                            'add_button' => 'Nueva respuesta',
+                        ],
+                        [
+                            'id' => LEVEL_PLACEMENT_PREFIX_META_BOX . 'answers',
+                            'type' => 'text',
+                            'name' => esc_html__('La primera respuesta es la valida', LEVEL_PLACEMENT_DOMAIN_TEXT),
+                            'clone' => true,
+                            'placeholder' => 'Respuesta',
+                            'size' =>  60,
+                            'add_button' => 'Nueva respuesta',
+                        ]
+                    ]
+                ],
+            ]
+
+        ];
         return $meta_boxes;
     }
 
     private static function lista( $meta_boxes )
     {
+        $meta_boxes[] = [
+            'title'      => 'Tipo: Lista',
+            'post_types' => ['test'],
+            'fields'     => [
+                [
+                    'id'         => 'questions_lista',
+                    'type'       => 'group',
+                    'clone'      => true,
+                    'add_button' => 'Agregar nueva fila',
+                    'fields'     => [
+                        [
+                            'id' => LEVEL_PLACEMENT_PREFIX_META_BOX . 'question',
+                            'type' => 'text',
+                            'name' => 'Pregunta',
+                            'placeholder' => 'The teacher mentioned that her students ………………… five essays last semester.',
+                            'size' =>  60,
+                        ],
+                        [
+                            'id' => LEVEL_PLACEMENT_PREFIX_META_BOX . 'answers',
+                            'type' => 'text',
+                            'name' => esc_html__('La primera respuesta es la valida', LEVEL_PLACEMENT_DOMAIN_TEXT),
+                            'clone' => true,
+                            'placeholder' => 'wrote',
+                            'size' =>  60,
+                            'add_button' => 'Nueva respuesta',
+                        ]
+                    ]
+                ],
+            ]
+
+        ];
+
         return $meta_boxes;
     }
 
@@ -178,9 +251,15 @@ function load_custom_wp_admin_style($hook) {
 
     if($hook == 'post-new.php') 
     {
-        wp_enqueue_style( 'custom_wp_admin_css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css' );
+        if( isset( $_GET['post_type'] ) )
+        {
+            if( $_GET['post_type'] == 'test')
+            {
+                wp_enqueue_style( 'custom_wp_admin_css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css' );
+            }
+        }
     }
 
     return;
 }
-//add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );

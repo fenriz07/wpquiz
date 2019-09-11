@@ -120,7 +120,7 @@ jQuery(document).ready(function ($) {
     $("#startTest").click(function (event) {
         event.preventDefault();
 
-        if (validFullName == true && validEmail == true && validPhone == true) {
+        if ( true ) {
 
             setTimeout(stopLoading, 3000);
 
@@ -163,11 +163,18 @@ jQuery(document).ready(function ($) {
                 }
               } else {
                 for (var i = 1; i < (levelsLen + 1); i++) {
+
                   jQuery(lvlsBar).append(`
                   <div class="lvlForm">
                     <div>
                       <span>
                           ${i}
+                      </span>
+                      <span class="details">
+                        Part: ${i}
+                      </span>
+                      <span class="details">
+                        ${lvlsInTestSend[ (i-1) ]['title']}
                       </span>
                     </div>
                   </div>
@@ -199,19 +206,19 @@ jQuery(document).ready(function ($) {
         $('.next-block').show();
 
         cv = new CategoryView({
-            id         : lvlsInTestSend[0].idcat,
+            id         : lvlsInTestSend[0].id,
             email      : emailVal,
             finalLvl   : finalLvl,
             lastname   : nameVal,
             phone      : phoneVal,
-            actualId   : lvlsInTestSend[0].idcat,
-            namelvl    : lvlsInTestSend[0].namelvl,
+            actualId   : lvlsInTestSend[0].id,
+            namelvl    : lvlsInTestSend[0].title,
             nQuestion  : nQuestion
         });
 
 
-        actualNameLevel     = lvlsInTestSend[0].namelvl
-        actualIdTest        = lvlsInTestSend[0].idcat;
+        actualNameLevel     = lvlsInTestSend[0].title
+        actualIdTest        = lvlsInTestSend[0].id;
 
         if ($('.lvl--active')) {
             $('.lvl--active').removeClass('lvl--active');

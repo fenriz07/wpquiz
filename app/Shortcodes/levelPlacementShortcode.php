@@ -20,7 +20,7 @@ class levelPlacementShortcode
 
     $instructions = '';
     $html_instruction = file_get_contents(LEVEL_PLACEMENT_DIR .'partials/instruction.html');
-    $html_results_ins = '';
+    $html_results_ins = 'Esto es un parrafo de instrucciones para el test';
     $icon_check       =  LEVEL_PLACEMENT_URI . '/assets/img/icon-check.svg';
     $atts = shortcode_atts([
       'idcat' => 1,

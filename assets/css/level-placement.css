@@ -726,4 +726,7 @@
   border: 1px solid #d60026 !important;
   color: #d60026; }
 
+  span.details{
+    font-size: 10px !important;
+  }
 /*# sourceMappingURL=level-placement.css.map */
