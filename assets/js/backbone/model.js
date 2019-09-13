@@ -19,8 +19,8 @@ var TestModel = Backbone.Model.extend({
   urlRoot: ROOT + 'test',
   defaults:{
     'name-test'   : site.nametest,
-    'name-level'  : 'Nameless',
-    'action'      : site.action
+    'action'      : site.action,
+    'idtest'      : site.idcat,
   }
 });
 

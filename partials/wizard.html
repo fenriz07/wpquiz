@@ -2,7 +2,7 @@
 
 
     <div class="split landing-container__left">
-        <img class="u-margin-bottom-8" src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/full-logo-white.png"
+        <!----<img class="u-margin-bottom-8" src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/full-logo-white.png"
             alt="">
         <h1>
             <span>Take the
@@ -10,59 +10,31 @@
             <span>selecting the
                 <span>right answers</span>
             </span>
-        </h1>
+        </h1>-->
     </div>
 
     <div class="split landing-container__right u-center-text">
 
         <div class="wrapper u-center-text">
-            <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/full-logo-white.png" alt="" class="landing-container__right--mobile-img">
-            <div class="title-block">
-                <div>
-                    <h1>
-                        <span>Test
-                            <span>your</span>
-                        </span>
-                        <span>knowledge</span>
-                    </h1>
-                    <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/logo-red.svg" alt="">
-                    <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/logo-white.svg" class="mobile-image-logo" alt="">
-                </div>
-            </div>
+
             <div>
-                <h5>
-                    <span>Know your English level, discover which courses</span>
-                    <span>are made for you</span>
-                </h5>
                 <h6 class="u-margin-bottom-1 u-margin-top-1">Conoce tu nivel de inglés, descubre cuáles son los cursos hechos para ti</h6>
             </div>
 
-
             <div class="u-margin-top-6-5v">
-                <div class="input-material u-left-text">
-                    <label for="testFullName">Full Name</label>
-                    <input id="testFullName" type="text" required value="Servio Zambrano">
-                    <span class="bar"></span>
-                    <span class="required-field">*Required field</span>
-                </div>
 
                 <div class="input-material u-left-text">
                     <label for="testEmail">Email</label>
                     <input id="testEmail" type="text" required value="servio.za@gmail.com">
                     <span class="bar"></span>
                     <span class="required-field">*Required field</span>
-                </div>
-
-                <div class="input-material u-left-text">
-                    <label for="testTelNo">Phone Number</label>
-                    <input id="testTelNo" type="tel" placeholder="+234567890161" required value="34567890161">
-                    <span class="bar"></span>
-                    <span class="required-field">*Required field</span>
+                    <span id="error-validation-email" class="required-field"></span>
                 </div>
 
                 <div>
                     <a id="startTest" href="#" class="btn u-margin-top-3">start now</a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -76,14 +48,7 @@
                 <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/full-logo-white.png" alt="">
             </div>
 
-            <!-- HERE IT IS THE TIMER-->
-
-            <!-- <div class="timer-block">
-                <div>
-                    <span>Time left = </span>
-                    <span id="timer"></span>
-                </div>
-            </div> -->
+            <div id="timer"> </div>
 
             <div class="progress-block">
                 <div class="lvlForm lvl--active">

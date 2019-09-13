@@ -91,35 +91,6 @@ jQuery(document).ready(function ($) {
         tabChanger('prev');
     });
 
-    $(inputName).on('input', function () {
-        var input = $(this);
-        var is_name = input.val();
-        if (is_name) {
-            validFullName = true;
-        } else {
-            validFullanem = false;
-        }
-    });
-
-    $(inputEmail).on('input', function () {
-        var input = $(this);
-        var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        var is_email = re.test(input.val());
-        if (is_email) {
-            validEmail = true;
-        } else {
-            validEmail = false;
-        }
-    });
-
-    $(inputPhone).on('input', function () {
-        var input = $(this);
-        if ($(input).val()) {
-            validPhone = true;
-        } else {
-            validPhone = false;
-        }
-    });
 
     var stopLoading = function() {
         $('.loading-overlay').addClass('d-none');
@@ -128,15 +99,13 @@ jQuery(document).ready(function ($) {
     }
 
     $("#startTest").click(function (event) {
+
         event.preventDefault();
 
-        if ( true ) {
+        //Comprobar validación.
+        if ( emailIsValid( document.getElementById('testEmail').value ) ) {
 
-            setTimeout(stopLoading, 3000);
-
-            //Timer HERE YOU SELECT THE TIME THAT YOU WANT TO
-            //document.getElementById('timer').innerHTML = 60 + ":" + 00;
-            // startTimer();
+            setTimeout(stopLoading, 3000);           
 
             nameVal = $(inputName).val();
             emailVal = $(inputEmail).val();
@@ -144,9 +113,9 @@ jQuery(document).ready(function ($) {
 
             var modelContact = new ContactModel();
                 modelContact.set("email",emailVal);
-                modelContact.set("lastname",nameVal);
-                modelContact.set("phone",phoneVal);
-                modelContact.set("name-test",site.nametest);
+                modelContact.set("lastname", "nameVal");
+                modelContact.set("phone",    "phoneVal");
+                modelContact.set("name-test","test");
                 modelContact.set("action", "process_question");
                 modelContact.save()
 
@@ -193,11 +162,7 @@ jQuery(document).ready(function ($) {
               }
 
         } else {
-            $('.input-material:nth-child(3)').append(`
-            <div>
-                <span class="required-field">Faltan campos por rellenar o son incorrectos</span>
-            </div>
-            `);
+            document.getElementById('error-validation-email').innerHTML = 'Correo electrónico invalido';
         }
     });
 
@@ -205,9 +170,10 @@ jQuery(document).ready(function ($) {
 
         fullLoaded = false;
         $('.loading-overlay').removeClass('d-none');
-        setTimeout(stopLoading, 4000);
+        //setTimeout(stopLoading, 4000);
 
         ( new StartTest( lvlsInTest.getLevels() ) );
+        
 
         var lvlsInTestSend = lvlsInTest.getLevels();
         var levelsLen = lvlsInTestSend.length;
@@ -225,6 +191,8 @@ jQuery(document).ready(function ($) {
         }
 
         $(lvl).addClass('lvl--active');
+        document.getElementById('timer').innerHTML = 60 + ":" + 00;
+        startTimer();
         
     });
 
@@ -328,15 +296,20 @@ jQuery(document).ready(function ($) {
     var sendTestEmail = function() {
         var test = $(levelForm).serializeArray();
 
+
         new TestView({
           email:       emailVal,
-          lastname:    nameVal,
-          phone:       phoneVal,
+          //lastname:    nameVal,
+          //phone:       phoneVal,
           test :       test,
-          idcat:       actualIdTest,
+          //idcat:       actualIdTest,
           finalLvl:    finalLvl,
-          namelvl:     actualNameLevel
+          //namelvl:     actualNameLevel
         });
+    }
+
+    function emailIsValid ( email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
 });
