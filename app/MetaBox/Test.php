@@ -157,9 +157,8 @@ class MetaBoxTest{
             'fields'     => [
                 [
                     'name' => 'Imagen',
-                    'id'   => LEVEL_PLACEMENT_PREFIX_META_BOX . 'image',
-                    'type' => 'image_advanced',
-                    'max_file_uploads' => 1,
+                    'id'   => LEVEL_PLACEMENT_PREFIX_META_BOX . 'parrafo',
+                    'type' => 'textarea',
                 ],
                 [
                     'type' => 'divider',

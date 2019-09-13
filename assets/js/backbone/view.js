@@ -49,72 +49,23 @@ var CategoryView = Backbone.View.extend({
     var result      = this.model.get('result');
     var sendTest    = this.sendTestEmail;
     var half        = result.length / 5;
-    var fases       = this.splitIntoSubArray(result, 5);
+    //var fases       = this.splitIntoSubArray(result, 5);
     var conditional = this.conditionalLvl;
     var finalLvl    = this.finalLvl;
     var namelvl     = this.namelvl;
     var qn          = this.nQuestion;
 
-    fases.forEach(function (element, index) {
+    console.log( result );
+    console.log( result.type );
 
-      indexFieldset = (index + 1);
+    if( result.type == 'imagenes' )
+    {
+      this.renderImageQuestion( result );
+    }
 
-      jQuery(levelForm).append('<fieldset data-step="' + (indexFieldset) + '" hidden><div></div></fieldset>');
-
-      var elLen = element.length;
-      var dataStep = jQuery('[data-step=' + (indexFieldset) + ']');
-
-      for (var i = 0; i < elLen; i++) {
-
-        var title = element[i].title;
-        var id = element[i].id;
-        var answerOne = element[i].meta.answers[0].text;
-        var answetOneSlug = element[i].meta.answers[0].slug;
-        var answerTwo = element[i].meta.answers[1].text;
-        var answetTwoSlug = element[i].meta.answers[1].slug;
-        var answerThree = element[i].meta.answers[2].text;
-        var answetThreeSlug = element[i].meta.answers[2].slug;
-        var iPlus = i + 1;
-        jQuery(dataStep).children().append(`
-              <div data-question="${iPlus}">
-                <div>
-                  <span>${qn}.</span>
-                  <span>${title}</span>
-                </div>
-                <div>
-                  <div>
-                    <label for="data-step-${indexFieldset}-question-${iPlus}-option-0">
-                      <input type="radio" name="${id}" id="data-step-${indexFieldset}-question-${iPlus}-option-0" value="${answetOneSlug}">
-                        ${answerOne}
-                    </label>
-                  </div>
-                  <div>
-                    <label for="data-step-${indexFieldset}-question-${iPlus}-option-1">
-                      <input type="radio" name="${id}" id="data-step-${indexFieldset}-question-${iPlus}-option-1" value="${answetTwoSlug}">
-                        ${answerTwo}
-                    </label>
-                  </div>
-                  <div>
-                    <label for="data-step-${indexFieldset}-question-${iPlus}-option-2">
-                      <input type="radio" name="${id}" id="data-step-${indexFieldset}-question-${iPlus}-option-2" value="${answetThreeSlug}">
-                        ${answerThree}
-                    </label>
-                  </div>
-                </div>
-              </div>
-          `);
-          qn += 1;
-      }
-      if (conditional === true) {
-        jQuery(levelForm).children().first().show();
-      } else {
-        jQuery('[data-step="1"]').show();
-      }
-    });
-    
     this.nQuestion = qn;
 
-    jQuery('input:radio').on('click', function(event){
+    /*jQuery('input:radio').on('click', function(event){
 
       var check = true;
       jQuery("input:radio").each(function(){
@@ -132,7 +83,7 @@ var CategoryView = Backbone.View.extend({
         // Here Im sending the email, passing the following args defined at the beginning of render()
         sendTest(email,lastname,phone,actualId, finalLvl, namelvl);
       }
-    });
+    });*/
   },
   setNewLvl : function(data){
 
@@ -149,8 +100,185 @@ var CategoryView = Backbone.View.extend({
 
     this.model.on("change", this.render, this);
 
+  },
+  renderImageQuestion : function( result ){
+    jQuery(levelForm).append('<fieldset data-step="1"><div></div></fieldset>');
+    var dataStep = jQuery('[data-step="1"]');
+
+    var input_html = '';
+
+    result.questions.forEach(function (element, index) {
+
+      element['test-post-answers'].forEach( function(elementq, index_question) {
+
+        input_html += `
+        <div>
+          <label for="data-step-1-question-${index}-option-${index_question}">
+          <input type="radio" name="${result.id}[]${index}[]" id="data-step-1-question-${index}-option-${index_question}" value="${elementq}">
+            ${elementq}
+          </label>
+        </div>
+      `;
+
+      })
+
+
+      jQuery(dataStep).children().append(`
+        <div>
+
+          <div>
+            <img src="${element['test-post-image']}">
+          </div>
+
+          <div>
+
+
+            ${input_html}
+
+
+          </div>
+
+        </div>
+      `);
+
+
+      input_html = '';
+    });
+
+
   }
 });
+
+var StartTest = Backbone.View.extend({
+
+  initialize : function (steps){
+    this.steps = steps;
+    this.renderSteps();
+  },
+  renderSteps : function()
+  {
+    this.steps.forEach( function (step,stepIndex) {
+      
+      fieldsetStepIndex = (stepIndex + 1);
+      
+      jQuery(levelForm).append('<fieldset data-step="' + ( fieldsetStepIndex ) + '" hidden><div></div></fieldset>');
+
+      fieldset = jQuery('[data-step=' + (fieldsetStepIndex) + ']');
+
+      switch (step.lvl.type) {
+        case  'imagenes':  
+          this.renderImageQuestion( step,fieldset,fieldsetStepIndex );        
+          break;
+        case 'parrafos':
+          this.renderParagraphsQuestion( step,fieldset,fieldsetStepIndex );
+          break;    
+        case 'lista':
+          this.renderListaQuestion(step,fieldset,fieldsetStepIndex);
+        default:
+          break;
+      }
+
+    },this);
+
+    jQuery('[data-step="1"]').show();
+  },
+  renderImageQuestion : function( step,fieldset,stepIndex ){
+
+    var input_html = '';
+
+
+    step.lvl.questions.forEach(function (element, index) {
+
+
+      element['test-post-answers'].forEach( function(elementq, index_question) {
+
+        input_html += `
+        <div>
+          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
+          <input type="radio" name="${step.id}[]${index}[]" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
+            ${elementq}
+          </label>
+        </div>
+      `;
+
+      })
+
+
+      fieldset.children().append(`
+        <div>
+
+          <div>
+            <img src="${element['test-post-image']}">
+          </div>
+
+          <div>
+
+
+            ${input_html}
+
+
+          </div>
+
+        </div>
+      `);
+
+
+      input_html = '';
+    });
+
+  },
+  renderParagraphsQuestion : function( step,fieldsetP,stepIndex){
+    console.log(step);
+
+    var fila_html  = '';
+    var input_html = '';
+
+    step.lvl.questions.group.forEach(function (element, index) {
+
+      input_html = '';
+
+
+      element['test-post-answers'].forEach( function(elementq, index_question) {
+
+        input_html += `
+        <div>
+          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
+          <input type="radio" name="${step.id}[]${index}[]" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
+            ${elementq}
+          </label>
+        </div>
+      `;
+
+      })
+
+      fila_html += `<div class="fila"> ${input_html} </div>`
+
+    })
+
+    console.log("fieldset");
+
+    fieldsetP.children().append(`
+      <div>
+
+        <div>
+          <p> ${step.lvl.questions.parrafo} </p>
+        </div>
+
+        <div class="columna">
+
+          ${fila_html}
+
+        </div>
+
+      </div>
+    `);
+  }
+  renderListaQuestion :  function( step,fieldset,fieldsetStepIndex ){
+    console.log("dev")
+  }
+  
+
+})
 
 var TestView = Backbone.View.extend({
 

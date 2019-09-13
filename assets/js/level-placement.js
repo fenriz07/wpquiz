@@ -27,6 +27,17 @@ jQuery(document).ready(function ($) {
     var nQuestion       = 1;
     var cv              = null;
 
+    var ProgressBar = function ( level )
+    {
+        lvl_active = lvlsBar.children.item(currentLvl);
+
+        if ($('.lvl--active')) {
+            $('.lvl--active').removeClass('lvl--active');
+        }
+
+        $(lvl_active).addClass('lvl--active');
+    }
+
     var tabChanger = function (a) {
 
         if (a == 'next') {
@@ -39,13 +50,21 @@ jQuery(document).ready(function ($) {
             const item     = levelForm.children.item(i);
             const lvl      = lvlsBar.children.item(i);
             const lvlIndex = $(lvl).index();
-
             if (currentLvl === (levelForm.children.length)) {
                 $(nextLevel).hide();
                 $(sendBlock).show();
+
+                ProgressBar(currentLvl);
+
             } else {
+
+                let next_lvl      = lvlsBar.children.item(currentLvl);
+
+                ProgressBar(currentLvl);
+
                 $(sendBlock).hide();
                 $(nextLevel).show();
+
             }
 
             if (currentLvl === 1) {
@@ -60,7 +79,6 @@ jQuery(document).ready(function ($) {
                 $(item).hide();
             }
 
-            console.log(currentLvl);
         }
 
     }
@@ -102,14 +120,6 @@ jQuery(document).ready(function ($) {
             validPhone = false;
         }
     });
-
-    function splitIntoSubArray(arr, count) {
-        var newArray = [];
-        while (arr.length > 0) {
-            newArray.push(arr.splice(0, count));
-        }
-        return newArray;
-    }
 
     var stopLoading = function() {
         $('.loading-overlay').addClass('d-none');
@@ -197,6 +207,8 @@ jQuery(document).ready(function ($) {
         $('.loading-overlay').removeClass('d-none');
         setTimeout(stopLoading, 4000);
 
+        ( new StartTest( lvlsInTest.getLevels() ) );
+
         var lvlsInTestSend = lvlsInTest.getLevels();
         var levelsLen = lvlsInTestSend.length;
         const lvl      = lvlsBar.children.item(1);
@@ -204,18 +216,6 @@ jQuery(document).ready(function ($) {
         $('[data-step="0"]').remove();
         $(this).hide();
         $('.next-block').show();
-
-        cv = new CategoryView({
-            id         : lvlsInTestSend[0].id,
-            email      : emailVal,
-            finalLvl   : finalLvl,
-            lastname   : nameVal,
-            phone      : phoneVal,
-            actualId   : lvlsInTestSend[0].id,
-            namelvl    : lvlsInTestSend[0].title,
-            nQuestion  : nQuestion
-        });
-
 
         actualNameLevel     = lvlsInTestSend[0].title
         actualIdTest        = lvlsInTestSend[0].id;
@@ -229,7 +229,6 @@ jQuery(document).ready(function ($) {
     });
 
     var changeLevel = function() {
-
         currentTestLvl++;
         currentLvl = 1;
         var lvlsInTestSend = lvlsInTest.getLevels();
@@ -243,7 +242,6 @@ jQuery(document).ready(function ($) {
             }
 
             if (i === currentTestLvl) {
-
                 cv.setNewLvl({
                   id          :  lvlsInTestSend[i].idcat,
                   conditional :  true,
@@ -263,26 +261,6 @@ jQuery(document).ready(function ($) {
             }
         }
     }
-
-    $('#next-level').on('click', function() {
-
-        $(this).parent().parent().parent().addClass('d-none');
-        $(this).parent().hide();
-
-        fullLoaded = false;
-        $('.loading-overlay').removeClass('d-none');
-        setTimeout(stopLoading, 4000);
-
-        $(sendTest).prop('disabled', false);
-
-        var formContent = $(levelForm).children();
-
-        $(formContent).remove();
-        $(sendBlock).hide();
-        $(nextLevel).show();
-        $(prevLevel).hide();
-        changeLevel();
-    });
 
     $('#cancel-test').on('click', function() {
         $('.wizard-container').hide();

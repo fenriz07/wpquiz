@@ -42,7 +42,8 @@ use \WP_Query;
        self::$args['post_type'] = self::$post_type;
        self::$args['post_status' ] = 'publish';
        self::$args['posts_per_page'] = -1;
-       self::$args['orderby'] = 'rand';
+       //self::$args['orderby'] = 'rand';
+       self::$args['order'] = 'ASC';
 
        $posts = [];
        $query = new WP_Query(self::$args);
@@ -173,8 +174,8 @@ use \WP_Query;
        'id'        => $id,
        'type'      => 'parrafos',
        'questions' => [
-                        'image' => self::getUrlImage( rwmb_meta( LEVEL_PLACEMENT_PREFIX_META_BOX . 'image', '', $id) ),
-                        'group' => $questions,
+                        'parrafo' =>  rwmb_meta( LEVEL_PLACEMENT_PREFIX_META_BOX . 'parrafo', '', $id),
+                        'group'   => $questions,
                       ]
       ];
 
