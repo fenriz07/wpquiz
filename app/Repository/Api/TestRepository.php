@@ -1,10 +1,24 @@
 <?php namespace App\Repository\Api;
 
-use App\Models\TestModel;
+use App\Repository\Api\LevelRepository;
+
+/**
+ *  Repositorio de codigo, se encarga de procesar las respuestas del test.
+ *  Procesa el test, calcula y guarda los resultados.
+ * 
+ *  Para entender el flujo del algoritmo,revisar el motodo store.
+ * 
+ *  @var array $testBd Contiene un arreglo con todo el test que esta guardado en el sitio web.
+ *  @var array $answers
+ *  @author Servio Zambrano
+ *  @version 1.0
+ */
 
 class TestRepository
 {
-    private $limit_approved_answers = 45;
+    private $point;    
+    private $testBd;
+    private $answers;
 
     public function __construct()
     {
@@ -12,67 +26,81 @@ class TestRepository
   
     public function store($data)
     {
-      $id_category =  $data['id_category'];
+      $idCategory    =  $data['id_category'];
+      $this->answers =  $data['test'] ;
+
+      //Consultamos el repositorio Level para traer el test que el usuario ha realizado.
+      $this->testBd = LevelRepository::show($idCategory,false)['levels'];
+
+      /*En la propiedad answers tenemos las respuestas enviadas por el usuario, con el siguente metodo normalizamos 
+      toda la información para ser procesada por el metodo de calculo*/
+      $this->normalizeTest();
+
+      //Calculamos el test para setear el puntaje:
+      $this->caclTest();
   
-      //Consultamos el modelo para traer las preguntas, respuesta y comparar el resultado
-      $tests = TestModel::select()
-                            ->setCategory($id_category )
-                            ->base()
-                            ->addAnswer()
-                            ->get();
-  
-      //Calculamos:
-      $result = $this->caclTest($tests,$data['test']);
-  
-      $data_email = ['personal' => [
-                                      'fullname'   => $data['personal']['lastname'],
-                                      'email'      => $data['personal']['email'],
-                                      'name-test'  => $data['name-test'],
-                                      'phone'      => $data['personal']['phone'],
-                                      'name-level' => $data['name-level'],
-                                   ],
-                      'statistics'     => $result,
-                    ];
-      //Enviamos correo:
-      $this->notifyTest($data_email);
-  
-      //Redireccionamos o Retornamos un codigo de Ok a la restapi.
-  
-      //Retornar el porcentaje de la clasificacion de respuestas correctas
-      // echo json_encode(['result' => 'Ok']);
-      // wp_die();
+
+      /**
+       * @todo : Mostrar el mensaje al usuario sobre su resultado.
+       * @todo : Registrar el examen como un customposttype nuevo que no esta registrado.
+       */
   
     }
+
+    /**
+     * @return int points = Indica el puntaje obtenido por el visitante
+     */
   
-    private function caclTest($tests,$questions_answers = null)
+    private function caclTest()
     {
-  
-      $n_approved_answers = 0;
-  
-      foreach ($questions_answers as $key => $answer) {
-        $id   = (int) $answer['name'];
-        $slug = $answer['value'];
-  
-  
-        $key_test = array_search($id, array_column($tests, 'id'));
-  
-        $slug_test = $tests[$key_test]['answer']['slug'];
-  
-        if (strcmp ($slug , $slug_test ) == 0) {
-          $n_approved_answers += 1;
-          $questions_answers[$key]['approved'] = 'Yes';
-        }else {
-          $questions_answers[$key]['approved'] = 'Not';
+
+      $points = 0;
+      $questionList  = null;
+      $statusAnswers = null;
+
+      foreach ($this->answers as $idPost => $answers)
+      {
+        foreach ($this->testBd as $key => $question)
+        {
+          if($question['id'] == $idPost)
+          {
+
+            //Definimos la lista de preguntas y respuesta de la BD en $questionList
+            if( $question['lvl']['type'] == 'parrafos' )
+            {
+              $questionList = $question['lvl']['questions']['group'];
+            }else{
+              $questionList = $question['lvl']['questions'];
+            }
+
+            foreach ($answers as $x => $answer)
+            {
+              $answerEvaluate   = sanitize_title( $answer );
+              $answerEvaluateBd = sanitize_title( $questionList[$x]['test-post-answers'][0] );
+
+              //Si la primera respuesta de la pregunta es igual a lo que respondio el usuario entonces le sumamos un punto
+              if( strcmp($answerEvaluate,$answerEvaluateBd) == 0 )
+              {
+                $this->points++;
+                $statusAnswers = true;
+              }else{
+                $statusAnswers =  false;
+              }
+
+              //Independientemente si respondio bien o no, marcamos su respuesta y si fue bien o mal respondida.
+              if( $question['lvl']['type'] == 'parrafos' )
+              {
+                $this->testBd[$key]['lvl']['questions']['group'][$x]['user']['status'] = $statusAnswers;
+                $this->testBd[$key]['lvl']['questions']['group'][$x]['user']['answer'] = $answerEvaluate;
+              }else{
+                $this->testBd[$key]['lvl']['questions'][$x]['user']['status'] = $statusAnswers;
+                $this->testBd[$key]['lvl']['questions'][$x]['user']['answer'] = $answer;
+              }            
+            }
+
+          }
         }
-  
-        $questions_answers[$key]['title'] =  $tests[$key_test]['title'];
-  
       }
-  
-  
-      $approved = ($n_approved_answers >= $this->limit_approved_answers) ? 'Yes' : 'Not';
-  
-      return ['results' => $questions_answers, 'n-approved-answers' => $n_approved_answers,'approved' => $approved ];
   
     }
   
@@ -105,5 +133,27 @@ class TestRepository
       $subject   = 'Test Information';
       $to_owner  = get_option('admin_email');
       wp_mail($to_owner, $subject, $email_html, $headers);
+    }
+
+    /**
+     * El metodo se encarga de normalizar las respuestas del usuario a un formato de arreglo que se pueda procesar 
+     * de forma mas amigable.
+     */
+    private function normalizeTest()
+    {
+
+      $answers = [];
+
+      foreach ($this->answers as $key => $answer) 
+      {        
+        $answerExplode = explode('-',$answer['name']);
+
+        $idPost = $answerExplode[0];
+        $key    = $answerExplode[1];
+
+        $answers[ $idPost ][ $key ] = $answer['value'];
+      }
+      
+      $this->answers = $answers;
     }
 }

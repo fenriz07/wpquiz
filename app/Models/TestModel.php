@@ -118,18 +118,23 @@ use \WP_Query;
      return rwmb_meta( LEVEL_PLACEMENT_PREFIX_META_BOX . 'type_question', '', $id);
    }
 
-   public static function getQuestionType($type,$id)
+   public static function getQuestionType($type,$id,$shuffle = true)
    {
-     return self::{$type}($id);
+     return self::{$type}($id,$shuffle);
    }
 
-   private static function imagenes($id)
+   private static function imagenes($id , $shuffle = true)
    {
      $questions = rwmb_meta('questions','',$id);
 
      foreach ($questions as $key => $q) {
        $questions[$key]['test-post-image'] = wp_get_attachment_url( $q['test-post-image'][0] );
-       shuffle( $questions[$key]['test-post-answers']);
+       
+       if($shuffle)
+       {
+        shuffle( $questions[$key]['test-post-answers']);
+       }
+       
      }
 
      $payload = [
@@ -141,14 +146,17 @@ use \WP_Query;
      return $payload;
    }
 
-   private static function lista($id)
+   private static function lista($id,$shuffle = true)
    {
 
     $questions = rwmb_meta( 'questions_lista', '', $id);
 
-    foreach ($questions as $key => $q)
+    if($shuffle)
     {
-       shuffle( $questions[$key]['test-post-answers'] );
+      foreach ($questions as $key => $q)
+      {
+        shuffle( $questions[$key]['test-post-answers'] );
+      }
     }
 
      $payload = [
@@ -161,13 +169,16 @@ use \WP_Query;
 
    }
 
-   private static function parrafos($id)
+   private static function parrafos($id,$shuffle = true)
    {
      $questions = rwmb_meta( 'questions_parrafo', '', $id);
 
-     foreach ($questions as $key => $q)
+     if($shuffle)
      {
-        shuffle( $questions[$key]['test-post-answers'] );
+      foreach ($questions as $key => $q)
+      {
+          shuffle( $questions[$key]['test-post-answers'] );
+      }
      }
 
      $payload = [

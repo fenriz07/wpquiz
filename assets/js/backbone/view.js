@@ -45,7 +45,7 @@ var StartTest = Backbone.View.extend({
         input_html += `
         <div>
           <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
-          <input type="radio" name="${step.id}[]${index}[]" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
+          <input type="radio" name="${step.id}-${index}" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
             ${elementq}
           </label>
         </div>
@@ -92,7 +92,7 @@ var StartTest = Backbone.View.extend({
         input_html += `
         <div>
           <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
-          <input type="radio" name="${step.id}[]${index}[]" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
+          <input type="radio" name="${step.id}-${index}" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
             ${elementq}
           </label>
         </div>
@@ -138,7 +138,7 @@ var StartTest = Backbone.View.extend({
         input_html += `
         <div>
           <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
-          <input type="radio" name="${step.id}[]${index}[]" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
+          <input type="radio" name="${step.id}-${index}" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
             ${elementq}
           </label>
         </div>

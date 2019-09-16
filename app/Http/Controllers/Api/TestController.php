@@ -51,15 +51,14 @@ class TestController
   
       $data = [
         'personal' => [
-          'lastname' => $request->lastname,
           'email'    => $request->email,
-          'phone'    => $request->phone,
+          /*'lastname' => $request->lastname,          
+          'phone'    => $request->phone,*/
         ],
-        'id_category' => $request->id_category,
+        'id_category' => $request->idtest,
         'action'      => $request->action,
         'test'        => $request->test,
         'name-test'   => $request->{'name-test'},
-        'name-level'  => $request->{'name-level'},
       ];
 
       ( new TestRepository() )->store( $data );
