@@ -199,4 +199,5 @@ use \WP_Query;
     
      return $image['full_url'];
    }
+
  }

@@ -1,5 +1,6 @@
 <?php namespace App\Repository\Api;
 
+use App\Models\CoursesModel;
 use App\Repository\Api\LevelRepository;
 
 /**
@@ -8,6 +9,7 @@ use App\Repository\Api\LevelRepository;
  * 
  *  Para entender el flujo del algoritmo,revisar el motodo store.
  * 
+ *  @var int   $points puntaje del visitante.
  *  @var array $testBd Contiene un arreglo con todo el test que esta guardado en el sitio web.
  *  @var array $answers
  *  @author Servio Zambrano
@@ -16,18 +18,21 @@ use App\Repository\Api\LevelRepository;
 
 class TestRepository
 {
-    private $point;    
+    private $points;    
     private $testBd;
     private $answers;
 
-    public function __construct()
-    {
-    }
+
+    /**
+     * @todo : Registrar el examen como un customposttype nuevo que no esta registrado.
+     */
   
     public function store($data)
     {
       $idCategory    =  $data['id_category'];
-      $this->answers =  $data['test'] ;
+      $this->answers =  $data['test'];
+
+      $this->getEvaluationRules($idCategory);
 
       //Consultamos el repositorio Level para traer el test que el usuario ha realizado.
       $this->testBd = LevelRepository::show($idCategory,false)['levels'];
@@ -38,12 +43,11 @@ class TestRepository
 
       //Calculamos el test para setear el puntaje:
       $this->caclTest();
-  
 
-      /**
-       * @todo : Mostrar el mensaje al usuario sobre su resultado.
-       * @todo : Registrar el examen como un customposttype nuevo que no esta registrado.
-       */
+      //Procesamos el puntaje con los rangos de resultado
+      $response = $this->evaluateRangeRules( $idCategory );
+
+      return $response;
   
     }
 
@@ -155,5 +159,64 @@ class TestRepository
       }
       
       $this->answers = $answers;
+    }
+
+    private function getEvaluationRules($id)
+    {
+      $ranges = rwmb_meta( PREFIX_META_BOX_CATEGORYTEST . 'range-evaluations-test', ['object_type' => 'term' ], $id);
+
+      foreach ($ranges as $key => $range)
+      {
+        
+        $ranges[$key]['range']['finish'] = (int) $range['categorytest-taxonomy-point'];
+        if($key == 0)
+        {
+          $ranges[$key]['range']['start'] = 0;
+        }else{
+          $ranges[$key]['range']['start'] = ( (int) $ranges[$key - 1]['categorytest-taxonomy-point'] ) + 1;
+        }
+      }
+
+      return $ranges;      
+
+    }
+
+    private function evaluateRangeRules($id)
+    {
+      $ranges = $this->getEvaluationRules($id);
+      $range  =  null;
+
+      foreach ($ranges as $key => $r) 
+      {
+
+        if( in_array( $this->points, range( $r['range']['start'], $r['range']['finish'] ) ) )
+        {
+            $range = $r;
+        }
+
+      }
+
+      return $this->preparedResponse( $range );
+
+    }
+
+    private function preparedResponse( $range )
+    {
+
+      $payload = [
+        'message' => $range['categorytest-taxonomy-description'],
+        'courses' => [],
+      ];
+
+      $coursesId = $range['categorytest-taxonomy-courses-relations'];
+
+      if( !empty($coursesId) )
+      {
+        $courses = (new CoursesModel() )->where()->postIn($coursesId)->query()->get();
+        $payload['courses'] = $courses;
+      }
+
+      return $payload;
+
     }
 }

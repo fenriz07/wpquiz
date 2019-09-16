@@ -61,11 +61,15 @@ class TestController
         'name-test'   => $request->{'name-test'},
       ];
 
-      ( new TestRepository() )->store( $data );
+      $response =  ( new TestRepository() )->store( $data );
 
-        
-      $messages['status'] = 1;
-      return $messages;
+      $payload = [
+        'status' => 200,
+        'description '=> 'Evaluación del test terminada',
+        'payload'     => $response,
+      ];
+
+      return $payload;
     
     }
 }
