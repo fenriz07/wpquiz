@@ -31,11 +31,11 @@ jQuery(document).ready(function ($) {
     {
         lvl_active = lvlsBar.children.item(currentLvl);
 
-        if ($('.lvl--active')) {
-            $('.lvl--active').removeClass('lvl--active');
+        if ($('.active')) {
+            $('.active').removeClass('active');
         }
 
-        $(lvl_active).addClass('lvl--active');
+        $(lvl_active).addClass('active');
     }
 
     var tabChanger = function (a) {
@@ -131,12 +131,12 @@ jQuery(document).ready(function ($) {
 
                 for (var i = 1; i < (levelsLen + 1); i++) {
                   jQuery(lvlsBar).append(`
-                  <div class="lvlForm--stretch">
-                    <div>
-                      <span>
-                          ${i}
-                      </span>
-                    </div>
+
+                  <div class="md-step">
+                    <div class="md-step-circle"><span>${i}</span></div>
+                    <div class="md-step-title">Part ${i}</div>
+                    <div class="md-step-bar-left"></div>
+                    <div class="md-step-bar-right"></div>
                   </div>
                   `);
                 }
@@ -144,19 +144,15 @@ jQuery(document).ready(function ($) {
                 for (var i = 1; i < (levelsLen + 1); i++) {
 
                   jQuery(lvlsBar).append(`
-                  <div class="lvlForm">
-                    <div>
-                      <span>
-                          ${i}
-                      </span>
-                      <span class="details">
-                        Part: ${i}
-                      </span>
-                      <span class="details">
-                        ${lvlsInTestSend[ (i-1) ]['title']}
-                      </span>
-                    </div>
+
+                  <div class="md-step">
+                    <div class="md-step-circle"><span>${i}</span></div>
+                    <div class="md-step-title">Part ${i}</div>
+                    <div class="md-step-optional"> ${lvlsInTestSend[ (i-1) ]['title']} </div>
+                    <div class="md-step-bar-left"></div>
+                    <div class="md-step-bar-right"></div>
                   </div>
+
                   `);
                 }
               }
@@ -186,11 +182,11 @@ jQuery(document).ready(function ($) {
         actualNameLevel     = lvlsInTestSend[0].title
         actualIdTest        = lvlsInTestSend[0].id;
 
-        if ($('.lvl--active')) {
-            $('.lvl--active').removeClass('lvl--active');
+        if ($('.active')) {
+            $('.active').removeClass('active');
         }
 
-        $(lvl).addClass('lvl--active');
+        $(lvl).addClass('active');
         document.getElementById('timer').innerHTML = 60 + ":" + 00;
         startTimer();
         

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="316" height="195" viewBox="0 0 316 195">
+    <defs>
+        <path id="b" d="M293.97 179H6.03C2.7 179 0 176.415 0 173.226V5.774C0 2.585 2.7 0 6.03 0h287.94C297.3 0 300 2.585 300 5.774v167.452c0 3.189-2.7 5.774-6.03 5.774z"/>
+        <filter id="a" width="108%" height="113.4%" x="-4%" y="-6.7%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.531568878 0 0 0 0 0.531568878 0 0 0 0 0.531568878 0 0 0 0.175951087 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(8 8)">
+            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+            <path fill="#FFF" stroke="#EAEAEA" stroke-linejoin="square" d="M293.97 178.5c3.059 0 5.53-2.366 5.53-5.274V5.774c0-2.908-2.471-5.274-5.53-5.274H6.03C2.971.5.5 2.866.5 5.774v167.452c0 2.908 2.471 5.274 5.53 5.274h287.94z"/>
+        </g>
+        <path d="M8 8h300v169.821H8z"/>
+        <rect width="276" height="85" x="20" y="93" fill="#FEC60D" rx="2"/>
+        <text fill="#FFF" font-family="Roboto-Bold, Roboto" font-size="24" font-weight="bold" letter-spacing=".18">
+            <tspan x="35.034" y="130">DO NOT LEAVE CARTS </tspan> <tspan x="42.118" y="158">IN THE PARKING LOT</tspan>
+        </text>
+        <g fill="#FEC60D">
+            <path d="M161.2 54.03V42.97h-5.4v11.06h5.4zm0 10.928v-5.53h-5.4v5.53h5.4zm-32.917 8.23L158.5 21.112l30.218 52.075h-60.435z"/>
+        </g>
+    </g>
+</svg>

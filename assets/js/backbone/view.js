@@ -2,15 +2,17 @@ var StartTest = Backbone.View.extend({
 
   initialize : function (steps){
     this.steps = steps;
+    this.questionNumber = 0;
     this.renderSteps();
   },
   renderSteps : function()
   {
+
     this.steps.forEach( function (step,stepIndex) {
       
       fieldsetStepIndex = (stepIndex + 1);
       
-      jQuery(levelForm).append('<fieldset data-step="' + ( fieldsetStepIndex ) + '" hidden><div></div></fieldset>');
+      jQuery(levelForm).append('<fieldset class="quest-list" data-step="' + ( fieldsetStepIndex ) + '" hidden><div></div></fieldset>');
 
       fieldset = jQuery('[data-step=' + (fieldsetStepIndex) + ']');
 
@@ -35,6 +37,9 @@ var StartTest = Backbone.View.extend({
   renderImageQuestion : function( step,fieldset,stepIndex ){
 
     var input_html = '';
+    var intro = `<h3>Part 1: Questions 1- 5</h3>
+    <h4>Where can you see these </h4>`;
+
 
 
     step.lvl.questions.forEach(function (element, index) {
@@ -43,38 +48,48 @@ var StartTest = Backbone.View.extend({
       element['test-post-answers'].forEach( function(elementq, index_question) {
 
         input_html += `
-        <div>
-          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
+        <div class="radio-style">
+
           <input type="radio" name="${step.id}-${index}" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
-            ${elementq}
-          </label>
+          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">${elementq}</label>
+
         </div>
       `;
 
       })
 
+      this.questionNumber++;
 
       fieldset.children().append(`
-        <div>
 
-          <div>
-            <img src="${element['test-post-image']}">
+        ${intro}
+        
+        <div class="quest-item">
+
+          <div class="quest">
+
+              <span class="list-number"> ${this.questionNumber}. </span>
+
+              <span class="box-style">
+                <img src="${element['test-post-image']}">
+              </span>
+
+              <div class="quest-form" >
+                ${input_html}
+              </div>
+
+            </div>
+
           </div>
 
-          <div>
 
-
-            ${input_html}
-
-
-          </div>
 
         </div>
       `);
 
-
+      intro = '';
       input_html = '';
-    });
+    },this);
 
   },
   renderParagraphsQuestion : function( step,fieldsetP,stepIndex){
@@ -90,31 +105,46 @@ var StartTest = Backbone.View.extend({
       element['test-post-answers'].forEach( function(elementq, index_question) {
 
         input_html += `
-        <div>
-          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
+
+        <div class="radio-style">
           <input type="radio" name="${step.id}-${index}" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
-            ${elementq}
-          </label>
+          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">${elementq}</label>
         </div>
+
       `;
 
       });
 
-      fila_html += `<div class="fila"> ${input_html} </div>`
+      this.questionNumber++;
 
-    })
+      fila_html += `<div class="inline-quest">
+                      <span class="list-number">${this.questionNumber}.</span>
+                      ${input_html}
+                    </div>`
+
+    },this)
 
     fieldsetP.children().append(`
-      <div>
 
-        <div>
-          <p> ${step.lvl.questions.parrafo} </p>
+      <h3>Part 1: Questions 1- 5</h3>
+      <h4>Where can you see these </h4>
+
+      <div class="two-grid">
+
+        <div class="left-grid">
+          <p class="text-box"> ${step.lvl.questions.parrafo} </p>
         </div>
 
-        <div class="columna">
+        <div class="right-grid">
 
-          ${fila_html}
-
+          <div class="answer-box">
+            <h6>Answers</h6>
+            <div class="quest-list">
+              <div class="quest-item">
+                ${fila_html}
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -131,28 +161,37 @@ var StartTest = Backbone.View.extend({
 
       test_post_question = element['test-post-question'];
 
-      input_html = `<p> ${test_post_question} </p>`;
+      this.questionNumber++;
+
+      input_html = `
+      
+        <span class="list-number"> ${this.questionNumber}.</span>
+        <label> ${test_post_question} </label>      
+      `;
 
       element['test-post-answers'].forEach( function(elementq, index_question) {
 
         input_html += `
-        <div>
-          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}">
+        <div class="radio-style">
+
           <input type="radio" name="${step.id}-${index}" id="data-step-${stepIndex}-question-${index}-option-${index_question}" value="${elementq}">
-            ${elementq}
-          </label>
+          <label for="data-step-${stepIndex}-question-${index}-option-${index_question}"> ${elementq} </label>
+        
         </div>
       `;
 
       });
 
-      fila_html += `<div class="fila"> ${input_html} </div>`
+      fila_html += `<div class="inline-quest wrap-quest"> ${input_html} </div>`
 
-    });
+    },this);
 
     fieldset.children().append(`
 
-        <div class="columna">
+      <h3>Part 1: Questions 1- 5</h3>
+      <h4>Where can you see these </h4>
+
+        <div class="quest-item">
 
           ${fila_html}
 

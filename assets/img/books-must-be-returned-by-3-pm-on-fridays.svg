@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="387" height="162" viewBox="0 0 387 162">
+    <defs>
+        <path id="b" d="M363.543 146H7.457C3.34 146 0 143.891 0 141.29V4.71C0 2.109 3.339 0 7.457 0h356.086C367.66 0 371 2.109 371 4.71v136.58c0 2.601-3.339 4.71-7.457 4.71z"/>
+        <filter id="a" width="106.5%" height="116.4%" x="-3.2%" y="-8.2%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.531568878 0 0 0 0 0.531568878 0 0 0 0 0.531568878 0 0 0 0.175951087 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(8 8)">
+            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+            <path fill="#FFF" stroke="#EAEAEA" stroke-linejoin="square" d="M363.543 145.5c3.877 0 6.957-1.945 6.957-4.21V4.71c0-2.265-3.08-4.21-6.957-4.21H7.457C3.58.5.5 2.445.5 4.71v136.58c0 2.265 3.08 4.21 6.957 4.21h356.086z"/>
+        </g>
+        <path d="M8 8h371v138.513H8z"/>
+        <rect width="260" height="110" x="105" y="26" fill="#FEC60D" rx="2"/>
+        <text fill="#FFF" font-family="Roboto-Bold, Roboto" font-size="24" font-weight="bold" letter-spacing=".18">
+            <tspan x="141.863" y="63">BOOKS MUST BE </tspan> <tspan x="119.892" y="91">RETURNED BY 3 P.M. </tspan> <tspan x="167.551" y="119">ON FRIDAYS</tspan>
+        </text>
+        <g fill="#FEC60D">
+            <path d="M62.2 89.03V77.97h-5.4v11.06h5.4zm0 10.928v-5.53h-5.4v5.53h5.4zm-32.918 8.23L59.5 56.112l30.218 52.075H29.282z"/>
+        </g>
+    </g>
+</svg>

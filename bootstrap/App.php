@@ -5,7 +5,7 @@ class App
     use Loader;
 
     private static $_instance     = null;
-    private $versionAssets = 1;
+    private $versionAssets = 2;
 
 
     private function __construct()
@@ -48,8 +48,8 @@ class App
 
     public function initCss()
     {
-      wp_register_style( 'level-placement-admin-css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css','',     $this->versionAssets );
-      wp_register_style( 'level-placement-css', LEVEL_PLACEMENT_URI . 'assets/css/level-placement.css','',     $this->versionAssets );
+      wp_register_style( 'level-placement-admin-css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css','',  $this->versionAssets );
+      wp_register_style( 'level-placement-css', LEVEL_PLACEMENT_URI . 'assets/css/quiz.css','',         $this->versionAssets );
 
 
     }

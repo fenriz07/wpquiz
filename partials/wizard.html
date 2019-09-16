@@ -13,49 +13,53 @@
         </h1>-->
     </div>
 
-    <div class="split landing-container__right u-center-text">
-
-        <div class="wrapper u-center-text">
-
-            <div>
-                <h6 class="u-margin-bottom-1 u-margin-top-1">Conoce tu nivel de inglés, descubre cuáles son los cursos hechos para ti</h6>
-            </div>
-
-            <div class="u-margin-top-6-5v">
-
-                <div class="input-material u-left-text">
-                    <label for="testEmail">Email</label>
-                    <input id="testEmail" type="text" required value="servio.za@gmail.com">
-                    <span class="bar"></span>
-                    <span class="required-field">*Required field</span>
-                    <span id="error-validation-email" class="required-field"></span>
+    <div id="main" class="site-main col-sm-12 full-width">
+        <div class="home-style">
+                <div class="head-quiz">
+                    <h2>Take the multiple choice test by selecting the right answers</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                 </div>
 
-                <div>
-                    <a id="startTest" href="#" class="btn u-margin-top-3">start now</a>
+                <div class="login-style">
+                    <div class="login-box">
+                        <h3>Test your knowledge</h3>
+
+                        <div class="form-style">
+                                <label for="testEmail">Email</label>
+                                <input id="testEmail" type="text" required value="servio.za@gmail.com">
+                                <span class="bar"></span>
+                                <span class="required-field">*Required field</span>
+                                <span id="error-validation-email" class="required-field"></span>
+                        </div>
+
+                        <div class="form-btn">
+                            <button id="startTest" type="submit" class="action-button">Start</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-        </div>
     </div>
+
 </div>
 
-<div class="wizard-container" hidden>
+<div class="wizard-container site-main col-sm-12 full-width" hidden>
     <div class="wizard-wrapper">
-        <div>
+        <div class="quiz-style">
 
-            <div class="logo-box">
-                <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/full-logo-white.png" alt="">
+            <div class="head-quiz">
+                    <h2>Test your knowledge <div class="timer" id="timer"> </div></h2>
             </div>
+            
+            
 
-            <div id="timer"> </div>
-
-            <div class="progress-block">
-                <div class="lvlForm lvl--active">
-                    <div>
-                        <span>
-                            0
-                        </span>
+            <div class="stepper">
+                <div class="md-stepper-horizontal progress-block">
+                    <div class="md-step active done">
+                        <div class="md-step-circle"><span>0</span></div>
+                        <div class="md-step-title">Part 0</div>
+                        <div class="md-step-optional">Explication</div>
+                        <div class="md-step-bar-right"></div>
                     </div>
                 </div>
             </div>
@@ -91,12 +95,12 @@
                 <a id="start-questions" href="#" class="btn u-margin-top-3">start</a>
             </div>
 
-            <div class="next-block" hidden>
-                <a id="next-questions" href="#" class="btn u-margin-top-3" >next</a>
+            <div class="next-block btn-zone align-right" hidden>
+                <a id="next-questions" href="#" class="action-button" >next</a>
             </div>
 
-            <div class="send-block" hidden>
-                <button id="send-questions" href="#" class="btn-send u-margin-top-3">send</button>
+            <div class="send-block btn-zone align-right" hidden>
+                <button id="send-questions" class="action-button" href="#" class="btn-send u-margin-top-3">send</button>
             </div>
 
             <div class="modal-block d-none">

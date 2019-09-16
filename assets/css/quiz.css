@@ -1,0 +1,519 @@
+/* STEPPER */
+.md-stepper-horizontal {
+  display: table;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #FFFFFF; }
+  .md-stepper-horizontal .md-step {
+    display: table-cell;
+    position: relative;
+    padding: 24px 0;
+    /*&:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }*/
+    /*&:active {
+      background-color: rgba(0, 0, 0, 0.04);
+      border-radius: 15% / 75%;
+    }
+    &:first-child:active {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:last-child:active {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }*/
+    /*&:hover .md-step-circle {
+      background-color: #757575;
+    }*/ }
+    .md-stepper-horizontal .md-step:first-child .md-step-bar-left, .md-stepper-horizontal .md-step:last-child .md-step-bar-right {
+      display: none; }
+    .md-stepper-horizontal .md-step .md-step-circle {
+      width: 44px;
+      box-shadow: 0 0 8px 0 rgba(136, 136, 136, 0.18);
+      height: 44px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 39px;
+      border: solid 2px #0176de;
+      font-size: 24px;
+      font-weight: 600;
+      color: #0176de;
+      z-index: 5;
+      position: relative; }
+  .md-stepper-horizontal .md-step.active .md-step-circle {
+    background-color: #0176de;
+    color: #fff; }
+  .md-stepper-horizontal .md-step.active .md-step-bar-right {
+    border-color: #0176de; }
+  .md-stepper-horizontal .md-step.active + .md-step .md-step-bar-left {
+    border-color: #0176de; }
+  .md-stepper-horizontal .md-step.done .md-step-circle {
+    font-size: 14px; }
+    .md-stepper-horizontal .md-step.done .md-step-circle:before {
+      font-family: 'FontAwesome';
+      font-weight: 100;
+      content: "\f00c"; }
+    .md-stepper-horizontal .md-step.done .md-step-circle * {
+      display: none; }
+  .md-stepper-horizontal .md-step.editable .md-step-circle {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); }
+    .md-stepper-horizontal .md-step.editable .md-step-circle * {
+      display: none; }
+    .md-stepper-horizontal .md-step.editable .md-step-circle:before {
+      font-family: 'FontAwesome';
+      font-weight: 100;
+      content: "\f040"; }
+  .md-stepper-horizontal .md-step .md-step-title {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.26); }
+  .md-stepper-horizontal .md-step .md-step-optional {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.26); }
+  .md-stepper-horizontal .md-step .md-step-title, .md-stepper-horizontal .md-step .md-step-optional {
+    padding: 0 0 0 38%;
+    text-align: left; }
+  .md-stepper-horizontal .md-step.active .md-step-title {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.87); }
+  .md-stepper-horizontal .md-step.active.done .md-step-title, .md-stepper-horizontal .md-step.active.editable .md-step-title {
+    font-weight: 600; }
+  .md-stepper-horizontal .md-step .md-step-optional {
+    font-size: 12px; }
+  .md-stepper-horizontal .md-step.active .md-step-optional {
+    color: rgba(0, 0, 0, 0.54); }
+  .md-stepper-horizontal .md-step .md-step-bar-left {
+    position: absolute;
+    top: 45px;
+    height: 1px;
+    border-top: 2px solid #DDDDDD; }
+  .md-stepper-horizontal .md-step .md-step-bar-right {
+    position: absolute;
+    top: 45px;
+    height: 1px;
+    border-top: 2px solid #DDDDDD;
+    right: 0;
+    left: 50%;
+    margin-left: 20px; }
+  .md-stepper-horizontal .md-step .md-step-bar-left {
+    left: 0;
+    right: 50%;
+    margin-right: 20px; }
+
+.quiz-style h1, .quiz-style h2, .quiz-style h3, .quiz-style h4, .quiz-style h5, .quiz-style h6, .quiz-style .lp-course-progress .progress-heading span, .quiz-style #your-profile ul.learn-press-subtabs li a, .quiz-style #your-profile ul.learn-press-subtabs li span, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-lesson a.course-item-title, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-assignment a.course-item-title, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-quiz a.course-item-title, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-item-lp_lesson a.course-item-title, .quiz-style .header_v3 .thim-widget-link .title a, .quiz-style .header_v3 .elementor-widget-thim-link .title a, .quiz-style .product-grid .product__title .title, .quiz-style #back-to-top:hover, .quiz-style .thim-list-event .item-event .title a, .quiz-style .thim-list-event .view-all, .quiz-style .thim-list-event.layout-2 .view-all, .quiz-style .thim-login form#loginform p.login-remember label, .quiz-style .thim-login form#loginform > a.lost-pass-link, .quiz-style .list-address li, .quiz-style .thim-color-title, .quiz-style .thim-register-now-form .wpcf7-form .wpcf7-submit:hover, .quiz-style .thim-widget-accordion .panel-title a:after, .quiz-style .sc_heading .title, .quiz-style article .entry-header .entry-title a, .quiz-style .counter-box.number-left .counter-box-content, .quiz-style .counter-box.number-left .view-more, .quiz-style .counter-box.about-us .display-percentage, .quiz-style .woocommerce div.product .woocommerce-tabs .entry-content #reviews #review_form_wrapper p label, .quiz-style .widget_shopping_cart .widget_shopping_cart_content .buttons a:hover, .quiz-style .widget_shopping_cart .minicart_hover .cart-items-number span.wrapper-items-number, .quiz-style .widget_shopping_cart .widget_shopping_cart_content, .quiz-style .widget_shopping_cart .widget_shopping_cart_content .cart_list.product_list_widget li a, .quiz-style .widget_shopping_cart .widget_shopping_cart_content .cart_list.product_list_widget li dl, .quiz-style .widget_shopping_cart .widget_shopping_cart_content .cart_list.product_list_widget li span, .quiz-style .widget_shopping_cart .widget_shopping_cart_content .cart_list.product_list_widget li .quantity, .quiz-style .woocommerce .reset_password form .description, .quiz-style .thim-course-grid .course-item .thim-course-content .course-title a, .quiz-style .woocommerce div.product .related-products > h2, .quiz-style .woocommerce div.product .upsells-products > h2, .quiz-style .thim-about-author .author-top .name, .quiz-style .entry-tag-share .post-tag a, .quiz-style .entry-navigation-post .next-post .title a, .quiz-style .entry-navigation-post .prev-post .title a, .quiz-style .related-archive .archived-posts .post h5 a, .quiz-style .widget-area aside.widget ul li a, .quiz-style .learn-press-pagination li .page-numbers, .quiz-style .learn-press-pagination li .page-numbers.current, .quiz-style .pagination li .page-numbers, .quiz-style .pagination li .page-numbers.current, .quiz-style .loop-pagination li .page-numbers.current, .quiz-style .loop-pagination li .page-numbers, .quiz-style .comments-area .comment-list .comment-list-inner li .comment-extra-info .author a, .quiz-style .comments-area .comment-list .comment-list-inner li .comment-extra-info .author .author-name, .quiz-style #respond #cancel-comment-reply-link, .quiz-style #respond .logged-in-as a, .quiz-style .widget-area .thim-list-posts.sidebar .article-title-wrapper a, .quiz-style .widget-area .thim-course-list-sidebar .thim-course-content .course-title a, .quiz-style .quickview .product-info .right .product_meta a, .quiz-style .product-grid .product__title .title a.add_to_cart, .quiz-style .product-grid .product__title .title a, .quiz-style .filter-controls li a:hover, .quiz-style .filter-controls li a.active, .quiz-style .product-cat li a:hover, .quiz-style .product-cat li a.active, .quiz-style .quickview .product-info .right .cart a, .quiz-style .product_thumb .onsale, .quiz-style .woocommerce div.product .onsale, .quiz-style .woocommerce div.product .woocommerce-tabs .tabs .active a, .quiz-style .woocommerce-page .product-name a, .quiz-style .woocommerce-page .button:hover, .quiz-style .woocommerce form .form-row label, .quiz-style #customer_login form .remember, .quiz-style #customer_login form .link-bottom, .quiz-style #customer_login form .lost-password, .quiz-style .learn-press #learn_press_payment_form .learn_press_payment_close .learn_press_payment_checkout:hover, .quiz-style .thim-course-list .course-item .thim-course-content .course-title a, .quiz-style .thim-widget-courses-wrapper .view-all-courses, .quiz-style .thim-carousel-course-categories .owl-carousel .owl-buttons .owl-next, .quiz-style .thim-carousel-course-categories .owl-carousel .owl-buttons .owl-prev, .quiz-style .learn-press .course-payment .course-price .value, .quiz-style .learn-press .course-tabs .nav-tabs li a, .quiz-style .learn-press .course-meta label .value, .quiz-style #learn-press-course-curriculum .section-content .course-lesson a, .quiz-style #learn-press-course-curriculum .section-content .course-lesson a.lesson-preview:hover, .quiz-style #learn-press-course-curriculum .section-content .course-assignment a, .quiz-style #learn-press-course-curriculum .section-content .course-assignment a.lesson-preview:hover, .quiz-style #learn-press-course-curriculum .section-content .course-quiz a, .quiz-style #learn-press-course-curriculum .section-content .course-quiz a.lesson-preview:hover, .quiz-style #tab-course-description .thim-course-info ul li span, .quiz-style .thim-course-menu-landing .thim-course-landing-tab li a, .quiz-style .thim-course-menu-landing .thim-course-landing-button .course-price, .quiz-style #tab-course-review .course-rating > h3, .quiz-style #tab-course-review .course-rating .rating-title, .quiz-style #tab-course-review .course-rating .average-rating .rating-box .review-amount, .quiz-style #tab-course-review .course-rating .detailed-rating .stars > div.key, .quiz-style #tab-course-review .add-review form label, .quiz-style #tab-course-review .add-review .title, .quiz-style #tab-reviews .course-rating > h3, .quiz-style #tab-reviews .course-rating .rating-title, .quiz-style #tab-reviews .course-rating .average-rating .rating-box .review-amount, .quiz-style #tab-reviews .course-rating .detailed-rating .stars > div.key, .quiz-style #tab-reviews .add-review form label, .quiz-style #tab-reviews .add-review .title, .quiz-style .thim-testimonial-slider .title, .quiz-style .thim-testimonial-slider .title a, .quiz-style .thim-widget-tab .nav-tabs li a, .quiz-style .thim-widget-tab .nav-tabs li a:hover, .quiz-style .thim-login form#registerform #reg_passmail, .quiz-style .thim-login form#registerform label[for=become_teacher], .quiz-style .thim-login-container .link-bottom, .quiz-style .list-tab-event .nav-tabs li a, .quiz-style .profile-tabs .nav-tabs li a, .quiz-style .tp-event-info .tp-info-box .heading, .quiz-style .tp-event-archive .entry-title h4 a, .quiz-style .bbpress #bbpress-forums button:hover, .quiz-style .bbpress #bbpress-forums .bbp-breadcrumb a, .quiz-style .bbpress #bbpress-forums li.bbp-body ul .bbp-forum-title, .quiz-style .bbpress #bbpress-forums li.bbp-body ul .bbp-topic-permalink, .quiz-style .tp-event-organizers .thim-carousel-wrapper .item .name, .quiz-style .course-content .course-content-lesson-nav a, .quiz-style .single-quiz button.check_answer:hover, .quiz-style .single-quiz button.next-question:hover, .quiz-style .single-quiz button.prev-question:hover, .quiz-style .single-quiz button.button-finish-quiz:hover, .quiz-style .single-quiz button.button-start-quiz:hover, .quiz-style .single-quiz .back-to-course, .quiz-style .single-quiz .quiz-questions.list-quiz-questions ul li a, .quiz-style .single-quiz .quiz-questions.list-quiz-questions ul li, .quiz-style .learn-press-question-wrap.checked li.user-answer-false, .quiz-style .learn-press-question-wrap.checked li.answer-true, .quiz-style .learn-press .message a, .quiz-style .learn-press .message a:hover, .quiz-style .message a, .quiz-style .message a:hover, .quiz-style .course-content .popup-title, .quiz-style .mfp-content .popup-title, .quiz-style #popup_title, .quiz-style #popup_panel #popup_ok:hover, .quiz-style #popup_panel #popup_cancel:hover, .quiz-style .mo-openid-app-icons > p, .quiz-style .thim-what-it-about-desc .thim-login-link, .quiz-style .thim-hello-there .description, .quiz-style .thim-hello-there .sub-heading, .quiz-style .thim-latest-new-university .thim-owl-carousel-post .title a, .quiz-style .thim-latest-new-university .thim-owl-carousel-post .owl-controls .owl-prev .fa, .quiz-style .thim-latest-new-university .thim-owl-carousel-post .owl-controls .owl-next .fa, .quiz-style .wrapper-lists-our-team .our-team-item .title a, .quiz-style .thim-course-megamenu .course-title a, .quiz-style #buddypress div.item-list-tabs ul li a, .quiz-style #buddypress div.item-list-tabs ul li.selected a, .quiz-style #buddypress div.item-list-tabs ul li.current a, .quiz-style #buddypress .bp-avatar-nav ul.avatar-nav-items li a, .quiz-style #buddypress .bp-avatar-nav ul.avatar-nav-items li.selected a, .quiz-style #buddypress .bp-avatar-nav ul.avatar-nav-items li.current a, .quiz-style #buddypress .activity-list .activity-content .activity-header, .quiz-style .comment-header a:not(.activity-time-since), .quiz-style #buddypress input[type=submit], .quiz-style #buddypress input[type=submit]:hover, .quiz-style #buddypress a.button:hover, .quiz-style #buddypress a.button:hover > span, .quiz-style #buddypress .standard-form span.label, .quiz-style #buddypress .standard-form label, .quiz-style #buddypress .current-visibility-level, .quiz-style #buddypress label, .quiz-style #buddypress .acomment-meta a:first-child, .quiz-style #buddypress div#item-header div.generic-button > a:hover, .quiz-style li form.ac-form .ac-reply-content .ac-reply-cancel:hover, .quiz-style li form.ac-form .ac-reply-content input[type=submit], .quiz-style #buddypress #members-list li .item .item-title > a, .quiz-style .thim-widget-portfolio .wapper_portfolio .filters .portfolio-tabs li a.filter:hover, .quiz-style .portfolio_container .wapper_portfolio .filters .portfolio-tabs li a.filter:hover, .quiz-style .thim-widget-portfolio .wapper_portfolio .filters .portfolio-tabs li a.active, .quiz-style .portfolio_container .wapper_portfolio .filters .portfolio-tabs li a.active, .quiz-style .learn-press-cart-table tbody .cart_item td a, .quiz-style .learn-press .view-cart-button:hover, .quiz-style .event_button_disable, .quiz-style #learn-press-form-login a.lost-pass-link, .quiz-style #learn-press-form-login a.lost-pass-link:hover, .quiz-style #learn-press-form-login p label, .quiz-style .thim-category-tabs .nav-tabs li a, .quiz-style .thim-testimonial-carousel .owl-buttons .owl-prev:hover, .quiz-style .thim-testimonial-carousel .owl-buttons .owl-next:hover, .quiz-style .thim-testimonial-carousel .content .title .line:before, .quiz-style .landing-image .title a, .quiz-style .thim-testimonial-carousel .content .title .line, .quiz-style .thim-testimonial-carousel .content .description, .quiz-style .pmpro-has-access .navigation a, .quiz-style .pmpro-has-access .pmpro_actionlinks a, .quiz-style .pmpro-has-access #pmpro_invoices_table tbody tr td a, .quiz-style .pmpro-has-access #pmpro_account-invoices tbody tr td a, .quiz-style .pmpro-has-access #pmpro_billing_address_fields thead th, .quiz-style .pmpro-has-access #pmpro_payment_information_fields thead th, .quiz-style .pmpro-has-access .pmpro_thead-name, .quiz-style .lp_pmpro_courses_by_level .level-wrap .lp_pmpro_title_course span, .quiz-style .lp_pmpro_courses_by_level .level-wrap ul li a:hover, .quiz-style .lp_pmpro_courses_by_level .level-wrap header .lp_pmpro_price_level .price, .quiz-style .thim-owl-carousel-post.thim-list-posts .title a, .quiz-style .woocommerce-MyAccount-navigation li a, .quiz-style a.thim-create-menu, .quiz-style a.thim-create-menu:hover, .quiz-style .section .section-header > a, .quiz-style .textwidget .add_to_cart_inline .amount, .quiz-style body .vc_tta.vc_tta-spacing-1 .vc_tta-tab a, .quiz-style .thim-owl-carousel-post.layout-2 .title a, .quiz-style .quiz-buttons .button-hint:hover, .quiz-style .quiz-buttons .button-next-question:hover, .quiz-style .quiz-buttons .button-check-answer:hover, .quiz-style .quiz-buttons .button-prev-question:hover, .quiz-style .loop-pagination .page-number, .quiz-style .loop-pagination a:hover .page-number, .quiz-style .lp-course-progress .progress-heading span, .quiz-style .learn-press-pmpro-buy-membership a.button:hover, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-lesson .lesson-preview:hover, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-assignment .lesson-preview:hover, .quiz-style #learn-press-course-curriculum ul.curriculum-sections .section-content .course-quiz .lesson-preview:hover, .quiz-style .thim-widget-carousel-categories .link-view-all, .quiz-style .elementor-widget-thim-carousel-categories .link-view-all, .quiz-style .thim-grid-posts .article-wrapper .title a, .quiz-style .thim-grid-posts .article-wrapper .read-more, .quiz-style .thim-list-post-inner .link_read_more a, .quiz-style #your-profile input[type=submit], .quiz-style #your-profile input[type=submit]:hover, .quiz-style #popup_container #popup_title, .quiz-style #popup_panel #popup_ok, .quiz-style .quiz-buttons .button-hint:hover, .quiz-style .quiz-buttons .button-next-question:hover, .quiz-style .quiz-buttons .button-check-answer:hover, .quiz-style .quiz-buttons .button-prev-question:hover, .quiz-style .thim-title-4 .widget-title, .quiz-style .lp-pmpro-membership-list .lp-price, .quiz-style .list-event-slider .item-event .event-wrapper .title a, .quiz-style .list-event-slider .item-event .event-wrapper .read-more, .quiz-style .thim-widget-login-form label, .quiz-style .thim-widget-login-popup label {
+  font-family: Roboto; }
+.quiz-style h2 {
+  font-weight: 600; }
+.quiz-style h3 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.13;
+  letter-spacing: 0.23px;
+  color: #000000;
+  margin: 50px 0 30px; }
+.quiz-style h4 {
+  margin: 30px 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.17;
+  letter-spacing: 0.18px;
+  color: #000000; }
+
+/* HEAD QUIZ */
+.head-quiz h2 {
+  font-size: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px; }
+
+.timer {
+  background: url(../img/ic-clock.svg) no-repeat 20px center;
+  max-width: 217px;
+  padding: 5px 20px 10px 80px;
+  display: inline-block;
+  border: solid 1px #eaeaea;
+  background-color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  color: #000000; }
+  .timer span {
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 14px; }
+
+/* CUSTOM RADIO */
+.radio-style {
+  /*[type="radio"]:checked + label:after,
+  [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F87DA9;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }*/ }
+  .radio-style [type="radio"]:checked,
+  .radio-style [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px; }
+  .radio-style [type="radio"]:checked + label,
+  .radio-style [type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    color: #757575;
+    font-weight: normal; }
+  .radio-style [type="radio"]:checked + label:before,
+  .radio-style [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+    transition: all .5s; }
+  .radio-style [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  .radio-style [type="radio"]:checked + label {
+    /*&:after {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }*/
+    font-weight: 600;
+    color: #000; }
+    .radio-style [type="radio"]:checked + label:before {
+      border-width: 6px;
+      border-color: #0176de; }
+
+/* QUEST BOX */
+.quest {
+  border: solid 1px #eaeaea;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 30px 30px 30px 60px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  position: relative; }
+  .quest .list-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    display: block;
+    align-self: self-start;
+    margin-right: 40px;
+    position: absolute;
+    top: 30px;
+    left: 30px; }
+  .quest .box-style {
+    margin-right: 80px;
+    width: 100%;
+    max-width: 370px; }
+
+/* BUTTONS */
+.btn-zone {
+  padding: 50px 0; }
+  .btn-zone.align-right {
+    text-align: right; }
+
+.action-button {
+  border-radius: 4px;
+  box-shadow: 0 0 8px 0 rgba(136, 136, 136, 0.18);
+  background-color: #fec60d;
+  padding: 10px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #173f8a;
+  width: 100%;
+  max-width: 300px; }
+  .action-button:hover, .action-button:focus {
+    background-color: #0176de;
+    color: #fff;
+    box-shadow: 0 0 20px 0 rgba(1, 118, 222, 0.8); }
+
+/* BOX TEXT */
+.text-box {
+  border: solid 1px #eaeaea;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px; }
+  .text-box h5 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.25px;
+    color: #000000; }
+  .text-box p {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: #000000;
+    text-align: justify; }
+
+.two-grid {
+  display: flex;
+  justify-content: space-between; }
+  .two-grid .right-grid, .two-grid .left-grid {
+    width: 100%; }
+  .two-grid .left-grid {
+    max-width: 55%; }
+  .two-grid .right-grid {
+    max-width: 40%; }
+
+.answer-box {
+  box-shadow: 0 0 8px 0 rgba(136, 136, 136, 0.18);
+  border: solid 1px #eaeaea;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px; }
+  .answer-box h6 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.25px;
+    color: #000000;
+    margin-bottom: 30px; }
+
+.inline-quest {
+  display: flex;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 0 0 0 30px; }
+  .inline-quest.wrap-quest {
+    flex-wrap: wrap;
+    border-bottom: dotted 1px #757575;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    padding-left: 50px;
+    /*.radio-style {
+      &:first-of-type{
+        padding-left: 45px;
+      }
+    }*/ }
+    .inline-quest.wrap-quest span.list-number {
+      position: absolute;
+      left: 0;
+      top: 0; }
+    .inline-quest.wrap-quest > label {
+      width: calc(100% - 45px);
+      font-size: 16px;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      color: #000000;
+      display: block;
+      margin-bottom: 15px; }
+  .inline-quest .list-number {
+    font-size: 18px;
+    min-width: 25px;
+    font-weight: 700;
+    color: #000000;
+    display: block;
+    align-self: self-start;
+    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .inline-quest .radio-style {
+    margin-right: 20px;
+    min-width: 65px; }
+
+/* TITLE */
+.home-style .head-quiz h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 30px;
+  max-width: 50%;
+  font-family: 'Roboto';
+  line-height: 50px; }
+.home-style .head-quiz p {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #000000;
+  max-width: 70%; }
+
+/* LOGIN BOX */
+.login-style {
+  background: url("../img/gradiente@3x.jpg") no-repeat left top;
+  background-size: cover;
+  padding: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px; }
+
+.login-box {
+  border-radius: 4px;
+  box-shadow: 0 0 8px 0 rgba(136, 136, 136, 0.18);
+  border: solid 1px #eaeaea;
+  background-color: #ffffff;
+  padding: 25px 6%;
+  width: 100%;
+  max-width: 550px; }
+  .login-box h3 {
+    font-size: 32px;
+    font-family: 'Roboto';
+    font-weight: 600;
+    letter-spacing: 0.23px;
+    color: #000000;
+    margin: 0 0 20px; }
+
+.form-style {
+  margin-bottom: 20px; }
+  .form-style label {
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.87); }
+  .form-style::placeholder {
+    color: #808080; }
+  .form-style input[type=text], .form-style input[type=email], .form-style input[type=password], .form-style textarea {
+    border-radius: 4px;
+    border: solid 1px #eaeaea;
+    background-color: #ffffff;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: #000;
+    transition: all .5s; }
+    .form-style input[type=text]:hover, .form-style input[type=text]:focus, .form-style input[type=email]:hover, .form-style input[type=email]:focus, .form-style input[type=password]:hover, .form-style input[type=password]:focus, .form-style textarea:hover, .form-style textarea:focus {
+      border-color: #0176de !important; }
+
+.form-btn {
+  text-align: center; }
+
+@media (min-width: 769px) and (max-width: 965px) {
+  .two-grid .right-grid {
+    max-width: 50%; }
+  .two-grid .left-grid {
+    max-width: 45%; } }
+@media (max-width: 768px) {
+  .home-style .head-quiz h2 {
+    font-size: 25px;
+    max-width: 90%;
+    margin-bottom: 10px; }
+
+  .quest .box-style {
+    margin-right: 20px;
+    max-width: 45%; } }
+@media (max-width: 600px) {
+  .home-style .head-quiz h2 {
+    line-height: 35px; }
+  .home-style .head-quiz p {
+    max-width: 100%; }
+
+  .login-style {
+    padding: 0; }
+
+  .quiz-style h4 {
+    font-size: 18px;
+    line-height: 25px; }
+
+  .head-quiz h2 {
+    flex-direction: column;
+    font-size: 25px;
+    margin-bottom: 10px; }
+
+  .timer {
+    margin-top: 10px; }
+
+  .md-stepper-horizontal .md-step .md-step-circle {
+    width: 34px;
+    height: 34px;
+    line-height: 29px;
+    font-size: 16px; }
+  .md-stepper-horizontal .md-step .md-step-bar-left, .md-stepper-horizontal .md-step .md-step-bar-right {
+    top: 40px; }
+  .md-stepper-horizontal .md-step .md-step-title, .md-stepper-horizontal .md-step .md-step-optional {
+    padding-left: 0;
+    text-align: center;
+    margin-top: 0;
+    font-size: 12px; }
+  .md-stepper-horizontal .md-step .md-step-optional {
+    display: none; }
+
+  .quest {
+    flex-wrap: wrap; }
+    .quest .list-number {
+      margin-right: 20px; }
+    .quest .box-style {
+      max-width: 240px; }
+    .quest .quest-form {
+      width: 100%; }
+
+  .two-grid {
+    flex-wrap: wrap; }
+    .two-grid .left-grid, .two-grid .right-grid {
+      max-width: 100%; }
+    .two-grid .left-grid {
+      margin-bottom: 20px; } }
+
+/*# sourceMappingURL=quiz.css.map */
+
+
+.modal-block {
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 999;
+  background: rgba(51, 51, 51, 0.4);
+  display: flex;
+  justify-content: center; }
+  .modal-block > .modal-block-content {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 2px;
+    width: 70% !important;
+    height: 30%; }
+    .modal-block > .modal-block-content > div {
+      padding: 0 0.5rem; }
+      .modal-block > .modal-block-content > div > span {
+        font-size: 1rem;
+        font-family: 'Roboto-Black'; }
+        @media (min-width: 770px) {
+          .modal-block > .modal-block-content > div > span {
+            font-size: 2vw; } }
+    .modal-block > .modal-block-content--animated {
+      display: flex;
+      animation: moveInBottom .5s ease-out .75s;
+      animation-fill-mode: backwards; }
+
+
+      .d-none {
+        display: none !important; }
