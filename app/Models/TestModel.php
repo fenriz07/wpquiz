@@ -54,6 +54,8 @@ use \WP_Query;
            array_push($posts, [
                  'id'      => get_the_ID(),
                  'title'   => html_entity_decode(get_the_title()),
+                 'firstd'  => $this->getFirstDescription(  get_the_ID() ),
+                 'secondd' => $this->getSecondDescription( get_the_ID() ),
                ]);
            endwhile;
        } else {
@@ -198,6 +200,16 @@ use \WP_Query;
      $image = reset($image);
     
      return $image['full_url'];
+   }
+
+   private function getFirstDescription($id)
+   {
+     return rwmb_meta( LEVEL_PLACEMENT_PREFIX_META_BOX . 'first-description', '', $id);
+   }
+
+   private function getSecondDescription($id)
+   {
+     return rwmb_meta( LEVEL_PLACEMENT_PREFIX_META_BOX . 'second-description', '', $id);
    }
 
  }

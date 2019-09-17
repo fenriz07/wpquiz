@@ -30,11 +30,7 @@ function prefix_register_taxonomy_meta_boxes_category_test( $meta_boxes )
                     [
                         'id'   => PREFIX_META_BOX_CATEGORYTEST . 'description',
                         'name' => 'Texto a mostrar',
-                        'type' => 'text',
-                        'attributes' => [
-                            'type' => 'text',
-                            'class' => 'all-width',
-                        ],
+                        'type' => 'wysiwyg',
                     ],
                     [
                         'id'          =>  PREFIX_META_BOX_CATEGORYTEST . 'courses-relations',
@@ -54,6 +50,11 @@ function prefix_register_taxonomy_meta_boxes_category_test( $meta_boxes )
                     ]
                 ],
             ],
+            [
+                'name'    => 'Instrucciones',
+                'id'      =>  PREFIX_META_BOX_CATEGORYTEST . 'instruction',
+                'type'    => 'wysiwyg',
+            ]
         ),
     );
     return $meta_boxes;

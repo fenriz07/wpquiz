@@ -15,11 +15,6 @@
 
     <div id="main" class="site-main col-sm-12 full-width">
         <div class="home-style">
-                <div class="head-quiz">
-                    <h2>Take the multiple choice test by selecting the right answers</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                </div>
-
                 <div class="login-style">
                     <div class="login-box">
                         <h3>Test your knowledge</h3>
@@ -48,7 +43,7 @@
         <div class="quiz-style">
 
             <div class="head-quiz">
-                    <h2>Test your knowledge <div class="timer" id="timer"> </div></h2>
+                    <h2>Test your knowledge <div class="timer d-none" id="timer"> </div></h2>
             </div>
             
             
@@ -67,7 +62,7 @@
             <div class="prev-block">
                 <div>
                     <a id="prev-questions" href="#" hidden>
-                        <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/icon-back.svg" alt="">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
                         <span> Previous</span>
                     </a>
 
@@ -79,9 +74,6 @@
                     <form id="levelForm">
                         <fieldset data-step="0">
                             <div class="u-center-text">
-                                <div class="step-0-title">
-                                    <span>These are the guideleines for the test</span>
-                                </div>
                                 <div class="step-0-tips">
                                   {instructions}
                                 </div>
@@ -92,15 +84,16 @@
             </div>
 
             <div class="start-block">
-                <a id="start-questions" href="#" class="btn u-margin-top-3">start</a>
+                <a id="start-questions" class="action-button" href="#" class="btn u-margin-top-3">Start</a>
             </div>
 
             <div class="next-block btn-zone align-right" hidden>
-                <a id="next-questions" href="#" class="action-button" >next</a>
+                
+                <a id="next-questions" href="#" class="action-button" >Next <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
             </div>
 
             <div class="send-block btn-zone align-right" hidden>
-                <button id="send-questions" class="action-button" href="#" class="btn-send u-margin-top-3">send</button>
+                <button id="send-questions" class="action-button" href="#" class="btn-send u-margin-top-3">Finish</button>
             </div>
 
             <div class="modal-block d-none">
@@ -133,14 +126,7 @@
 </div>
 
 <div class="result-container" hidden>
-    <div class="d-none">
-        <div>
-            <img src="{siteurl}/wp-content/plugins/wp-level-placement-plugin/assets/img/full-logo-white.png" alt="">
-        </div>
-        <div class="u-center-text">
-            <span>
-                Su test ha sido procesado exitosamente!
-            </span>
-        </div>
+    <div id="area-result-test" class="d-none">
+
     </div>
 </div>

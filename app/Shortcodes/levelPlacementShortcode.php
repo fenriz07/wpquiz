@@ -18,15 +18,14 @@ class levelPlacementShortcode
     wp_enqueue_script( 'wp-api' );
     wp_enqueue_style('level-placement-css');
 
-    $instructions = '';
-    $html_instruction = file_get_contents(LEVEL_PLACEMENT_DIR .'partials/instruction.html');
-    $html_results_ins = 'Esto es un parrafo de instrucciones para el test';
-    $icon_check       =  LEVEL_PLACEMENT_URI . '/assets/img/icon-check.svg';
+
     $atts = shortcode_atts([
       'idcat' => 1,
     ],$atts);
 
     $idcat = $atts['idcat'];
+
+    $html_results_ins =  rwmb_meta( PREFIX_META_BOX_CATEGORYTEST . 'instruction', ['object_type' => 'term' ], $idcat);
 
     $term = get_term( $idcat, 'category-test' );
 

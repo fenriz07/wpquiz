@@ -119,6 +119,7 @@ jQuery(document).ready(function ($) {
                 modelContact.set("action", "process_question");
                 modelContact.save()
 
+            $('.heading-test-uc').hide('400');
             $('.landing-container').hide('400');
             $('.wizard-container').show('400');
 
@@ -148,7 +149,7 @@ jQuery(document).ready(function ($) {
                   <div class="md-step">
                     <div class="md-step-circle"><span>${i}</span></div>
                     <div class="md-step-title">Part ${i}</div>
-                    <div class="md-step-optional"> ${lvlsInTestSend[ (i-1) ]['title']} </div>
+                    <div class="md-step-optional"> ${lvlsInTestSend[ (i-1) ]['firstd']} </div>
                     <div class="md-step-bar-left"></div>
                     <div class="md-step-bar-right"></div>
                   </div>
@@ -188,6 +189,7 @@ jQuery(document).ready(function ($) {
 
         $(lvl).addClass('active');
         document.getElementById('timer').innerHTML = 60 + ":" + 00;
+        jQuery('#timer').removeClass('d-none');
         startTimer();
         
     });

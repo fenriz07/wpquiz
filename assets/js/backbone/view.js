@@ -36,9 +36,11 @@ var StartTest = Backbone.View.extend({
   },
   renderImageQuestion : function( step,fieldset,stepIndex ){
 
+    console.log(step);
+
     var input_html = '';
-    var intro = `<h3>Part 1: Questions 1- 5</h3>
-    <h4>Where can you see these </h4>`;
+    var intro = `<h3>Part ${stepIndex}: ${step.firstd}</h3>
+    <h4> ${step.secondd} </h4>`;
 
 
 
@@ -124,10 +126,11 @@ var StartTest = Backbone.View.extend({
 
     },this)
 
+
     fieldsetP.children().append(`
 
-      <h3>Part 1: Questions 1- 5</h3>
-      <h4>Where can you see these </h4>
+      <h3>Part ${stepIndex}: ${step.firstd}</h3>
+      <h4> ${step.secondd} </h4>
 
       <div class="two-grid">
 
@@ -188,8 +191,8 @@ var StartTest = Backbone.View.extend({
 
     fieldset.children().append(`
 
-      <h3>Part 1: Questions 1- 5</h3>
-      <h4>Where can you see these </h4>
+        <h3>Part ${stepIndex}: ${step.firstd}</h3>
+        <h4> ${step.secondd} </h4>
 
         <div class="quest-item">
 
@@ -219,22 +222,96 @@ var TestView = Backbone.View.extend({
   },
   render : function(){
     var finalLvl = this.finalLvl;
+
+    //Esto muestra la caja de resultados
+
     jQuery('.modal-block').children().children().not(':last-child').hide();
-    if (!finalLvl) {
-      jQuery('.test-last-step').show();
-    } else {
-      jQuery('.test-last-step').hide();
-      jQuery('.wizard-container').hide();
-      jQuery('.result-container').show();
-      jQuery('.result-container').children().removeClass('d-none');
-      jQuery('.result-container').children().removeClass('d-flex');
-      jQuery('.result-container').addClass('result-container--show');
-    }
+    jQuery('.test-last-step').hide();
+    jQuery('.wizard-container').hide();
+    jQuery('.result-container').show();
+    jQuery('.result-container').children().removeClass('d-none');
+    jQuery('.result-container').children().removeClass('d-flex');
+    jQuery('.result-container').addClass('result-container--show');
+
+    this.renderPayload( this.model.get('payload') );
+
+    
   },
+  /**
+   * Esta función muestra el texto de que el text se esta proesando
+   */
   blockEl:function(){
     jQuery('.modal-block').removeClass('d-none');
     jQuery('.test-last-step').hide();
   },
+  renderPayload : function( payload )
+  {
+    let message = ` <h3> ${payload.message} </h3> `;
+    let courses = '';
+
+    payload.courses.forEach( function(course, index){
+      courses += `
+      <div id="post-${course.id}" class="course-grid-3 lpr_course post-${course.id} lp_course type-lp_course status-publish has-post-thumbnail hentry course">	
+    
+          <div class="course-item">
+                  
+              <div class="course-thumbnail">
+                  <a class="thumb" href="${course.uri}">
+                      <img src="${course.image}"></a>
+                  <a class="course-readmore" href="${course.uri}">Leer más</a>
+              </div>
+              
+              <div class="thim-course-content">
+  
+                  <div class="course-author">
+                      <div class="englishuc"></div>
+                  </div>
+              
+                  <h2 class="course-title englishuc">
+                      <a href="${course.uri}" >
+                        ${course.title}
+                      </a>
+                  </h2>			
+                  
+                  <div class="course-meta englishuc">                                                                                    
+                      <div class="course-price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                          <div class="value " itemprop="price"> $ ${course.price} </div>
+                          <meta itemprop="priceCurrency" content="CLP">
+                      </div>			
+                  </div>
+          
+                  <div class="course-description">
+                      <p>${course.tile}</p>
+                  </div>
+                      
+                      
+                  <div class="course-price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                      <div class="value " itemprop="price"> $ ${course.price} </div>
+                      <meta itemprop="priceCurrency" content="CLP">
+                  </div>	
+                          
+                  <div class="course-readmore">
+                          <a href="${course.uri}">Leer más</a>
+                  </div>
+  
+              </div>
+      
+              
+          </div>    
+          
+      </div>
+      `;
+
+    })
+
+    jQuery('#area-result-test').append(`
+      ${message}
+      <div id="thim-course-archive" class="thim-course-grid">
+        ${courses}
+      </div>
+    `);
+
+  }
 
 
 });
