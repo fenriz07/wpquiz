@@ -87,7 +87,7 @@
   .md-stepper-horizontal .md-step.active.done .md-step-title, .md-stepper-horizontal .md-step.active.editable .md-step-title {
     font-weight: 600; }
   .md-stepper-horizontal .md-step .md-step-optional {
-    font-size: 12px; }
+    font-size: 10px; }
   .md-stepper-horizontal .md-step.active .md-step-optional {
     color: rgba(0, 0, 0, 0.54); }
   .md-stepper-horizontal .md-step .md-step-bar-left {
@@ -480,6 +480,9 @@
 
 /*# sourceMappingURL=quiz.css.map */
 
+.top_heading._out{
+  display: none;
+}
 
 .modal-block {
   align-items: center;
@@ -517,3 +520,11 @@
 
       .d-none {
         display: none !important; }
+
+.start-block{
+  text-align: center;
+}
+
+h1.heading--result{
+  text-align: center;
+}

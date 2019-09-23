@@ -136,6 +136,7 @@ jQuery(document).ready(function ($) {
                   <div class="md-step">
                     <div class="md-step-circle"><span>${i}</span></div>
                     <div class="md-step-title">Part ${i}</div>
+                    <div class="md-step-optional"> ${lvlsInTestSend[ (i-1) ]['firstd']} </div>
                     <div class="md-step-bar-left"></div>
                     <div class="md-step-bar-right"></div>
                   </div>
@@ -250,7 +251,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (m < 0)   {
-            sendTestEmail();
+            $( "#send-questions" ).trigger( "click" );
             finishSend = true;
         }
 
@@ -280,13 +281,23 @@ jQuery(document).ready(function ($) {
     $(sendTest).on('click', function (event) {
         event.preventDefault();
 
-        if(jQuery('.modal-block').children().children().css('display') == 'none') {
-            $('.modal-block').children().children().show();
+        var test = $(levelForm).serializeArray();
+
+        if( test.length > 0 )
+        {
+            if(jQuery('.modal-block').children().children().css('display') == 'none') {
+                $('.modal-block').children().children().show();
+            }
+    
+            $(this).prop('disabled', true);
+    
+            sendTestEmail();
+        }else
+        {
+            alert( "You must select a minimum of one answer" );
         }
 
-        $(this).prop('disabled', true);
 
-        sendTestEmail();
     });
 
     // FUNCTION TO SEND TEST TO EMAIL VIA AJAX

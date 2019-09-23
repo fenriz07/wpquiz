@@ -36,8 +36,6 @@ var StartTest = Backbone.View.extend({
   },
   renderImageQuestion : function( step,fieldset,stepIndex ){
 
-    console.log(step);
-
     var input_html = '';
     var intro = `<h3>Part ${stepIndex}: ${step.firstd}</h3>
     <h4> ${step.secondd} </h4>`;
