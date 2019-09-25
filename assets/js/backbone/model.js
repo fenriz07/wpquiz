@@ -32,3 +32,7 @@ var ContactModel = Backbone.Model.extend({
     'action'      : site.action
   }
 });
+
+var ProgramShowModel = Backbone.Model.extend({
+  urlRoot: ROOT + 'checkemailuc',
+})

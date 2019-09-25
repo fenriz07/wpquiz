@@ -330,3 +330,20 @@ var LvlView = Backbone.View.extend({
     return this.levels;
   }
 })
+
+var CheckMailView = Backbone.View.extend({
+
+  initialize : function( data ){
+    this.response = null;
+    this.model = new ProgramShowModel();
+    this.model.set("email",data.email);
+
+    this.model.save()
+
+    this.model.on("change", this.setResponse, this);
+  },
+  setResponse : function(){
+    this.response = this.model.get('result');
+  }
+
+})

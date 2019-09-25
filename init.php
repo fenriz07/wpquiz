@@ -14,6 +14,7 @@
   define('LEVEL_PLACEMENT_URI', $uri  );
 
   Bootstrap\App::fire();
+  
 
 
   function mailtrap($phpmailer) {

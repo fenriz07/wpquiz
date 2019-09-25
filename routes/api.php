@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\TestController;
 use App\Http\Controllers\Api\LevelsController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\ProgramController;
 
 
 /**
@@ -39,6 +40,13 @@ class apiRestTest
         'methods'  => 'POST',
         'callback' => [ContactController::class,'store'],
       ]);
+
+      
+      register_rest_route( $this->namespace,  '/checkemailuc/',[
+        'methods'  => 'POST',
+        'callback' => [ProgramController::class,'show'],
+      ]);
+      
 
     });
 
