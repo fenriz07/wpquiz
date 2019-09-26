@@ -4,9 +4,9 @@ function categoryTest()
 {
 
     $labels = array(
-        'name'                       => _x('Tests & Levels', 'taxonomy general name', LEVEL_PLACEMENT_DOMAIN_TEXT),
-        'singular_name'              => _x('Tests & Levels', 'taxonomy singular name', LEVEL_PLACEMENT_DOMAIN_TEXT),
-        'search_items'               => __('Search Test or Level', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'name'                       => _x('Tests', 'taxonomy general name', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'singular_name'              => _x('Tests', 'taxonomy singular name', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'search_items'               => __('Search Test', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'popular_items'              => __('Popular Categorys', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'all_items'                  => __('All Categorys', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'parent_item'                => null,
@@ -19,7 +19,7 @@ function categoryTest()
         'add_or_remove_items'        => __('Add or remove Categorys', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'choose_from_most_used'      => __('Choose from the most used Categorys', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'not_found'                  => __('No Category found.', LEVEL_PLACEMENT_DOMAIN_TEXT),
-        'menu_name'                  => __('Tests & Levels', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'menu_name'                  => __('Tests', LEVEL_PLACEMENT_DOMAIN_TEXT),
     );
 
     $args = array(

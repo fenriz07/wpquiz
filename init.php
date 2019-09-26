@@ -1,7 +1,7 @@
 <?php
 
   /*
-    Plugin Name: WP Level Placement Plugin
+    Plugin Name: WP Quiz
   */
 
   $dir = trailingslashit( plugin_dir_path( __FILE__ ) );

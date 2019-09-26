@@ -8,7 +8,7 @@ function TestCustomPost()
     $labels = array(
         'name'                => _x('Test', 'Post Type General Name', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'singular_name'       => _x('Test', 'Post Type Singular Name', LEVEL_PLACEMENT_DOMAIN_TEXT),
-        'menu_name'           => __('WP Level Placement', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'menu_name'           => __('WP Quiz', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'parent_item_colon'   => __('Parent Test:', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'all_items'           => __('All Question', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'view_item'           => __('View Question', LEVEL_PLACEMENT_DOMAIN_TEXT),
@@ -22,8 +22,8 @@ function TestCustomPost()
     );
 
     $args = array(
-        'label'               => __('WP Level Placement', LEVEL_PLACEMENT_DOMAIN_TEXT),
-        'description'         => __('WP Level Placement', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'label'               => __('WP Quiz', LEVEL_PLACEMENT_DOMAIN_TEXT),
+        'description'         => __('WP Quiz', LEVEL_PLACEMENT_DOMAIN_TEXT),
         'labels'              => $labels,
         'supports'            => array( 'title'),
         'hierarchical'        => false,
