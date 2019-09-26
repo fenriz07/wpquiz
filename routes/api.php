@@ -40,11 +40,15 @@ class apiRestTest
         'methods'  => 'POST',
         'callback' => [ContactController::class,'store'],
       ]);
-
       
       register_rest_route( $this->namespace,  '/checkemailuc/',[
         'methods'  => 'POST',
         'callback' => [ProgramController::class,'show'],
+      ]);
+
+      register_rest_route( $this->namespace, '/registercontactuc/', [
+        'methods'  => 'POST',
+        'callback' => [ProgramController::class,'store'],
       ]);
       
 

@@ -40,6 +40,11 @@ use App\Traits\Thumbnail;
     {
         return rwmb_meta('_lp_price', '', $id);
     }
+
+    public static function getContentPdf($id)
+    {
+        return rwmb_meta('lp_course_field_pdf', '', $id);
+    }
  
 
  }

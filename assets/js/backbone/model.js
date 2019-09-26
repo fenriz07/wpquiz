@@ -1,12 +1,10 @@
 var ROOT   = site.endpoint;
 var LEVELS = site.levels;
 
-//GET TEST
 var CategoryModel = Backbone.Model.extend({
   urlRoot: ROOT + 'tests/category',
 });
 
-//GET NIVELES
 var LvlsModel = Backbone.Model.extend({
   urlRoot: ROOT + 'test/lvls',
   defaults:{
@@ -14,7 +12,6 @@ var LvlsModel = Backbone.Model.extend({
   }
 });
 
-//POST
 var TestModel = Backbone.Model.extend({
   urlRoot: ROOT + 'test',
   defaults:{
@@ -24,7 +21,6 @@ var TestModel = Backbone.Model.extend({
   }
 });
 
-//POST
 var ContactModel = Backbone.Model.extend({
   urlRoot: ROOT + 'contact',
   defaults:{
@@ -35,4 +31,8 @@ var ContactModel = Backbone.Model.extend({
 
 var ProgramShowModel = Backbone.Model.extend({
   urlRoot: ROOT + 'checkemailuc',
-})
+});
+
+var RegisterContactModel = Backbone.Model.extend({
+  urlRoot: ROOT + 'registercontactuc',
+});

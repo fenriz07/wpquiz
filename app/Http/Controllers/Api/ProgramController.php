@@ -19,4 +19,11 @@ class ProgramController extends BaseController
     
   }
 
+  public static function store($request)
+  {
+    // Llamamos al evento asincrono, retornmos siempre el 200
+
+    return ['status' => 200];
+  }
+
 }

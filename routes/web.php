@@ -14,9 +14,9 @@ class SpnRoutes
     public function setRoutes()
     {
         global $wp;
-        $wp->add_query_var('pdfid');
+        $wp->add_query_var('slugcourse');
 
-        add_rewrite_rule('descargar/programa/([^d/]*)/?$', 'index.php?pagename=downloadcourse&pdfid=$matches[1]', 'top'); 
+        add_rewrite_rule('descargar/programa/([^/]*)/?$', 'index.php?pagename=downloadcourse&slugcourse=$matches[1]', 'top'); 
 
         //$this->queue = new QueueMailCourseInfo();
 
