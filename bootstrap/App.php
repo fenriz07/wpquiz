@@ -1,5 +1,7 @@
 <?php namespace Bootstrap;
 
+use App\Queue\QueueResult;
+
 class App
 {
     use Loader;
@@ -23,7 +25,10 @@ class App
 
         add_action( 'wp_enqueue_scripts', [$this,'initCss'] );
         add_action( 'wp_enqueue_scripts', [$this,'initJs'] );
+        add_action( 'plugins_loaded',     [$this,'registerQueueWorker']  );
     }
+
+    
 
     public static function fire()
     {
@@ -59,6 +64,12 @@ class App
       wp_register_script('view-test',  LEVEL_PLACEMENT_URI .  'assets/js/backbone/view.js',''  ,$this->versionAssets);
     }
   
+    public function registerQueueWorker()
+    {
+        global $queueResult;
+
+        $queueResult = new QueueResult();
+    }
 
 }
 

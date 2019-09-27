@@ -1,5 +1,6 @@
 <?php namespace App\Repository\Api;
 
+use App\Traits\Queue;
 use App\Models\CoursesModel;
 use App\Repository\Api\LevelRepository;
 
@@ -18,10 +19,20 @@ use App\Repository\Api\LevelRepository;
 
 class TestRepository
 {
+
+    /**
+     * Trait Queue para procesar asincronamente. 
+     */
+    use Queue; 
+
     private $points;    
     private $testBd;
     private $answers;
 
+    public function __construct()
+    {
+      $this->initWorkers();
+    }
 
     /**
      * @todo : Registrar el examen como un customposttype nuevo que no esta registrado.
@@ -43,6 +54,17 @@ class TestRepository
 
       //Calculamos el test para setear el puntaje:
       $this->caclTest();
+
+
+      $info = [
+        'test'     =>  $this->testBd,
+        'point'    =>  $this->points,
+        'nameTest' =>  $data['name-test'],
+        'email'    =>  $data['personal']['email'],
+      ];
+
+      $this->queueResult->push_to_queue( $info);
+      $this->queueResult->save()->dispatch();
 
       //Procesamos el puntaje con los rangos de resultado
       $response = $this->evaluateRangeRules( $idCategory );

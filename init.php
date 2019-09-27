@@ -31,4 +31,12 @@
   error_reporting(-1);
   ini_set('display_errors', 'On');
 
+  use App\Queue\QueueResult;
+
+  function allin_plugins_loaded() {
+    global $bg_process;
+    $bg_process = new QueueResult();
+  }
+add_action( 'plugins_loaded', 'allin_plugins_loaded' );
+
  ?>
