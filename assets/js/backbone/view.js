@@ -133,7 +133,7 @@ var StartTest = Backbone.View.extend({
       <div class="two-grid">
 
         <div class="left-grid">
-          <p class="text-box"> ${step.lvl.questions.parrafo} </p>
+          <div class="text-box"> ${step.lvl.questions.parrafo} </div>
         </div>
 
         <div class="right-grid">

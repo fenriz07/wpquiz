@@ -50,8 +50,6 @@ class App
     {
       wp_register_style( 'level-placement-admin-css', LEVEL_PLACEMENT_URI . 'assets/css/admin.css','',  $this->versionAssets );
       wp_register_style( 'level-placement-css', LEVEL_PLACEMENT_URI . 'assets/css/quiz.css','',         $this->versionAssets );
-
-
     }
 
     public function initJs()

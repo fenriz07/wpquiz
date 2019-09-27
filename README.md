@@ -14,6 +14,6 @@ El plugin permite la elaboración compleja de pruebas para cursos o examenes onl
 - Cada test permite personalizar las reglas de evaluación.
 - La prueba a modo de front-end es a modo de Wizard por los cuales cada parte se representa en un paso amigable para el usuario.
 - Campo para personalizar las instrucciones de la prueba
-- Cronometro integrado.¿¿
+- Cronometro integrado.
 
 

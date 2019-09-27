@@ -156,9 +156,9 @@ class MetaBoxTest{
             'post_types' => ['test'],
             'fields'     => [
                 [
-                    'name' => 'Imagen',
+                    'name' => 'Parrafo',
                     'id'   => LEVEL_PLACEMENT_PREFIX_META_BOX . 'parrafo',
-                    'type' => 'textarea',
+                    'type' => 'wysiwyg',
                 ],
                 [
                     'type' => 'divider',
