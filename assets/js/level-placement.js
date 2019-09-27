@@ -189,7 +189,7 @@ jQuery(document).ready(function ($) {
         }
 
         $(lvl).addClass('active');
-        document.getElementById('timer').innerHTML = 30 + ":" + 00;
+        document.getElementById('timer').innerHTML = quiz.duration + ":" + 00;
         jQuery('#timer').removeClass('d-none');
         startTimer();
         

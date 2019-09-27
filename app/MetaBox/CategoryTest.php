@@ -47,13 +47,22 @@ function prefix_register_taxonomy_meta_boxes_category_test( $meta_boxes )
                         'attributes' => [
                             'class' => 'all-width',
                         ],
-                    ]
+                    ],
                 ],
             ],
             [
                 'name'    => 'Instrucciones',
                 'id'      =>  PREFIX_META_BOX_CATEGORYTEST . 'instruction',
                 'type'    => 'wysiwyg',
+            ],
+            [
+                'name'    => 'Duración del test',
+                'id'      =>  PREFIX_META_BOX_CATEGORYTEST . 'duration',
+                'type'    => 'text',
+                'attributes' => [
+                    'type' => 'number',
+                    'required' => true,
+                ],
             ]
         ),
     );

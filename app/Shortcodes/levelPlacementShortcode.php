@@ -26,6 +26,7 @@ class levelPlacementShortcode
     $idcat = $atts['idcat'];
 
     $html_results_ins =  rwmb_meta( PREFIX_META_BOX_CATEGORYTEST . 'instruction', ['object_type' => 'term' ], $idcat);
+    $duration         =  rwmb_meta( PREFIX_META_BOX_CATEGORYTEST . 'duration',    ['object_type' => 'term' ], $idcat);
 
     $term = get_term( $idcat, 'category-test' );
 
@@ -50,8 +51,8 @@ class levelPlacementShortcode
     wp_localize_script( 'view-test', 'site', $site );
     wp_enqueue_script('view-test');
 
+    wp_localize_script('level-placement-js', 'quiz', ['duration' => $duration]);
     wp_enqueue_script('level-placement-js');
-
 
     $site_url = get_site_url();
 
