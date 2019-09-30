@@ -1,8 +1,8 @@
 <?php
 
-use App\Mails\Mail;
 use App\Repository\PDF\Base;
-use App\Queue\QueueMailCourseInfo;
+use App\Repository\ResultRepository;
+
 
 /**
  * Class to manage the spn routes
@@ -15,8 +15,10 @@ class SpnRoutes
     {
         global $wp;
         $wp->add_query_var('slugcourse');
+        $wp->add_query_var('idresult');
 
         add_rewrite_rule('descargar/programa/([^/]*)/?$', 'index.php?pagename=downloadcourse&slugcourse=$matches[1]', 'top'); 
+        add_rewrite_rule('descargar/resultado/([^/d]*)/?$','index.php?pagename=downloadresult&idresult=$matches[1]', 'top');
 
         //$this->queue = new QueueMailCourseInfo();
 
@@ -33,15 +35,19 @@ class SpnRoutes
     public function setTemplate($template)
     {
         
-        $pagename = get_query_var('pagename');
-                
-        if( $pagename == 'downloadcourse' )
-        {   
-            Base::print();
-            exit(0);
+        $pagename = get_query_var('pagename');        
 
-            //$this->queue->push_to_queue(0);
-            //$this->queue->save()->dispatch();
+        switch ($pagename) {
+            case 'downloadcourse':
+                Base::print();
+                exit(0);
+                break;
+            case 'downloadresult':
+                ResultRepository::show();
+                break;
+            default:
+                # code...
+                break;
         }
 
         return $template;

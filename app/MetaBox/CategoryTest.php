@@ -11,7 +11,7 @@ function prefix_register_taxonomy_meta_boxes_category_test( $meta_boxes )
         'fields' => array(
             [
                 'name'       => 'Reglas de evaluación',
-                'id'         =>  PREFIX_META_BOX_CATEGORYTEST . 'range-evaluations-testa',
+                'id'         =>  PREFIX_META_BOX_CATEGORYTEST . 'range-evaluations-test',
                 'type'       => 'group',
                 'clone'      => true,
                 'class'      => 'range-evaluation-test-taxonomy',
